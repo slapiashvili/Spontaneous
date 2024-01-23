@@ -36,9 +36,6 @@ struct HowItWorksView: View {
                 }
             }
             
-            Button("Got it!", action: navigationCoordinator.pushMainPageViewController)
-                .onTapGesture { }
-                .allowsHitTesting(true)
         }
         
     }

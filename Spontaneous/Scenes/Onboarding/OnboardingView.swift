@@ -20,7 +20,7 @@ struct OnboardingView: ViewControllable {
                     .tag(0)
                 WhatToExpectView()
                     .tag(1)
-                HowItWorksView()
+                HowItWorksView(navigationCoordinator: NavigationCoordinator(holder: holder))
                     .tag(2)
             }
         }
@@ -30,14 +30,3 @@ struct OnboardingView: ViewControllable {
     }
 }
 
-struct WhatToExpectView: View {
-    var body: some View {
-        Text("What To Expect Page")
-    }
-}
-
-struct HowItWorksView: View {
-    var body: some View {
-        Text("How It Works Page")
-    }
-}
