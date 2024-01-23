@@ -15,11 +15,11 @@ class NavigationCoordinator {
         self.holder = holder
     }
 
-//    func presentLoginView() {
-//        guard let viewController = holder.viewController else { return }
-//        let view = LogInView(holder: NavigationStackHolder())
-//        viewController.navigationController?.pushViewController(view.viewController, animated: true)
-//    }
+    func pushToMainPage() {
+        guard let viewController = holder.viewController else { return }
+        let mainPageViewController = MainPageViewController()
+        viewController.navigationController?.pushViewController(mainPageViewController, animated: true)
+    }
 //
 //    func presentAddPersonView() {
 //        guard let viewController = holder.viewController else { return }

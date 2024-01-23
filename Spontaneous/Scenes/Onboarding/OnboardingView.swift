@@ -20,7 +20,7 @@ struct OnboardingView: ViewControllable {
                     .tag(0)
                 WhatToExpectView()
                     .tag(1)
-                HowItWorksView(navigationCoordinator: NavigationCoordinator(holder: holder))
+                HowItWorksView(holder: NavigationStackHolder(), navigationCoordinator: NavigationCoordinator(holder: holder))
                     .tag(2)
             }
         }

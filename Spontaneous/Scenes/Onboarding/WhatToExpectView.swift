@@ -20,10 +20,12 @@ struct WhatToExpectView: View {
                 .foregroundColor(.neoTextColorBrownCream)
                 .multilineTextAlignment(.center)
                 .padding()
+            
             Image("WhatToExpect")
                 .resizable()
                 .scaledToFill()
                 .frame(width: UIScreen.main.bounds.width * 2/5, height: UIScreen.main.bounds.height * 2/5)
+            
             Text("so that you have time for more important things")
                 .font(.title3)
                 .foregroundColor(.neoTextColorBrownCream)
