@@ -30,13 +30,6 @@ struct OnboardingView: ViewControllable {
     }
 }
 
-struct WelcomeView: View {
-    var body: some View {
-        Text("How It Works Page")
-    }
-}
-
-
 struct WhatToExpectView: View {
     var body: some View {
         Text("What To Expect Page")

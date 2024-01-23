@@ -14,6 +14,8 @@
 		3CA200FE2B5F73CE00823386 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CA200FC2B5F73CE00823386 /* LaunchScreen.storyboard */; };
 		3CA201062B5F786100823386 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA201052B5F786100823386 /* OnboardingView.swift */; };
 		3CA201082B5F796300823386 /* viewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA201072B5F796300823386 /* viewWrapper.swift */; };
+		3CA2010A2B5F7A7E00823386 /* navigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA201092B5F7A7E00823386 /* navigationCoordinator.swift */; };
+		3CA2010C2B5F7AF100823386 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA2010B2B5F7AF100823386 /* WelcomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		3CA200FF2B5F73CE00823386 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3CA201052B5F786100823386 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		3CA201072B5F796300823386 /* viewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = viewWrapper.swift; sourceTree = "<group>"; };
+		3CA201092B5F7A7E00823386 /* navigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navigationCoordinator.swift; sourceTree = "<group>"; };
+		3CA2010B2B5F7AF100823386 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,8 +65,10 @@
 				3CA200F12B5F73CC00823386 /* AppDelegate.swift */,
 				3CA200F32B5F73CC00823386 /* SceneDelegate.swift */,
 				3CA201052B5F786100823386 /* OnboardingView.swift */,
+				3CA2010B2B5F7AF100823386 /* WelcomeView.swift */,
 				3CA200F52B5F73CC00823386 /* ViewController.swift */,
 				3CA201072B5F796300823386 /* viewWrapper.swift */,
+				3CA201092B5F7A7E00823386 /* navigationCoordinator.swift */,
 				3CA200FA2B5F73CE00823386 /* Assets.xcassets */,
 				3CA200FC2B5F73CE00823386 /* LaunchScreen.storyboard */,
 				3CA200FF2B5F73CE00823386 /* Info.plist */,
@@ -144,7 +150,9 @@
 				3CA201062B5F786100823386 /* OnboardingView.swift in Sources */,
 				3CA201082B5F796300823386 /* viewWrapper.swift in Sources */,
 				3CA200F22B5F73CC00823386 /* AppDelegate.swift in Sources */,
+				3CA2010A2B5F7A7E00823386 /* navigationCoordinator.swift in Sources */,
 				3CA200F42B5F73CC00823386 /* SceneDelegate.swift in Sources */,
+				3CA2010C2B5F7AF100823386 /* WelcomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
