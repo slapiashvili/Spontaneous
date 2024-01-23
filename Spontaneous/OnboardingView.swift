@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct OnboardingView: View {
-   
-    
+struct OnboardingView: ViewControllable {
+    var holder: NavigationStackHolder
+
     @State private var currentPage = 0
 
     var body: some View {
