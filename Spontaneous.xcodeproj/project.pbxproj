@@ -17,6 +17,7 @@
 		3CA2010C2B5F7AF100823386 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA2010B2B5F7AF100823386 /* WelcomeView.swift */; };
 		3CA201122B5F7D0C00823386 /* HowItWorksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA201112B5F7D0C00823386 /* HowItWorksView.swift */; };
 		3CA201142B5F7D7200823386 /* WhatToExpectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA201132B5F7D7200823386 /* WhatToExpectView.swift */; };
+		3CA201162B5F7EDB00823386 /* DecisionMakingAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA201152B5F7EDB00823386 /* DecisionMakingAnimationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		3CA2010B2B5F7AF100823386 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		3CA201112B5F7D0C00823386 /* HowItWorksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HowItWorksView.swift; sourceTree = "<group>"; };
 		3CA201132B5F7D7200823386 /* WhatToExpectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatToExpectView.swift; sourceTree = "<group>"; };
+		3CA201152B5F7EDB00823386 /* DecisionMakingAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecisionMakingAnimationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 				3CA2010B2B5F7AF100823386 /* WelcomeView.swift */,
 				3CA201132B5F7D7200823386 /* WhatToExpectView.swift */,
 				3CA201112B5F7D0C00823386 /* HowItWorksView.swift */,
+				3CA201152B5F7EDB00823386 /* DecisionMakingAnimationView.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -181,6 +184,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3CA201162B5F7EDB00823386 /* DecisionMakingAnimationView.swift in Sources */,
 				3CA201062B5F786100823386 /* OnboardingView.swift in Sources */,
 				3CA201082B5F796300823386 /* viewWrapper.swift in Sources */,
 				3CA200F22B5F73CC00823386 /* AppDelegate.swift in Sources */,
