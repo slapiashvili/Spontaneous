@@ -32,14 +32,15 @@ struct HowItWorksView: ViewControllable {
                     .resizable()
                     .aspectRatio(contentMode: .fill)
                     .frame(width: UIScreen.main.bounds.width * 2/5, height: UIScreen.main.bounds.height * 2/5)
-                    .offset(x: UIScreen.main.bounds.width * 1/3, y: UIScreen.main.bounds.height * 1/6)
+                    .offset(x: UIScreen.main.bounds.width * 3/7, y: UIScreen.main.bounds.height * 1/6)
                 VStack {
                     Spacer()
                     Spacer()
+                    Spacer()
                     Button("Got it!") {
-                        navigationCoordinator.pushToMainPage()
+                        navigationCoordinator.pushToNicknamePage()
                     }
-                    .foregroundColor(.neoTextColorBrownCream)
+                    .foregroundColor(.neoBackground)
                     .padding()
                     .background(
                         RoundedRectangle(cornerRadius: 10)

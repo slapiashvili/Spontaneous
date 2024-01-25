@@ -14,12 +14,22 @@ class NavigationCoordinator {
     init(holder: NavigationStackHolder) {
         self.holder = holder
     }
+    
+    
 
     func pushToMainPage() {
         guard let viewController = holder.viewController else { return }
         let mainPageViewController = MainPageViewController()
         viewController.navigationController?.pushViewController(mainPageViewController, animated: true)
     }
+    
+    func pushToNicknamePage() {
+        guard let viewController = holder.viewController else { return }
+        let nicknameViewController = NicknameViewController()
+        viewController.navigationController?.pushViewController(nicknameViewController, animated: true)
+    }
+    
+    
 //
 //    func presentAddPersonView() {
 //        guard let viewController = holder.viewController else { return }
