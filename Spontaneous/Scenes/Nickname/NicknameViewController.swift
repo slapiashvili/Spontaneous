@@ -19,6 +19,7 @@ class NicknameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .neoBackground
+        self.navigationItem.hidesBackButton = true
         setupContainerView()
         setupRandomizeContainer()
     }
@@ -116,6 +117,7 @@ class NicknameViewController: UIViewController {
         if enteredText?.isEmpty ?? true {
             displayErrorMessage("Nickname can not be empty.")
         } else {
+            self.destinationViewController.userNickname = enteredText
             navigationController?.pushViewController(self.destinationViewController, animated: true)
         }
     }
@@ -238,6 +240,7 @@ class NicknameViewController: UIViewController {
     @objc func randomizeNickname() {
         if let randomNickname = nicknames.randomElement() {
             userNickname = randomNickname
+            self.destinationViewController.userNickname = randomNickname
             navigationController?.pushViewController(self.destinationViewController, animated: true)
 
         }
