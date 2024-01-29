@@ -21,6 +21,10 @@
 		3CA201182B5F86A900823386 /* MainPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA201172B5F86A900823386 /* MainPageViewController.swift */; };
 		3CA2011C2B5F8BDD00823386 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA2011B2B5F8BDD00823386 /* ButtonStyle.swift */; };
 		3CA2011F2B61827F00823386 /* NicknameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA2011E2B61827F00823386 /* NicknameViewController.swift */; };
+		3CA201232B67919300823386 /* GeneralCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA201222B67919300823386 /* GeneralCategory.swift */; };
+		3CA201252B679E9600823386 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA201242B679E9600823386 /* CategoryViewModel.swift */; };
+		3CA201272B67A19A00823386 /* CategoryDetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA201262B67A19A00823386 /* CategoryDetailPage.swift */; };
+		3CA2012C2B67D67600823386 /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA2012B2B67D67600823386 /* FilterCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +44,10 @@
 		3CA201172B5F86A900823386 /* MainPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPageViewController.swift; sourceTree = "<group>"; };
 		3CA2011B2B5F8BDD00823386 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		3CA2011E2B61827F00823386 /* NicknameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewController.swift; sourceTree = "<group>"; };
+		3CA201222B67919300823386 /* GeneralCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralCategory.swift; sourceTree = "<group>"; };
+		3CA201242B679E9600823386 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
+		3CA201262B67A19A00823386 /* CategoryDetailPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailPage.swift; sourceTree = "<group>"; };
+		3CA2012B2B67D67600823386 /* FilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,9 +103,10 @@
 		3CA2010E2B5F7B8500823386 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				3CA201102B5F7BB000823386 /* Onboarding */,
 				3CA2011D2B61825700823386 /* Nickname */,
 				3CA201192B5F86DA00823386 /* Main Page */,
-				3CA201102B5F7BB000823386 /* Onboarding */,
+				3CA201282B67A1A200823386 /* Category Details Page */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -127,6 +136,8 @@
 			isa = PBXGroup;
 			children = (
 				3CA201172B5F86A900823386 /* MainPageViewController.swift */,
+				3CA201222B67919300823386 /* GeneralCategory.swift */,
+				3CA201242B679E9600823386 /* CategoryViewModel.swift */,
 			);
 			path = "Main Page";
 			sourceTree = "<group>";
@@ -145,6 +156,15 @@
 				3CA2011E2B61827F00823386 /* NicknameViewController.swift */,
 			);
 			path = Nickname;
+			sourceTree = "<group>";
+		};
+		3CA201282B67A1A200823386 /* Category Details Page */ = {
+			isa = PBXGroup;
+			children = (
+				3CA201262B67A19A00823386 /* CategoryDetailPage.swift */,
+				3CA2012B2B67D67600823386 /* FilterCell.swift */,
+			);
+			path = "Category Details Page";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,10 +238,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CA201182B5F86A900823386 /* MainPageViewController.swift in Sources */,
+				3CA201272B67A19A00823386 /* CategoryDetailPage.swift in Sources */,
+				3CA2012C2B67D67600823386 /* FilterCell.swift in Sources */,
 				3CA201162B5F7EDB00823386 /* DecisionMakingAnimationView.swift in Sources */,
 				3CA201062B5F786100823386 /* OnboardingView.swift in Sources */,
+				3CA201232B67919300823386 /* GeneralCategory.swift in Sources */,
 				3CA201082B5F796300823386 /* viewWrapper.swift in Sources */,
 				3CA2011F2B61827F00823386 /* NicknameViewController.swift in Sources */,
+				3CA201252B679E9600823386 /* CategoryViewModel.swift in Sources */,
 				3CA200F22B5F73CC00823386 /* AppDelegate.swift in Sources */,
 				3CA2010A2B5F7A7E00823386 /* navigationCoordinator.swift in Sources */,
 				3CA201142B5F7D7200823386 /* WhatToExpectView.swift in Sources */,
