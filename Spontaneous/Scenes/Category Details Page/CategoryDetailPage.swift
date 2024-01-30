@@ -32,7 +32,7 @@ class CategoryDetailViewController: UIViewController {
 
     private let categoryLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .neoTextColorBrownCream
+        label.textColor = .neoTextOpposite
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 25, weight: .bold)
         return label
@@ -40,7 +40,7 @@ class CategoryDetailViewController: UIViewController {
 
     private let descriptionLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .neoTextColorBrownCream
+        label.textColor = .neoTextOpposite
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 18, weight: .regular)
         label.numberOfLines = 0
@@ -50,7 +50,7 @@ class CategoryDetailViewController: UIViewController {
     private let instructionLabel: UILabel = {
         let label = UILabel()
         label.text = "Please choose from the filters below"
-        label.textColor = .neoTextColorBrownCream
+        label.textColor = .neoTextOpposite
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 15, weight: .regular)
         label.numberOfLines = 0

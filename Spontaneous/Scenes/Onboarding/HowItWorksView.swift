@@ -16,11 +16,11 @@ struct HowItWorksView: ViewControllable {
             VStack(alignment: .center) {
                 Text("How it Works")
                     .font(.title)
-                    .foregroundColor(.neoTextColorGreen)
+                    .foregroundColor(.neoPrimaryTitle)
                     .multilineTextAlignment(.center)
                 Text("choose a category, press randomize, get a randomized answer")
                     .font(.title2)
-                    .foregroundColor(.neoTextColorBrownCream)
+                    .foregroundColor(.neoTextOpposite)
                     .multilineTextAlignment(.center)
                     .padding()
                 DecisionMakingAnimationView()

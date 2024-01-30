@@ -12,12 +12,12 @@ struct WhatToExpectView: View {
         VStack {
             Text("What to Expect")
                 .font(.title)
-                .foregroundColor(.neoTextColorGreen)
+                .foregroundColor(.neoPrimaryTitle)
                 .multilineTextAlignment(.center)
 
             Text("We will help you make decisions about different aspects of your life")
                 .font(.title2)
-                .foregroundColor(.neoTextColorBrownCream)
+                .foregroundColor(.neoTextOpposite)
                 .multilineTextAlignment(.center)
                 .padding()
             
@@ -28,7 +28,7 @@ struct WhatToExpectView: View {
             
             Text("so that you have time for more important things")
                 .font(.title3)
-                .foregroundColor(.neoTextColorBrownCream)
+                .foregroundColor(.neoTextOpposite)
                 .multilineTextAlignment(.center)
                 .padding()
         }
