@@ -32,7 +32,7 @@ class NicknameViewController: UIViewController {
     
     func setupContainerView() {
         containerView = UIView()
-        containerView.backgroundColor = .neoTextColorBrownCream
+        containerView.backgroundColor = .neoTextOpposite
         containerView.layer.cornerRadius = 20
         containerView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(containerView)
@@ -69,13 +69,22 @@ class NicknameViewController: UIViewController {
 
     func setupTextField(in containerView: UIView) {
         let textField = UITextField()
-        textField.backgroundColor = .neoPrimaryButtonColorGreen
+        textField.backgroundColor = .neoTextOpposite
         textField.textColor = .neoBackground
         textField.textAlignment = .center
         textField.layer.cornerRadius = 10
+        textField.borderStyle = .line
+        textField.layer.borderColor = UIColor.neoBackground.cgColor
+        textField.layer.borderWidth = 1.0
         textField.autocorrectionType = .no
         textField.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(textField)
+        
+            let placeholderAttributes: [NSAttributedString.Key: Any] = [
+                .foregroundColor: UIColor.systemGray,
+            ]
+            textField.attributedPlaceholder = NSAttributedString(string: "start typing", attributes: placeholderAttributes)
+
 
         NSLayoutConstraint.activate([
             textField.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 60),
@@ -85,8 +94,9 @@ class NicknameViewController: UIViewController {
         ])
         
         textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-
+        textField.becomeFirstResponder()
     }
+
     
     @objc func textFieldDidChange(_ textField: UITextField) {
             userNickname = textField.text
@@ -95,8 +105,8 @@ class NicknameViewController: UIViewController {
     func setupConfirmButton(in containerView: UIView) {
         let confirmButton = UIButton()
         confirmButton.setTitle("Confirm", for: .normal)
-        confirmButton.backgroundColor = .neoPrimaryButtonColorGreen
-        confirmButton.setTitleColor(UIColor(named: "neoBackground"), for: .normal)
+        confirmButton.backgroundColor = .neoBackground
+        confirmButton.setTitleColor(UIColor(named: "neoTextOpposite"), for: .normal)
         confirmButton.layer.cornerRadius = 10
         confirmButton.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(confirmButton)
@@ -169,7 +179,7 @@ class NicknameViewController: UIViewController {
     
     func setupRandomizeContainer() {
         let randomizeContainer = UIView()
-        randomizeContainer.backgroundColor = .neoTextColorBrownCream
+        randomizeContainer.backgroundColor = .neoTextOpposite
         randomizeContainer.layer.cornerRadius = 20
         randomizeContainer.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(randomizeContainer)
@@ -209,8 +219,8 @@ class NicknameViewController: UIViewController {
     func setupRandomizeButton(in randomizeContainer: UIView) {
         let randomizeButton = UIButton()
         randomizeButton.setTitle("Randomize", for: .normal)
-        randomizeButton.backgroundColor = .neoPrimaryButtonColorGreen
-        randomizeButton.setTitleColor(UIColor(named: "neoBackground"), for: .normal)
+        randomizeButton.backgroundColor = .neoBackground
+        randomizeButton.setTitleColor(UIColor(named: "neoTextOpposite"), for: .normal)
         randomizeButton.layer.cornerRadius = 10
         randomizeButton.addTarget(self, action: #selector(randomizeNickname), for: .touchUpInside)
         randomizeButton.translatesAutoresizingMaskIntoConstraints = false

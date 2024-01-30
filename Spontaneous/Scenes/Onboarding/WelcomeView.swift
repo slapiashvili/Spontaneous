@@ -25,7 +25,7 @@ struct WelcomeView: View {
 
             Text("We make decision-making easier")
                 .font(.title2)
-                .foregroundColor(.neoTextColorBrownCream)
+                .foregroundColor(.neoTextOpposite)
                 .multilineTextAlignment(.center)
                 .padding()
 

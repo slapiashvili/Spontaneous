@@ -26,7 +26,7 @@ class MainPageViewController: UIViewController {
     let welcomeLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .neoTextColorBrownCream
+        label.textColor = .neoTextOpposite
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         return label
@@ -35,7 +35,7 @@ class MainPageViewController: UIViewController {
     let categoryLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .neoTextColorBrownCream
+        label.textColor = .neoTextOpposite
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
         return label
@@ -117,7 +117,7 @@ extension MainPageViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
-        cell.backgroundColor = .neoTextColorGreen
+        cell.backgroundColor = .neoPrimaryTitle
 
         let category = categoryViewModel.categories[indexPath.item]
 
