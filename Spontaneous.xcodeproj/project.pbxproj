@@ -25,6 +25,7 @@
 		3CA201252B679E9600823386 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA201242B679E9600823386 /* CategoryViewModel.swift */; };
 		3CA201272B67A19A00823386 /* CategoryDetailPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA201262B67A19A00823386 /* CategoryDetailPage.swift */; };
 		3CA2012C2B67D67600823386 /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA2012B2B67D67600823386 /* FilterCell.swift */; };
+		3CA2012E2B68CD7200823386 /* FilterContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA2012D2B68CD7200823386 /* FilterContentModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		3CA201242B679E9600823386 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
 		3CA201262B67A19A00823386 /* CategoryDetailPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDetailPage.swift; sourceTree = "<group>"; };
 		3CA2012B2B67D67600823386 /* FilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
+		3CA2012D2B68CD7200823386 /* FilterContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterContentModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 				3CA201172B5F86A900823386 /* MainPageViewController.swift */,
 				3CA201222B67919300823386 /* GeneralCategory.swift */,
 				3CA201242B679E9600823386 /* CategoryViewModel.swift */,
+				3CA2012D2B68CD7200823386 /* FilterContentModel.swift */,
 			);
 			path = "Main Page";
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3CA201182B5F86A900823386 /* MainPageViewController.swift in Sources */,
+				3CA2012E2B68CD7200823386 /* FilterContentModel.swift in Sources */,
 				3CA201272B67A19A00823386 /* CategoryDetailPage.swift in Sources */,
 				3CA2012C2B67D67600823386 /* FilterCell.swift in Sources */,
 				3CA201162B5F7EDB00823386 /* DecisionMakingAnimationView.swift in Sources */,
