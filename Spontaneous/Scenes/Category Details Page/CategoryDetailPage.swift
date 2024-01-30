@@ -5,6 +5,13 @@
 //  Created by Salome Lapiashvili on 29.01.24.
 //
 
+//TODO: add marks
+//TODO: fix UI
+//TODO: better oranize the code: make sure to use setupviews
+//TODO: make sure the constraints are dynamic
+//TODO: add a viewModel
+
+
 import UIKit
 
 class CategoryDetailViewController: UIViewController {

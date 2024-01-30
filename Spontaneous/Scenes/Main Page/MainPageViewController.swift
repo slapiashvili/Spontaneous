@@ -5,6 +5,16 @@
 //  Created by Salome Lapiashvili on 23.01.24.
 //
 
+//TODO: add marks
+//TODO: fix UI
+//TODO: change the colors
+//TODO: add searchbar logic
+//TODO: better oranize the code: make sure to use setupviews
+//TODO: make sure the constraints are dynamic
+//TODO: add the other categories also
+//TODO: move some logic to the viewModel
+
+
 
 import UIKit
 

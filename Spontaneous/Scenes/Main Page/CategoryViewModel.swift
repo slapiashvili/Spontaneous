@@ -5,7 +5,13 @@
 //  Created by Salome Lapiashvili on 29.01.24.
 //
 
+
+//TODO: add some images or different kinds of placeholder images
+//TODO: add some marks
+//TODO: better organize the code
+
 import UIKit
+
 
 struct CategoryViewModel {
     var categories: [GeneralCategory] = []
@@ -15,7 +21,6 @@ struct CategoryViewModel {
     
     let placeholderImage = UIImage(named: "placeholder_image")!
     var selectedFilterIndex: Int?
-    
     
     
     func randomizeContent(for category: GeneralCategory, with filter: String) -> FilterContent? {
@@ -462,33 +467,33 @@ struct CategoryViewModel {
             
                 FilterContent(primaryName: "Thunderstruck", fullName: "Thunderstruck", afterName: "song", description: "Experience the electrifying energy of AC/DC's 'Thunderstruck.' This iconic rock anthem is sure to get your adrenaline pumping with its powerful riffs and captivating rhythm.", image: placeholderImage),
 
-                  FilterContent(primaryName: "Bohemian Rhapsody", fullName: "Bohemian Rhapsody", afterName: "song", description: "Indulge in the operatic brilliance of Queen's 'Bohemian Rhapsody.' This genre-defying classic takes you on a musical journey, blending rock, ballad, and opera elements seamlessly.", image: placeholderImage),
+                  FilterContent(primaryName: "Bohemian Rhapsody", fullName: "Bohemian Rhapsody by the Queen", afterName: "song", description: "Indulge in the operatic brilliance of Queen's 'Bohemian Rhapsody.' This genre-defying classic takes you on a musical journey, blending rock, ballad, and opera elements seamlessly.", image: placeholderImage),
 
-                  FilterContent(primaryName: "Stairway to Heaven", fullName: "Stairway to Heaven", afterName: "song", description: "Immerse yourself in the timeless allure of Led Zeppelin's 'Stairway to Heaven.' This epic rock masterpiece unfolds with enchanting guitar solos and poetic lyrics.", image: placeholderImage),
+                  FilterContent(primaryName: "Stairway to Heaven", fullName: "Stairway to Heaven by Led Zeppelin", afterName: "song", description: "Immerse yourself in the timeless allure of Led Zeppelin's 'Stairway to Heaven.' This epic rock masterpiece unfolds with enchanting guitar solos and poetic lyrics.", image: placeholderImage),
 
-                  FilterContent(primaryName: "Sweet Child o' Mine", fullName: "Sweet Child o' Mine", afterName: "song", description: "Savor the iconic guitar riff and soulful vocals in Guns N' Roses' 'Sweet Child o' Mine.' This rock ballad remains a classic, resonating with generations of music enthusiasts.", image: placeholderImage),
+                  FilterContent(primaryName: "Sweet Child o' Mine", fullName: "Sweet Child o' Mine by Gun's N' Roses", afterName: "song", description: "Savor the iconic guitar riff and soulful vocals in Guns N' Roses' 'Sweet Child o' Mine.' This rock ballad remains a classic, resonating with generations of music enthusiasts.", image: placeholderImage),
 
-                  FilterContent(primaryName: "Back in Black", fullName: "Back in Black", afterName: "song", description: "Feel the power of AC/DC's 'Back in Black,' a rock anthem known for its infectious energy and memorable guitar riffs. Let the music take you on a wild ride.", image: placeholderImage),
+                  FilterContent(primaryName: "Back in Black", fullName: "Back in Black by AC/DC", afterName: "song", description: "Feel the power of AC/DC's 'Back in Black,' a rock anthem known for its infectious energy and memorable guitar riffs. Let the music take you on a wild ride.", image: placeholderImage),
 
-                  FilterContent(primaryName: "Comfortably Numb", fullName: "Comfortably Numb", afterName: "song", description: "Embark on a surreal journey with Pink Floyd's 'Comfortably Numb.' Let the haunting melody and poignant lyrics transport you to a world of musical transcendence.", image: placeholderImage),
+                  FilterContent(primaryName: "Comfortably Numb", fullName: "Comfortably Numb by Pink floyd", afterName: "song", description: "Embark on a surreal journey with Pink Floyd's 'Comfortably Numb.' Let the haunting melody and poignant lyrics transport you to a world of musical transcendence.", image: placeholderImage),
 
-                  FilterContent(primaryName: "Light My Fire", fullName: "Light My Fire", afterName: "song", description: "Immerse yourself in the psychedelic sounds of The Doors' 'Light My Fire.' This iconic track captures the essence of 1960s rock with its distinctive organ and Jim Morrison's charismatic vocals.", image: placeholderImage),
+                  FilterContent(primaryName: "Light My Fire", fullName: "Light My Fire by the Doors", afterName: "song", description: "Immerse yourself in the psychedelic sounds of The Doors' 'Light My Fire.' This iconic track captures the essence of 1960s rock with its distinctive organ and Jim Morrison's charismatic vocals.", image: placeholderImage),
                 
-                FilterContent(primaryName: "Holy Diver", fullName: "Holy Diver", afterName: "song", description: "Experience the powerful vocals and epic guitar riffs of Dio's 'Holy Diver.' This classic metal anthem will transport you to the realm of fantasy and heavy metal greatness.", image: placeholderImage)
+                FilterContent(primaryName: "Holy Diver", fullName: "Holy Diver by Dio", afterName: "song", description: "Experience the powerful vocals and epic guitar riffs of Dio's 'Holy Diver.' This classic metal anthem will transport you to the realm of fantasy and heavy metal greatness.", image: placeholderImage)
 
        ]),
             
             Filter(filterName: "pop music", filterContents: [
                 
-                FilterContent(primaryName: "Dancing Queen", fullName: "Dancing Queen", afterName: "song", description: "Get ready to hit the dance floor with ABBA's timeless hit 'Dancing Queen.' This upbeat pop anthem will bring joy and energy to any occasion.", image: placeholderImage),
+                FilterContent(primaryName: "Dancing Queen", fullName: "Dancing Queen by ABBA", afterName: "by ABBA", description: "Get ready to hit the dance floor with ABBA's timeless hit 'Dancing Queen.' This upbeat pop anthem will bring joy and energy to any occasion.", image: placeholderImage),
 
-                FilterContent(primaryName: "Shape of You", fullName: "Shape of You", afterName: "song", description: "Ed Sheeran's 'Shape of You' is a chart-topping pop sensation that combines infectious beats with catchy lyrics. A modern classic for your playlist.", image: placeholderImage),
+                FilterContent(primaryName: "Shape of You", fullName: "Shape of You by Ed Sheeran", afterName: " by Ed Sheeran", description: "Ed Sheeran's 'Shape of You' is a chart-topping pop sensation that combines infectious beats with catchy lyrics. A modern classic for your playlist.", image: placeholderImage),
                 
-                FilterContent(primaryName: "Happy", fullName: "Happy", afterName: "song", description: "Pharrell Williams' 'Happy' is a feel-good anthem that will instantly lift your spirits. Add this joyful tune to your playlist for an instant mood boost.", image: placeholderImage),
+                FilterContent(primaryName: "Happy", fullName: "Happy by Pharell Williams", afterName: "by Pharell Williams", description: "Pharrell Williams' 'Happy' is a feel-good anthem that will instantly lift your spirits. Add this joyful tune to your playlist for an instant mood boost.", image: placeholderImage),
 
-                FilterContent(primaryName: "Uptown Funk", fullName: "Uptown Funk", afterName: "song", description: "Mark Ronson and Bruno Mars deliver a funky and energetic performance in 'Uptown Funk.' This song is a perfect choice to get the party started.", image: placeholderImage),
+                FilterContent(primaryName: "Uptown Funk", fullName: "Uptown Funk by Bruno Mars", afterName: " by Bruno Mars", description: "Mark Ronson and Bruno Mars deliver a funky and energetic performance in 'Uptown Funk.' This song is a perfect choice to get the party started.", image: placeholderImage),
 
-                FilterContent(primaryName: "Waka Waka (This Time for Africa)", fullName: "Waka Waka (This Time for Africa)", afterName: "song", description: "Shakira's 'Waka Waka' is a spirited anthem that captures the excitement of global celebrations. Dance to the rhythm of this infectious track.", image: placeholderImage)
+                FilterContent(primaryName: "Waka Waka (This Time for Africa)", fullName: "Waka Waka by Shakira", afterName: " by Shakira", description: "Shakira's 'Waka Waka' is a spirited anthem that captures the excitement of global celebrations. Dance to the rhythm of this infectious track.", image: placeholderImage)
 
             ]),
             
