@@ -5,6 +5,12 @@
 //  Created by Salome Lapiashvili on 24.01.24.
 //
 
+
+//TODO: fix UI
+//TODO: dynamic constaints
+//TODO: add "or"
+//TODO: add a viewModel
+
 import UIKit
 
 
