@@ -69,13 +69,22 @@ class NicknameViewController: UIViewController {
 
     func setupTextField(in containerView: UIView) {
         let textField = UITextField()
-        textField.backgroundColor = .neoPrimaryButtonColorGreen
+        textField.backgroundColor = .neoTextOpposite
         textField.textColor = .neoBackground
         textField.textAlignment = .center
         textField.layer.cornerRadius = 10
+        textField.borderStyle = .line
+        textField.layer.borderColor = UIColor.neoBackground.cgColor
+        textField.layer.borderWidth = 1.0
         textField.autocorrectionType = .no
         textField.translatesAutoresizingMaskIntoConstraints = false
         containerView.addSubview(textField)
+        
+            let placeholderAttributes: [NSAttributedString.Key: Any] = [
+                .foregroundColor: UIColor.systemGray,
+            ]
+            textField.attributedPlaceholder = NSAttributedString(string: "start typing", attributes: placeholderAttributes)
+
 
         NSLayoutConstraint.activate([
             textField.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 60),
@@ -85,8 +94,9 @@ class NicknameViewController: UIViewController {
         ])
         
         textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-
+        textField.becomeFirstResponder()
     }
+
     
     @objc func textFieldDidChange(_ textField: UITextField) {
             userNickname = textField.text
