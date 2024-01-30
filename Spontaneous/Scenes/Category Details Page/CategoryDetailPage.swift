@@ -11,6 +11,7 @@ class CategoryDetailViewController: UIViewController {
 
     var category: GeneralCategory?
     var selectedCategory: GeneralCategory?     
+    var selectedFilterIndex: Int?
     var categoryViewModel: CategoryViewModel?
 
     private let stackView: UIStackView = {
@@ -77,6 +78,7 @@ class CategoryDetailViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
 
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -130,11 +132,19 @@ class CategoryDetailViewController: UIViewController {
     }
 
     @objc private func randomizeButtonTapped() {
+        guard let selectedFilterIndex = selectedFilterIndex,
+              let selectedCategory = selectedCategory,
+              selectedFilterIndex < selectedCategory.filters.count else {
+            return
+        }
 
-        filtersCollectionView.reloadData()
+        let selectedFilter = selectedCategory.filters[selectedFilterIndex]
+
+        if let randomizedContent = categoryViewModel?.randomizeContent(for: selectedCategory, with: selectedFilter.filterName) {
+            let randomizedResultPage = RandomizedResultPage(randomizedContent: randomizedContent)
+            navigationController?.pushViewController(randomizedResultPage, animated: true)
+        }
     }
-
-
 }
 // MARK: - UICollectionViewDataSource
 
@@ -145,17 +155,22 @@ extension CategoryDetailViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FilterCell", for: indexPath) as? FilterCell else {
-            fatalError("Failed to dequeue FilterCell.")
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FilterCell", for: indexPath) as? FilterCell,
+              let filter = category?.filters[indexPath.item] else {
+            fatalError("Failed to dequeue FilterCell or get filter data.")
         }
 
-        if let filter = selectedCategory?.filters[indexPath.item] {
-            cell.filter = filter
-            cell.backgroundColor = .neoTextColorGreen
-        }
-
+        cell.filter = filter
+        cell.isSelected = (indexPath.item == selectedFilterIndex)
         return cell
     }
+
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedFilterIndex = indexPath.item
+        collectionView.reloadData()
+    }
+
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
