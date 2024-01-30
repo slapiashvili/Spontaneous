@@ -9,640 +9,601 @@ import UIKit
 
 struct CategoryViewModel {
     var categories: [GeneralCategory] = []
-
+    var filters: [Filter] = []
+    var filterContent: [FilterContent] = []
+    
+    
     let placeholderImage = UIImage(named: "placeholder_image")!
-
-    var watchFilterContents: [FilterContent] = []
-    var eatFilterContent : [FilterContent] = []
-    var activityFilterContent: [FilterContent] = []
-    var listenFilterContent: [FilterContent] = []
-    var colorPaletteFilterContent: [FilterContent] = []
-    var giftFilterContent: [FilterContent] = []
-    var readFilterContent: [FilterContent] = []
-    var cookFilterContent: [FilterContent] = []
+    var selectedFilterIndex: Int?
     
     
-    init() {
-        categories = [
-            watchCategory,
-            eatCategory,
-            activityCategory,
-            listenCategory,
-            colorPaletteCategory,
-            giftCategory,
-            readCategory,
-            cookCategory
-        ]
-        
-        cookFilterContent = [
-            
-            FilterContent(primaryName: "Dairy-Free Tomato Basil Pasta", fullName: "Dairy-Free Tomato Basil Pasta", afterName: "recipe", description: "Ingredients: pasta, tomatoes, garlic, fresh basil, olive oil, pine nuts. Cook pasta. Sauté garlic in olive oil. Add chopped tomatoes and cook until softened. Toss with cooked pasta. Garnish with fresh basil and pine nuts.", filter: "Dairy-free", image: placeholderImage),
-
-            FilterContent(primaryName: "Dairy-Free Cauliflower Alfredo Sauce with Zoodles", fullName: "Dairy-Free Cauliflower Alfredo Sauce with Zoodles", afterName: "recipe", description: "Ingredients: cauliflower, garlic, almond milk, nutritional yeast, zucchini noodles. Steam cauliflower and blend with garlic, almond milk, and nutritional yeast. Pour over zucchini noodles. Enjoy a creamy, dairy-free Alfredo.", filter: "Dairy-free", image: placeholderImage),
-
-            FilterContent(primaryName: "Dairy-Free Avocado Chocolate Mousse", fullName: "Dairy-Free Avocado Chocolate Mousse", afterName: "recipe", description: "Ingredients: avocados, cocoa powder, maple syrup, almond milk. Blend avocados, cocoa powder, maple syrup, and almond milk until smooth. Chill in the refrigerator. Indulge in a rich and creamy chocolate mousse.", filter: "Dairy-free", image: placeholderImage),
-            
-            FilterContent(primaryName: "Dairy-Free Thai Coconut Curry", fullName: "Dairy-Free Thai Coconut Curry", afterName: "recipe", description: "Ingredients: tofu, broccoli, bell peppers, coconut milk, red curry paste, ginger, garlic. Sauté tofu, ginger, and garlic. Add coconut milk and red curry paste. Simmer with vegetables until cooked. Serve over rice.", filter: "Dairy-free", image: placeholderImage),
-
-            FilterContent(primaryName: "Dairy-Free Spinach and Sun-Dried Tomato Stuffed Mushrooms", fullName: "Dairy-Free Spinach and Sun-Dried Tomato Stuffed Mushrooms", afterName: "recipe", description: "Ingredients: mushrooms, spinach, sun-dried tomatoes, garlic, breadcrumbs. Remove mushroom stems and stuff with sautéed spinach, sun-dried tomatoes, and breadcrumbs. Bake until mushrooms are tender.", filter: "Dairy-free", image: placeholderImage),
-
-            FilterContent(primaryName: "Dairy-Free Lemon Garlic Roasted Potatoes", fullName: "Dairy-Free Lemon Garlic Roasted Potatoes", afterName: "recipe", description: "Ingredients: potatoes, lemon, garlic, olive oil, herbs. Toss potatoes with lemon, garlic, and herbs. Roast until golden brown. Enjoy flavorful and crispy roasted potatoes without dairy.", filter: "Dairy-free", image: placeholderImage),
-
-            FilterContent(primaryName: "Dairy-Free Vegetable Spring Rolls with Peanut Sauce", fullName: "Dairy-Free Vegetable Spring Rolls with Peanut Sauce", afterName: "recipe", description: "Ingredients: rice paper, lettuce, carrots, cucumbers, vermicelli noodles, peanut sauce. Assemble spring rolls with fresh vegetables and noodles. Dip in dairy-free peanut sauce for a tasty snack or appetizer.", filter: "Dairy-free", image: placeholderImage),
-
-            FilterContent(primaryName: "Dairy-Free Mediterranean Quinoa Stuffed Bell Peppers", fullName: "Dairy-Free Mediterranean Quinoa Stuffed Bell Peppers", afterName: "recipe", description: "Ingredients: bell peppers, quinoa, chickpeas, cherry tomatoes, Kalamata olives, olive oil, lemon juice. Cook quinoa. Mix with chickpeas, tomatoes, olives, and lemon dressing. Stuff bell peppers. Bake until peppers are tender.", filter: "Dairy-free", image: placeholderImage),
-
-            FilterContent(primaryName: "Dairy-Free Spicy Black Bean and Corn Salsa", fullName: "Dairy-Free Spicy Black Bean and Corn Salsa", afterName: "recipe", description: "Ingredients: black beans, corn, tomatoes, red onion, jalapeño, lime juice, cilantro. Mix black beans, corn, diced tomatoes, onion, jalapeño, lime juice, and cilantro. Serve as a refreshing salsa without dairy.", filter: "Dairy-free", image: placeholderImage),
-
-            FilterContent(primaryName: "Dairy-Free Coconut Lime Chia Pudding", fullName: "Dairy-Free Coconut Lime Chia Pudding", afterName: "recipe", description: "Ingredients: chia seeds, coconut milk, lime zest, maple syrup. Mix chia seeds with coconut milk, lime zest, and sweeten with maple syrup. Refrigerate until the pudding sets. Enjoy a dairy-free and nutritious dessert.", filter: "Dairy-free", image: placeholderImage),
-
-        
-            FilterContent(primaryName: "Gluten-Free Quinoa Salad", fullName: "Gluten-Free Quinoa Salad", afterName: "recipe", description: "Ingredients: quinoa, cherry tomatoes, cucumbers, red bell pepper, feta cheese, olives, olive oil, lemon juice, herbs. Cook quinoa. Mix with chopped vegetables, feta, and olives. Drizzle with olive oil and lemon juice. Garnish with herbs.", filter: "Gluten-free", image: placeholderImage),
-
-            FilterContent(primaryName: "Gluten-Free Chickpea Pasta with Pesto", fullName: "Gluten-Free Chickpea Pasta with Pesto", afterName: "recipe", description: "Ingredients: gluten-free chickpea pasta, cherry tomatoes, basil pesto, pine nuts, Parmesan cheese. Cook chickpea pasta. Toss with halved cherry tomatoes, basil pesto, and toasted pine nuts. Sprinkle with Parmesan.",  filter: "Gluten-free",image: placeholderImage),
-
-            FilterContent(primaryName: "Gluten-Free Zucchini Noodles with Avocado Sauce", fullName: "Gluten-Free Zucchini Noodles with Avocado Sauce", afterName: "recipe", description: "Ingredients: zucchini, cherry tomatoes, avocado, garlic, lime, cilantro. Spiralize zucchini into noodles. Blend avocado, garlic, lime juice, and cilantro into a creamy sauce. Toss zucchini noodles with sauce and halved cherry tomatoes.",  filter: "Gluten-free",image: placeholderImage),
-
-            FilterContent(primaryName: "Gluten-Free Quinoa Pizza Crust", fullName: "Gluten-Free Quinoa Pizza Crust", afterName: "recipe", description: "Ingredients: quinoa, water, baking powder, salt, Italian herbs. Blend quinoa, water, baking powder, and salt. Pour batter onto a pizza pan. Sprinkle with Italian herbs. Bake until golden. Add your favorite gluten-free toppings.", filter: "Gluten-free", image: placeholderImage),
-
-            FilterContent(primaryName: "Gluten-Free Stuffed Bell Peppers with Ground Turkey", fullName: "Gluten-Free Stuffed Bell Peppers with Ground Turkey", afterName: "recipe", description: "Ingredients: bell peppers, ground turkey, quinoa, black beans, corn, salsa, cumin, chili powder. Cook quinoa. Brown ground turkey. Mix with cooked quinoa, black beans, corn, salsa, cumin, and chili powder. Stuff bell peppers. Bake until peppers are tender.", filter: "Gluten-free", image: placeholderImage),
-
-            FilterContent(primaryName: "Gluten-Free Cauliflower Crust Margherita Pizza", fullName: "Gluten-Free Cauliflower Crust Margherita Pizza", afterName: "recipe", description: "Ingredients: cauliflower, eggs, mozzarella cheese, tomato sauce, fresh mozzarella, tomatoes, basil. Rice cauliflower. Mix with eggs and mozzarella. Press into a crust. Bake until golden. Top with tomato sauce, fresh mozzarella, tomatoes, and basil.",  filter: "Gluten-free",image: placeholderImage),
-
-            FilterContent(primaryName: "Gluten-Free Lemon Garlic Shrimp Quinoa", fullName: "Gluten-Free Lemon Garlic Shrimp Quinoa", afterName: "recipe", description: "Ingredients: quinoa, shrimp, garlic, lemon, cherry tomatoes, spinach. Cook quinoa. Sauté shrimp with garlic. Mix with cooked quinoa, lemon juice, halved cherry tomatoes, and spinach. Serve warm.",  filter: "Gluten-free",image: placeholderImage),
-
-            FilterContent(primaryName: "Gluten-Free Banana Pancakes", fullName: "Gluten-Free Banana Pancakes", afterName: "recipe", description: "Ingredients: gluten-free flour, ripe bananas, almond milk, eggs, baking powder, vanilla extract. Mash bananas. Mix with gluten-free flour, almond milk, eggs, baking powder, and vanilla extract. Cook as pancakes. Serve with your favorite toppings.",  filter: "Gluten-free",image: placeholderImage),
-
-            FilterContent(primaryName: "Gluten-Free Chicken and Vegetable Stir-Fry", fullName: "Gluten-Free Chicken and Vegetable Stir-Fry", afterName: "recipe", description: "Ingredients: chicken breast, broccoli, bell peppers, carrots, gluten-free soy sauce, ginger. Slice chicken. Stir-fry with vegetables in gluten-free soy sauce and ginger until cooked through. Serve over rice or gluten-free noodles.", filter: "Gluten-free", image: placeholderImage),
-
-            FilterContent(primaryName: "Gluten-Free Chocolate Avocado Mousse", fullName: "Gluten-Free Chocolate Avocado Mousse", afterName: "recipe", description: "Ingredients: avocados, cocoa powder, maple syrup, vanilla extract, almond milk. Blend avocados, cocoa powder, maple syrup, vanilla extract, and almond milk until smooth. Chill in the refrigerator. Serve as a rich and creamy dessert.", filter: "Gluten-free", image: placeholderImage),
-            
-            FilterContent(primaryName: "Vegetarian Quinoa Salad with Roasted Vegetables", fullName: "Vegetarian Quinoa Salad with Roasted Vegetables", afterName: "recipe", description: "Ingredients: quinoa, bell peppers, zucchini, cherry tomatoes, red onion, feta cheese, olive oil, balsamic vinegar, herbs. Cook quinoa. Roast vegetables. Mix with quinoa, feta, and dressing. Serve chilled.", filter: "Vegetarian", image: placeholderImage),
-
-            FilterContent(primaryName: "Vegetarian Lentil Soup", fullName: "Vegetarian Lentil Soup", afterName: "recipe", description: "Ingredients: green lentils, carrots, celery, onion, garlic, vegetable broth, tomatoes, cumin, coriander. Sauté onions, garlic, and veggies. Add lentils, broth, and tomatoes. Season with cumin and coriander. Simmer until lentils are tender.", filter: "Vegetarian", image: placeholderImage),
-
-            FilterContent(primaryName: "Vegetarian Spinach and Ricotta Stuffed Shells", fullName: "Vegetarian Spinach and Ricotta Stuffed Shells", afterName: "recipe", description: "Ingredients: jumbo pasta shells, spinach, ricotta cheese, mozzarella cheese, marinara sauce, garlic, herbs. Cook pasta. Mix spinach, ricotta, mozzarella, garlic, and herbs. Stuff shells. Bake with marinara sauce.", filter: "Vegetarian", image: placeholderImage),
-
-            FilterContent(primaryName: "Vegetarian Eggplant Parmesan", fullName: "Vegetarian Eggplant Parmesan", afterName: "recipe", description: "Ingredients: eggplant, breadcrumbs, marinara sauce, mozzarella cheese, Parmesan cheese, basil. Coat eggplant in breadcrumbs. Bake until crispy. Layer with marinara sauce, mozzarella, and Parmesan. Bake until cheese melts. Garnish with fresh basil.", filter: "Vegetarian", image: placeholderImage),
-
-            FilterContent(primaryName: "Vegetarian Black Bean Tacos", fullName: "Vegetarian Black Bean Tacos", afterName: "recipe", description: "Ingredients: black beans, corn tortillas, avocado, salsa, lime, cilantro. Heat black beans. Assemble tacos with beans, sliced avocado, salsa, and a squeeze of lime. Garnish with fresh cilantro.", filter: "Vegetarian", image: placeholderImage),
-
-            FilterContent(primaryName: "Vegetarian Mushroom Risotto", fullName: "Vegetarian Mushroom Risotto", afterName: "recipe", description: "Ingredients: Arborio rice, mushrooms, vegetable broth, white wine, Parmesan cheese, onion, garlic. Sauté onion and garlic. Add rice and mushrooms. Deglaze with white wine. Cook risotto, adding broth gradually. Stir in Parmesan.", filter: "Vegetarian", image: placeholderImage),
-
-            FilterContent(primaryName: "Vegetarian Pesto Pasta with Cherry Tomatoes", fullName: "Vegetarian Pesto Pasta with Cherry Tomatoes", afterName: "recipe", description: "Ingredients: pasta, cherry tomatoes, pesto sauce, pine nuts, Parmesan cheese. Cook pasta. Toss with halved cherry tomatoes, pesto, and toasted pine nuts. Sprinkle with Parmesan.", filter: "Vegetarian", image: placeholderImage),
-
-            FilterContent(primaryName: "Vegetarian Sweet Potato and Black Bean Burritos", fullName: "Vegetarian Sweet Potato and Black Bean Burritos", afterName: "recipe", description: "Ingredients: sweet potatoes, black beans, tortillas, salsa, avocado, cilantro. Roast sweet potatoes. Mash black beans. Assemble burritos with sweet potatoes, black beans, salsa, sliced avocado, and cilantro.", filter: "Vegetarian", image: placeholderImage),
-
-            FilterContent(primaryName: "Vegetarian Greek Quinoa Salad", fullName: "Vegetarian Greek Quinoa Salad", afterName: "recipe", description: "Ingredients: quinoa, cherry tomatoes, cucumber, Kalamata olives, feta cheese, red onion, Greek dressing. Cook quinoa. Mix with chopped vegetables, olives, feta, and dressing. Serve as a refreshing salad.", filter: "Vegetarian", image: placeholderImage),
-
-            FilterContent(primaryName: "Vegetarian Stuffed Bell Peppers with Quinoa", fullName: "Vegetarian Stuffed Bell Peppers with Quinoa", afterName: "recipe", description: "Ingredients: bell peppers, quinoa, black beans, corn, tomatoes, Mexican spices, cheese. Cook quinoa. Mix with black beans, corn, tomatoes, and spices. Stuff bell peppers. Bake until peppers are tender. Sprinkle with cheese.", filter: "Vegetarian", image: placeholderImage),
-            
-            FilterContent(primaryName: "Vegan Chickpea Curry", fullName: "Vegan Chickpea Curry", afterName: "recipe", description: "Ingredients: chickpeas, coconut milk, tomatoes, onions, garlic, ginger, curry spices. To prepare, sauté onions, garlic, and ginger. Add tomatoes, coconut milk, and chickpeas. Simmer until chickpeas are tender. Season with curry spices. Serve over rice or quinoa.", filter: "Vegan", image: placeholderImage),
-
-            FilterContent(primaryName: "Vegan Lentil and Vegetable Stir-Fry", fullName: "Vegan Lentil and Vegetable Stir-Fry", afterName: "recipe", description: "Ingredients: green lentils, broccoli, bell peppers, carrots, soy sauce, garlic, ginger. Sauté garlic and ginger. Add lentils and stir-fry with vegetables in soy sauce until tender. Serve over rice or noodles.", filter: "Vegan", image: placeholderImage),
-
-            FilterContent(primaryName: "Vegan Roasted Vegetable Buddha Bowl", fullName: "Vegan Roasted Vegetable Buddha Bowl", afterName: "recipe", description: "Ingredients: quinoa, roasted sweet potatoes, Brussels sprouts, avocado, tahini dressing. Cook quinoa. Roast sweet potatoes and Brussels sprouts. Assemble bowl with quinoa, roasted veggies, sliced avocado. Drizzle with tahini dressing.", filter: "Vegan", image: placeholderImage),
-
-            FilterContent(primaryName: "Vegan Avocado and Black Bean Wrap", fullName: "Vegan Avocado and Black Bean Wrap", afterName: "recipe", description: "Ingredients: black beans, avocado, tomatoes, lettuce, whole wheat wraps, salsa. Mash black beans and avocado. Assemble wraps with mashed mixture, sliced tomatoes, lettuce. Top with salsa.", filter: "Vegan", image: placeholderImage),
-
-            FilterContent(primaryName: "Vegan Quinoa and Chickpea Salad", fullName: "Vegan Quinoa and Chickpea Salad", afterName: "recipe", description: "Ingredients: quinoa, chickpeas, cucumber, cherry tomatoes, red onion, olives, olive oil, lemon juice, herbs. Cook quinoa. Mix with chickpeas, chopped vegetables, olives, dressing. Serve as a refreshing salad.", filter: "Vegan", image: placeholderImage),
-
-            FilterContent(primaryName: "Vegan Sweet Potato and Black Bean Chili", fullName: "Vegan Sweet Potato and Black Bean Chili", afterName: "recipe", description: "Ingredients: sweet potatoes, black beans, tomatoes, onions, garlic, chili spices. Sauté onions and garlic. Add sweet potatoes, tomatoes, black beans, and spices. Simmer until sweet potatoes are tender. Serve with your favorite toppings.", filter: "Vegan", image: placeholderImage),
-
-            FilterContent(primaryName: "Vegan Spinach and Mushroom Stuffed Bell Peppers", fullName: "Vegan Spinach and Mushroom Stuffed Bell Peppers", afterName: "recipe", description: "Ingredients: bell peppers, spinach, mushrooms, quinoa, nutritional yeast, garlic. Cook quinoa. Sauté mushrooms, spinach, and garlic. Mix with quinoa and nutritional yeast. Stuff bell peppers. Bake until peppers are tender.", filter: "Vegan", image: placeholderImage),
-
-            FilterContent(primaryName: "Vegan Coconut and Lime Cauliflower Rice", fullName: "Vegan Coconut and Lime Cauliflower Rice", afterName: "recipe", description: "Ingredients: cauliflower rice, coconut milk, lime, cilantro, peanuts. Cook cauliflower rice. Mix with coconut milk, lime juice, and cilantro. Garnish with peanuts. Serve as a flavorful side dish.", filter: "Vegan", image: placeholderImage),
-
-            FilterContent(primaryName: "Vegan Teriyaki Tofu Stir-Fry", fullName: "Vegan Teriyaki Tofu Stir-Fry", afterName: "recipe", description: "Ingredients: tofu, broccoli, bell peppers, carrots, teriyaki sauce, sesame oil. Press tofu and cut into cubes. Stir-fry with vegetables in sesame oil and teriyaki sauce until tofu is golden and veggies are tender. Serve over rice.", filter: "Vegan", image: placeholderImage),
-
-            FilterContent(primaryName: "Vegan Mediterranean Quinoa Bowl", fullName: "Vegan Mediterranean Quinoa Bowl", afterName: "recipe", description: "Ingredients: quinoa, chickpeas, cherry tomatoes, cucumber, Kalamata olives, red onion, hummus. Cook quinoa. Mix with chickpeas, chopped vegetables, and olives. Serve in a bowl with a dollop of hummus.", filter: "Vegan", image: placeholderImage)
-        ]
-        
-        readFilterContent = [
-            
-            FilterContent(primaryName: "To Kill a Mockingbird", fullName: "To Kill a Mockingbird by Harper Lee", afterName: "book", description: "A powerful exploration of racial injustice and moral growth in the American South during the 1930s.", filter: "books", image: placeholderImage),
-
-            FilterContent(primaryName: "1984", fullName: "1984 by George Orwell", afterName: "book", description: "A chilling portrayal of a totalitarian society where individualism is suppressed, and government surveillance is omnipresent.", filter: "books", image: placeholderImage),
-
-            FilterContent(primaryName: "The Great Gatsby", fullName: "The Great Gatsby by F. Scott Fitzgerald", afterName: "book", description: "Set in the Roaring Twenties, it follows the enigmatic Jay Gatsby and explores themes of wealth, love, and the American Dream.", filter: "books", image: placeholderImage),
-
-            FilterContent(primaryName: "The Hitchhiker's Guide to the Galaxy", fullName: "The Hitchhiker's Guide to the Galaxy by Douglas Adams", afterName: "book", description: "A humorous and absurd journey through space, following Arthur Dent as he navigates the galaxy with an eclectic group of characters.", filter: "books", image: placeholderImage),
-
-            FilterContent(primaryName: "Pride and Prejudice", fullName: "Pride and Prejudice by Jane Austen", afterName: "book", description: "A timeless tale of love, manners, and societal expectations as Elizabeth Bennet navigates the challenges of class and relationships.", filter: "books", image: placeholderImage),
-
-            FilterContent(primaryName: "One Hundred Years of Solitude", fullName: "One Hundred Years of Solitude by Gabriel García Márquez", afterName: "book", description: "A multi-generational saga that blends reality and fantasy, exploring the history of the Buendía family in the fictional town of Macondo.", filter: "books", image: placeholderImage),
-
-            FilterContent(primaryName: "The Catcher in the Rye", fullName: "The Catcher in the Rye by J.D. Salinger", afterName: "book", description: "The narrative of Holden Caulfield, a disenchanted teenager navigating the challenges of adolescence and the adult world.", filter: "books", image: placeholderImage),
-
-            FilterContent(primaryName: "The Lord of the Rings", fullName: "The Lord of the Rings by J.R.R. Tolkien", afterName: "book", description: "An epic fantasy trilogy that follows the quest to destroy the One Ring and save Middle-earth from the dark forces of Sauron.", filter: "books", image: placeholderImage),
-
-            FilterContent(primaryName: "Crime and Punishment", fullName: "Crime and Punishment by Fyodor Dostoevsky", afterName: "book", description: "A gripping exploration of morality, guilt, and redemption as Raskolnikov grapples with the consequences of committing a heinous crime.", filter: "books", image: placeholderImage),
-
-            FilterContent(primaryName: "The Hunger Games", fullName: "The Hunger Games by Suzanne Collins", afterName: "book", description: "In a dystopian future, Katniss Everdeen must navigate a deadly televised competition known as the Hunger Games to survive and protect her loved ones.", filter: "books", image: placeholderImage),
-            
-            FilterContent(primaryName: "A Silent Voice", fullName: "A Silent Voice by Yoshitoki Oima", afterName: "manga", description: "A touching story of redemption and forgiveness centered around a former bully and a deaf girl, exploring themes of friendship and self-discovery.", filter: "books", image: placeholderImage),
-
-            FilterContent(primaryName: "Vinland Saga", fullName: "Vinland Saga by Makoto Yukimura", afterName: "manga", description: "Set in the Viking Age, this historical manga follows the journey of Thorfinn, a young warrior seeking revenge and grappling with the harsh realities of war.", filter: "books", image: placeholderImage),
-
-            FilterContent(primaryName: "Golden Kamuy", fullName: "Golden Kamuy by Satoru Noda", afterName: "manga", description: "An adventure manga set in post-war Hokkaido, where a former soldier and an Ainu girl embark on a treasure hunt, encountering various characters and challenges.", filter: "books", image: placeholderImage),
-
-            FilterContent(primaryName: "The Promised Neverland", fullName: "The Promised Neverland by Kaiu Shirai", afterName: "manga", description: "A suspenseful and psychological thriller where a group of orphans discovers the dark secrets behind their seemingly idyllic orphanage.", filter: "books", image: placeholderImage),
-
-            FilterContent(primaryName: "Dorohedoro", fullName: "Dorohedoro by Q Hayashida", afterName: "manga", description: "A surreal and gritty manga following the adventures of Caiman, a man with a lizard head, as he navigates a bizarre world of magic users and mysteries.", filter: "books", image: placeholderImage),
-
-            FilterContent(primaryName: "Land of the Lustrous", fullName: "Land of the Lustrous by Haruko Ichikawa", afterName: "manga", description: "A visually stunning manga set in a world where humanoid gems must defend themselves against mysterious creatures while exploring themes of identity and purpose.", filter: "books", image: placeholderImage),
-
-            FilterContent(primaryName: "March Comes in Like a Lion", fullName: "March Comes in Like a Lion by Chica Umino", afterName: "manga", description: "A heartfelt manga depicting the life of Rei Kiriyama, a professional shogi player, as he grapples with personal struggles and forms connections with others.", filter: "books", image: placeholderImage),
-
-            FilterContent(primaryName: "Made in Abyss", fullName: "Made in Abyss by Akihito Tsukushi", afterName: "manga", description: "A fantasy manga following the adventures of two children, Riko and Reg, as they journey into the mysterious and perilous Abyss in search of Riko's missing mother.", filter: "books", image: placeholderImage),
-
-            FilterContent(primaryName: "Kaiji", fullName: "Kaiji by Nobuyuki Fukumoto", afterName: "manga", description: "A psychological thriller manga where Kaiji Itou, a down-and-out gambler, faces high-stakes games and challenges that test his wits and determination.", filter: "books", image: placeholderImage),
-
-            FilterContent(primaryName: "Houseki no Kuni (Land of the Lustrous)", fullName: "Houseki no Kuni (Land of the Lustrous) by Haruko Ichikawa", afterName: "manga", description: "A unique manga set in a world where anthropomorphic gems must defend against mysterious creatures, exploring themes of identity, purpose, and survival.", filter: "books", image: placeholderImage),
-            
-            FilterContent(primaryName: "Quantum Entanglement: A Fundamental Aspect of Quantum Physics", fullName: "Exploring Quantum Entanglement: Unraveling the Intricacies of Quantum Physics", afterName: "scientific article", description: "Delve into the phenomenon of quantum entanglement, a cornerstone of quantum mechanics, and its implications for our understanding of particle behavior.", filter: "scientific articles", image: placeholderImage),
-
-            FilterContent(primaryName: "CRISPR-Cas9: Revolutionizing Genome Editing", fullName: "CRISPR-Cas9: The Revolutionary Genome Editing Tool", afterName: "scientific article", description: "Explore the groundbreaking CRISPR-Cas9 technology and its potential applications in precise genome editing, revolutionizing genetic research and medical interventions.", filter: "scientific articles", image: placeholderImage),
-
-            FilterContent(primaryName: "Dark Matter: Unveiling the Cosmic Mystery", fullName: "Unraveling Dark Matter: A Journey into the Cosmic Unknown", afterName: "scientific article", description: "Venture into the enigmatic realm of dark matter, investigating its elusive nature and its role in shaping the cosmos as we know it.", filter: "scientific articles", image: placeholderImage),
-
-            FilterContent(primaryName: "Neuroplasticity: The Adaptable Brain", fullName: "Neuroplasticity: Understanding the Adaptable Brain", afterName: "scientific article", description: "Explore the concept of neuroplasticity, the brain's remarkable ability to reorganize itself, and its implications for learning, memory, and rehabilitation.", filter: "scientific articles", image: placeholderImage),
-
-            FilterContent(primaryName: "Artificial Intelligence in Healthcare: Current Trends and Future Prospects", fullName: "AI in Healthcare: Current Trends and Future Prospects", afterName: "scientific article", description: "Examine the current landscape of artificial intelligence applications in healthcare, from diagnostics to personalized treatment, and anticipate future advancements in the field.", filter: "scientific articles", image: placeholderImage),
-
-            FilterContent(primaryName: "Climate Change and Biodiversity Loss: A Global Crisis", fullName: "Global Crisis: Climate Change and Biodiversity Loss", afterName: "scientific article", description: "Address the critical issues of climate change and biodiversity loss, investigating their interconnected impact on ecosystems and the urgent need for conservation efforts.", filter: "scientific articles", image: placeholderImage),
-
-            FilterContent(primaryName: "Advancements in Quantum Computing: From Theory to Practice", fullName: "Quantum Computing Advancements: Bridging Theory and Practice", afterName: "scientific article", description: "Survey the latest advancements in the field of quantum computing, exploring theoretical breakthroughs and practical implementations that could revolutionize computation.", filter: "scientific articles", image: placeholderImage),
-
-            FilterContent(primaryName: "Genomic Medicine: Paving the Way for Personalized Healthcare", fullName: "Genomic Medicine: Personalized Healthcare Revolution", afterName: "scientific article", description: "Examine the transformative potential of genomic medicine in tailoring healthcare strategies to individual genetic profiles, promising a new era of personalized treatment.", filter: "scientific articles", image: placeholderImage),
-
-            FilterContent(primaryName: "The Microbiome and Human Health: A Symbiotic Relationship", fullName: "Microbiome and Human Health: Symbiotic Relationship Unveiled", afterName: "scientific article", description: "Investigate the intricate connection between the human microbiome and overall health, exploring the role of gut bacteria in immune function, metabolism, and disease prevention.", filter: "scientific articles", image: placeholderImage),
-
-            FilterContent(primaryName: "Quantum Dots: Illuminating the Future of Display Technology", fullName: "Quantum Dots: Future of Display Technology Illuminated", afterName: "scientific article", description: "Explore the applications of quantum dots in display technology, unlocking brighter, more vibrant displays with potential breakthroughs in imaging and communication devices.", filter: "scientific articles", image: placeholderImage)
-        ]
-        
-        giftFilterContent = [
-            FilterContent(primaryName: "Luxurious Spa Set", fullName: "Pampering Spa Gift Set", afterName: "gift", description: "Treat her to a luxurious spa experience at home with a curated gift set featuring scented candles, bath salts, and skincare essentials.", filter: "female", image: placeholderImage),
-
-            FilterContent(primaryName: "Chic Jewelry Collection", fullName: "Elegant Jewelry Collection", afterName: "gift", description: "Elevate her style with a collection of chic jewelry pieces, from timeless earrings to delicate necklaces, adding a touch of elegance to her wardrobe.", filter: "female", image: placeholderImage),
-
-            FilterContent(primaryName: "Customized Beauty Box", fullName: "Personalized Beauty Box Subscription", afterName: "gift", description: "Surprise her with a monthly beauty box subscription tailored to her preferences, delivering a variety of skincare and makeup products.", filter: "female", image: placeholderImage),
-
-            FilterContent(primaryName: "Fashionable Handbag", fullName: "Stylish Handbag or Tote", afterName: "gift", description: "Gift her a fashionable handbag or tote that complements her style, providing both functionality and a touch of sophistication.", filter: "female", image: placeholderImage),
-
-            FilterContent(primaryName: "Gourmet Chocolate Assortment", fullName: "Artisanal Chocolate Assortment", afterName: "gift", description: "Indulge her sweet tooth with a curated assortment of gourmet chocolates, featuring a variety of flavors and exquisite packaging.", filter: "female", image: placeholderImage),
-
-            FilterContent(primaryName: "Cozy Cashmere Blanket", fullName: "Cashmere Blanket or Shawl", afterName: "gift", description: "Wrap her in warmth and luxury with a cozy cashmere blanket or shawl, perfect for chilly evenings and stylish lounging.", filter: "female", image: placeholderImage),
-
-            FilterContent(primaryName: "Botanical Garden Experience", fullName: "Botanical Garden Membership", afterName: "gift", description: "Create lasting memories with a membership to a local botanical garden, allowing her to enjoy the beauty of nature throughout the year.", filter: "female", image: placeholderImage),
-
-            FilterContent(primaryName: "Elegant Perfume Set", fullName: "Designer Perfume Gift Set", afterName: "gift", description: "Gift her an elegant set of designer perfumes, featuring a collection of exquisite scents for different occasions.", filter: "female", image: placeholderImage),
-
-            FilterContent(primaryName: "Yoga and Wellness Kit", fullName: "Yoga and Wellness Essentials Kit", afterName: "gift", description: "Support her well-being with a kit containing yoga essentials, meditation tools, and wellness items to enhance her self-care routine.", filter: "female", image: placeholderImage),
-
-            FilterContent(primaryName: "Culinary Adventure Class", fullName: "Culinary Adventure Class Voucher", afterName: "gift", description: "Inspire her culinary skills with a voucher for a unique culinary adventure class, offering hands-on experiences and gourmet delights.", filter: "female", image: placeholderImage),
-            
-            FilterContent(primaryName: "Luxurious Spa Set", fullName: "Pampering Spa Gift Set", afterName: "gift", description: "Treat her to a luxurious spa experience at home with a curated gift set featuring scented candles, bath salts, and skincare essentials.", filter: "female", image: placeholderImage),
-
-            FilterContent(primaryName: "Chic Jewelry Collection", fullName: "Elegant Jewelry Collection", afterName: "gift", description: "Elevate her style with a collection of chic jewelry pieces, from timeless earrings to delicate necklaces, adding a touch of elegance to her wardrobe.", filter: "female", image: placeholderImage),
-
-            FilterContent(primaryName: "Customized Beauty Box", fullName: "Personalized Beauty Box Subscription", afterName: "gift", description: "Surprise her with a monthly beauty box subscription tailored to her preferences, delivering a variety of skincare and makeup products.", filter: "female", image: placeholderImage),
-
-            FilterContent(primaryName: "Fashionable Handbag", fullName: "Stylish Handbag or Tote", afterName: "gift", description: "Gift her a fashionable handbag or tote that complements her style, providing both functionality and a touch of sophistication.", filter: "female", image: placeholderImage),
-
-            FilterContent(primaryName: "Gourmet Chocolate Assortment", fullName: "Artisanal Chocolate Assortment", afterName: "gift", description: "Indulge her sweet tooth with a curated assortment of gourmet chocolates, featuring a variety of flavors and exquisite packaging.", filter: "female", image: placeholderImage),
-
-            FilterContent(primaryName: "Cozy Cashmere Blanket", fullName: "Cashmere Blanket or Shawl", afterName: "gift", description: "Wrap her in warmth and luxury with a cozy cashmere blanket or shawl, perfect for chilly evenings and stylish lounging.", filter: "female", image: placeholderImage),
-
-            FilterContent(primaryName: "Botanical Garden Experience", fullName: "Botanical Garden Membership", afterName: "gift", description: "Create lasting memories with a membership to a local botanical garden, allowing her to enjoy the beauty of nature throughout the year.", filter: "female", image: placeholderImage),
-
-            FilterContent(primaryName: "Elegant Perfume Set", fullName: "Designer Perfume Gift Set", afterName: "gift", description: "Gift her an elegant set of designer perfumes, featuring a collection of exquisite scents for different occasions.", filter: "female", image: placeholderImage),
-
-            FilterContent(primaryName: "Yoga and Wellness Kit", fullName: "Yoga and Wellness Essentials Kit", afterName: "gift", description: "Support her well-being with a kit containing yoga essentials, meditation tools, and wellness items to enhance her self-care routine.", filter: "female", image: placeholderImage),
-
-            FilterContent(primaryName: "Culinary Adventure Class", fullName: "Culinary Adventure Class Voucher", afterName: "gift", description: "Inspire her culinary skills with a voucher for a unique culinary adventure class, offering hands-on experiences and gourmet delights.", filter: "female", image: placeholderImage)
-        ]
-        
-        
-        colorPaletteFilterContent = [
-            
-            FilterContent(primaryName: "Classic Black & White", fullName: "Classic Black & White Palette", afterName: "color palette", description: "Timeless elegance with a classic black and white palette, creating a sophisticated and versatile color scheme.", filter: "monochrome", image: placeholderImage),
-
-            FilterContent(primaryName: "Gray Scale Harmony", fullName: "Gray Scale Harmony Palette", afterName: "color palette", description: "Explore the subtleties of gray with a harmonious grayscale palette, offering a refined and balanced color scheme.", filter: "monochrome", image: placeholderImage),
-
-            FilterContent(primaryName: "Midnight Noir", fullName: "Midnight Noir Palette", afterName: "color palette", description: "Embrace the mystery of midnight with deep blacks and inky blues, creating a dramatic and intriguing monochrome palette.", filter: "monochrome", image: placeholderImage),
-
-            FilterContent(primaryName: "Pure White Serenity", fullName: "Pure White Serenity Palette", afterName: "color palette", description: "Achieve serenity with a palette of pure whites and soft creams, creating a clean and calming monochrome scheme.", filter: "monochrome", image: placeholderImage),
-
-            FilterContent(primaryName: "Silver Lining Chic", fullName: "Silver Lining Chic Palette", afterName: "color palette", description: "Elevate your style with silver accents against a backdrop of grays, creating a chic and modern monochrome palette.", filter: "monochrome", image: placeholderImage),
-
-            FilterContent(primaryName: "Ebony Elegance", fullName: "Ebony Elegance Palette", afterName: "color palette", description: "Experience timeless elegance with rich ebony tones, creating a sophisticated and luxurious monochrome palette.", filter: "monochrome", image: placeholderImage),
-
-            FilterContent(primaryName: "Pristine Pearl Harmony", fullName: "Pristine Pearl Harmony Palette", afterName: "color palette", description: "Delicate beauty in a palette of pristine whites and pearly grays, creating a soft and refined monochrome scheme.", filter: "monochrome", image: placeholderImage),
-
-            FilterContent(primaryName: "Charcoal Contrast", fullName: "Charcoal Contrast Palette", afterName: "color palette", description: "Explore the drama of contrast with deep charcoals and light grays, creating a bold and striking monochrome palette.", filter: "monochrome", image: placeholderImage),
-
-            FilterContent(primaryName: "Inkwell Inspiration", fullName: "Inkwell Inspiration Palette", afterName: "color palette", description: "Draw inspiration from inkwells with deep blacks and muted grays, creating a moody and artistic monochrome scheme.", filter: "monochrome", image: placeholderImage),
-
-            FilterContent(primaryName: "Snowflake Whispers", fullName: "Snowflake Whispers Palette", afterName: "color palette", description: "Whispering tranquility with a palette of icy whites and cool grays, creating a serene and wintery monochrome scheme.", filter: "monochrome", image: placeholderImage),
-            
-            FilterContent(primaryName: "Sunset Bliss", fullName: "Sunset Bliss Palette", afterName: "color palette", description: "Warm tones inspired by the vibrant hues of a breathtaking sunset, featuring rich oranges, pinks, and deep purples.", filter: "warm tones", image: placeholderImage),
-
-            FilterContent(primaryName: "Golden Harvest", fullName: "Golden Harvest Palette", afterName: "color palette", description: "A warm and earthy palette reminiscent of golden autumn fields, with hues of amber, ochre, and rustic browns.", filter: "warm tones", image: placeholderImage),
-
-            FilterContent(primaryName: "Desert Mirage", fullName: "Desert Mirage Palette", afterName: "color palette", description: "Capture the warmth of a desert landscape with sandy beige, terracotta, and warm coral tones, creating a serene and inviting palette.", filter: "warm tones", image: placeholderImage),
-
-            FilterContent(primaryName: "Spiced Chai Delight", fullName: "Spiced Chai Delight Palette", afterName: "color palette", description: "A cozy and comforting palette inspired by spiced chai tea, featuring warm cinnamon, creamy neutrals, and deep caramel tones.", filter: "warm tones", image: placeholderImage),
-
-            FilterContent(primaryName: "Autumn Leaves", fullName: "Autumn Leaves Palette", afterName: "color palette", description: "Embrace the beauty of fall with warm hues of burnt orange, fiery reds, and golden yellows, echoing the colors of autumn leaves.", filter: "warm tones", image: placeholderImage),
-
-            FilterContent(primaryName: "Sunny Citrus Burst", fullName: "Sunny Citrus Burst Palette", afterName: "color palette", description: "Infuse energy with a burst of sunny citrus colors, featuring vibrant yellows, tangy oranges, and zesty lemon tones.", filter: "warm tones", image: placeholderImage),
-
-            FilterContent(primaryName: "Cozy Fireside Glow", fullName: "Cozy Fireside Glow Palette", afterName: "color palette", description: "Create a warm and inviting atmosphere with the glow of a fireside, featuring deep reds, warm browns, and hints of gold.", filter: "warm tones", image: placeholderImage),
-
-            FilterContent(primaryName: "Tuscan Sun Retreat", fullName: "Tuscan Sun Retreat Palette", afterName: "color palette", description: "Transport yourself to a Tuscan sun retreat with warm terracotta, sun-kissed yellows, and olive green tones, evoking Mediterranean warmth.", filter: "warm tones", image: placeholderImage),
-
-            FilterContent(primaryName: "Harvest Festival", fullName: "Harvest Festival Palette", afterName: "color palette", description: "Celebrate the harvest season with warm and comforting tones, featuring pumpkin oranges, deep burgundies, and rustic golds.", filter: "warm tones", image: placeholderImage),
-
-            FilterContent(primaryName: "Vintage Rose Elegance", fullName: "Vintage Rose Elegance Palette", afterName: "color palette", description: "Evoke vintage elegance with warm and muted rose tones, combined with soft creams and antique gold for a timeless palette.", filter: "warm tones", image: placeholderImage),
-            
-            FilterContent(primaryName: "Arctic Frost", fullName: "Arctic Frost Palette", afterName: "color palette", description: "Capture the icy beauty of the Arctic with cool blues, frosty whites, and shimmering silver tones for a serene and tranquil palette.", filter: "cold tones", image: placeholderImage),
-
-            FilterContent(primaryName: "Icy Wonderland", fullName: "Icy Wonderland Palette", afterName: "color palette", description: "Step into an enchanting winter wonderland with icy blues, snowy whites, and hints of frosty lavender, creating a magical and ethereal palette.", filter: "cold tones", image: placeholderImage),
-
-            FilterContent(primaryName: "Frozen Lake Serenity", fullName: "Frozen Lake Serenity Palette", afterName: "color palette", description: "Embrace the calmness of a frozen lake with cool aqua blues, deep indigos, and frosty grays, creating a serene and peaceful palette.", filter: "cold tones", image: placeholderImage),
-
-            FilterContent(primaryName: "Polar Night Dreams", fullName: "Polar Night Dreams Palette", afterName: "color palette", description: "Inspired by the polar night, featuring midnight blues, velvety purples, and hints of celestial silver, creating a mysterious and dreamy palette.", filter: "cold tones", image: placeholderImage),
-
-            FilterContent(primaryName: "Northern Lights Magic", fullName: "Northern Lights Magic Palette", afterName: "color palette", description: "Channel the enchantment of the Northern Lights with mesmerizing hues of green, blue, and violet, creating a magical and vibrant palette.", filter: "cold tones", image: placeholderImage),
-
-            FilterContent(primaryName: "Frosty Elegance", fullName: "Frosty Elegance Palette", afterName: "color palette", description: "Evoke a sense of elegance with frosty blues, silvery grays, and soft lavender tones, creating a sophisticated and icy palette.", filter: "cold tones", image: placeholderImage),
-
-            FilterContent(primaryName: "Glacial Mist Delight", fullName: "Glacial Mist Delight Palette", afterName: "color palette", description: "Experience the beauty of glacial mist with soft blues, misty grays, and delicate lavender tones, creating a tranquil and ethereal palette.", filter: "cold tones", image: placeholderImage),
-
-            FilterContent(primaryName: "Winter Morning Hues", fullName: "Winter Morning Hues Palette", afterName: "color palette", description: "Capture the serene beauty of a winter morning with soft cool blues, pale pinks, and misty grays, creating a calm and refreshing palette.", filter: "cold tones", image: placeholderImage),
-
-            FilterContent(primaryName: "Icicle Symphony", fullName: "Icicle Symphony Palette", afterName: "color palette", description: "Celebrate the elegance of icicles with shimmering whites, cool blues, and silver accents, creating a sparkling and frosty palette.", filter: "cold tones", image: placeholderImage),
-
-            FilterContent(primaryName: "Frozen Forest Fantasy", fullName: "Frozen Forest Fantasy Palette", afterName: "color palette", description: "Transport yourself to a magical frozen forest with deep greens, cool blues, and touches of icy silver, creating an enchanting and mystical palette.", filter: "cold tones", image: placeholderImage)
-        ]
-        
-        listenFilterContent = [
-            
-            FilterContent(primaryName: "Shape of You", fullName: "Shape of You by Ed Sheeran", afterName: "song", description: "A catchy and upbeat pop song by Ed Sheeran, known for its infectious melody and romantic lyrics.", filter: "pop music", image: placeholderImage),
-
-            FilterContent(primaryName: "Dance Monkey", fullName: "Dance Monkey by Tones and I", afterName: "song", description: "An energetic and globally popular pop hit by Tones and I, characterized by its unique vocals and danceable beat.", filter: "pop music", image: placeholderImage),
-
-            FilterContent(primaryName: "Blinding Lights", fullName: "Blinding Lights by The Weeknd", afterName: "song", description: "A synth-pop masterpiece by The Weeknd, recognized for its retro vibe and captivating chorus.", filter: "pop music", image: placeholderImage),
-
-            FilterContent(primaryName: "Havana", fullName: "Havana by Camila Cabello ft. Young Thug", afterName: "song", description: "A Latin-influenced pop sensation by Camila Cabello, featuring a vibrant melody and sultry vocals.", filter: "pop music", image: placeholderImage),
-
-            FilterContent(primaryName: "Uptown Funk", fullName: "Uptown Funk by Mark Ronson ft. Bruno Mars", afterName: "song", description: "A funk-infused pop hit by Mark Ronson and Bruno Mars, known for its energetic and feel-good vibes.", filter: "pop music", image: placeholderImage),
-
-            FilterContent(primaryName: "Bad Romance", fullName: "Bad Romance by Lady Gaga", afterName: "song", description: "A pop anthem by Lady Gaga, celebrated for its bold sound, infectious chorus, and iconic music video.", filter: "pop music", image: placeholderImage),
-
-            FilterContent(primaryName: "Happy", fullName: "Happy by Pharrell Williams", afterName: "song", description: "An upbeat and cheerful pop song by Pharrell Williams, famous for its positive lyrics and catchy melody.", filter: "pop music", image: placeholderImage),
-
-            FilterContent(primaryName: "Someone You Loved", fullName: "Someone You Loved by Lewis Capaldi", afterName: "song", description: "A heartfelt and emotionally charged pop ballad by Lewis Capaldi, exploring themes of love and loss.", filter: "pop music", image: placeholderImage),
-
-            FilterContent(primaryName: "Watermelon Sugar", fullName: "Watermelon Sugar by Harry Styles", afterName: "song", description: "A summery and refreshing pop track by Harry Styles, known for its laid-back vibe and catchy chorus.", filter: "pop music", image: placeholderImage),
-
-            FilterContent(primaryName: "Shallow", fullName: "Shallow by Lady Gaga, Bradley Cooper", afterName: "song", description: "An Oscar-winning pop ballad from the movie A Star Is Born, performed by Lady Gaga and Bradley Cooper.", filter: "pop music", image: placeholderImage),
-
-            FilterContent(primaryName: "Stairway to Heaven", fullName: "Stairway to Heaven by Led Zeppelin", afterName: "song", description: "An iconic rock epic by Led Zeppelin, known for its intricate guitar work and timeless appeal.", filter: "rock music", image: placeholderImage),
-
-            FilterContent(primaryName: "Bohemian Rhapsody", fullName: "Bohemian Rhapsody by Queen", afterName: "song", description: "A groundbreaking rock opera by Queen, celebrated for its operatic sections and genre-defying structure.", filter: "rock music", image: placeholderImage),
-
-            FilterContent(primaryName: "Sweet Child o' Mine", fullName: "Sweet Child o' Mine by Guns N' Roses", afterName: "song", description: "A classic rock anthem by Guns N' Roses, featuring a memorable guitar riff and powerful vocals.", filter: "rock music", image: placeholderImage),
-
-            FilterContent(primaryName: "Hotel California", fullName: "Hotel California by Eagles", afterName: "song", description: "A rock masterpiece by Eagles, recognized for its captivating storytelling and guitar solos.", filter: "rock music", image: placeholderImage),
-
-            FilterContent(primaryName: "Back in Black", fullName: "Back in Black by AC/DC", afterName: "song", description: "A high-energy rock anthem by AC/DC, known for its driving rhythm and iconic guitar riffs.", filter: "rock music", image: placeholderImage),
-
-            FilterContent(primaryName: "Paint It Black", fullName: "Paint It Black by The Rolling Stones", afterName: "song", description: "A dark and atmospheric rock classic by The Rolling Stones, featuring distinctive sitar elements.", filter: "rock music", image: placeholderImage),
-
-            FilterContent(primaryName: "Don't Stop Believin'", fullName: "Don't Stop Believin' by Journey", afterName: "song", description: "An enduring rock anthem by Journey, celebrated for its uplifting lyrics and sing-along appeal.", filter: "rock music", image: placeholderImage),
-
-            FilterContent(primaryName: "Imagine", fullName: "Imagine by John Lennon", afterName: "song", description: "A thought-provoking and influential rock ballad by John Lennon, known for its timeless message.", filter: "rock music", image: placeholderImage),
-
-            FilterContent(primaryName: "The Sound of Silence", fullName: "The Sound of Silence by Simon & Garfunkel", afterName: "song", description: "A haunting and poetic rock ballad by Simon & Garfunkel, recognized for its introspective lyrics.", filter: "rock music", image: placeholderImage),
-
-            FilterContent(primaryName: "Livin' on a Prayer", fullName: "Livin' on a Prayer by Bon Jovi", afterName: "song", description: "A spirited rock anthem by Bon Jovi, featuring anthemic vocals and an infectious chorus.", filter: "rock music", image: placeholderImage),
-            
-            FilterContent(primaryName: "Take Five", fullName: "Take Five by Dave Brubeck Quartet", afterName: "song", description: "A timeless jazz classic by the Dave Brubeck Quartet, known for its innovative time signature and melodic improvisation.", filter: "jazz music", image: placeholderImage),
-
-            FilterContent(primaryName: "So What", fullName: "So What by Miles Davis", afterName: "song", description: "A landmark composition by Miles Davis, featuring modal jazz and influential improvisational solos.", filter: "jazz music", image: placeholderImage),
-
-            FilterContent(primaryName: "Autumn Leaves", fullName: "Autumn Leaves by Cannonball Adderley", afterName: "song", description: "A jazz standard performed by Cannonball Adderley, celebrated for its melancholic melody and harmonic richness.", filter: "jazz music", image: placeholderImage),
-
-            FilterContent(primaryName: "Fly Me to the Moon", fullName: "Fly Me to the Moon by Frank Sinatra", afterName: "song", description: "A jazz-pop classic sung by Frank Sinatra, known for its romantic lyrics and smooth arrangement.", filter: "jazz music", image: placeholderImage),
-
-            FilterContent(primaryName: "My Favorite Things", fullName: "My Favorite Things by John Coltrane", afterName: "song", description: "A jazz interpretation of the classic tune by John Coltrane, featuring innovative improvisation and modal exploration.", filter: "jazz music", image: placeholderImage),
-
-            FilterContent(primaryName: "Summertime", fullName: "Summertime by Ella Fitzgerald", afterName: "song", description: "A jazz standard beautifully performed by Ella Fitzgerald, capturing the essence of the season.", filter: "jazz music", image: placeholderImage),
-
-            FilterContent(primaryName: "A Love Supreme", fullName: "A Love Supreme by John Coltrane", afterName: "song", description: "A spiritual jazz masterpiece by John Coltrane, recognized for its profound expression and musical exploration.", filter: "jazz music", image: placeholderImage),
-
-            FilterContent(primaryName: "Blue Monk", fullName: "Blue Monk by Thelonious Monk", afterName: "song", description: "A classic bluesy jazz composition by Thelonious Monk, featuring his signature style and improvisational flair.", filter: "jazz music", image: placeholderImage),
-
-            FilterContent(primaryName: "What a Wonderful World", fullName: "What a Wonderful World by Louis Armstrong", afterName: "song", description: "A heartwarming jazz standard performed by Louis Armstrong, celebrated for its optimistic lyrics and charming melody.", filter: "jazz music", image: placeholderImage),
-
-            FilterContent(primaryName: "Cantaloupe Island", fullName: "Cantaloupe Island by Herbie Hancock", afterName: "song", description: "A funky jazz composition by Herbie Hancock, known for its catchy riffs and infectious groove.", filter: "jazz music", image: placeholderImage)
-        ]
-        
-        activityFilterContent = [
-            
-            FilterContent(primaryName: "Solo Hiking Adventure", fullName: "Solo Hiking Adventure", afterName: "activity", description: "Embark on a peaceful hiking journey, surrounded by nature, to reconnect with yourself and enjoy the solitude.", filter: "for myself", image: placeholderImage),
-
-            FilterContent(primaryName: "Mindful Meditation Session", fullName: "Mindful Meditation Session", afterName: "activity", description: "Take some time for mindfulness meditation to relax your mind, reduce stress, and enhance your overall well-being.", filter: "for myself", image: placeholderImage),
-
-            FilterContent(primaryName: "Solo Artistic Expression", fullName: "Solo Artistic Expression", afterName: "activity", description: "Express your creativity through art, whether it's painting, drawing, or any other form that brings you joy.", filter: "for myself", image: placeholderImage),
-
-            FilterContent(primaryName: "Personal Book Reading Retreat", fullName: "Personal Book Reading Retreat", afterName: "activity", description: "Create a cozy reading nook and indulge in a solo reading retreat with your favorite books and a hot beverage.", filter: "for myself", image: placeholderImage),
-
-            FilterContent(primaryName: "Solo Movie Marathon", fullName: "Solo Movie Marathon", afterName: "activity", description: "Curate a movie list and enjoy a marathon of your favorite films or explore new genres for a cinematic solo experience.", filter: "for myself", image: placeholderImage),
-
-            FilterContent(primaryName: "Cooking Experiment for One", fullName: "Cooking Experiment for One", afterName: "activity", description: "Try out new recipes and savor the joy of cooking a delicious meal tailored to your taste buds.", filter: "for myself", image: placeholderImage),
-
-            FilterContent(primaryName: "Stargazing Night", fullName: "Stargazing Night", afterName: "activity", description: "Find a quiet spot, lay back, and enjoy the beauty of the night sky with a solo stargazing session.", filter: "for myself", image: placeholderImage),
-
-            FilterContent(primaryName: "Personal Fitness Challenge", fullName: "Personal Fitness Challenge", afterName: "activity", description: "Design a customized workout routine and challenge yourself physically with a solo fitness session.", filter: "for myself", image: placeholderImage),
-
-            FilterContent(primaryName: "Journaling and Reflection", fullName: "Journaling and Reflection", afterName: "activity", description: "Take time for self-reflection through journaling, expressing your thoughts, and setting personal goals.", filter: "for myself", image: placeholderImage),
-
-            FilterContent(primaryName: "Solo Music Jam Session", fullName: "Solo Music Jam Session", afterName: "activity", description: "Unleash your musical creativity by playing your favorite instrument or experimenting with musical compositions.", filter: "for myself", image: placeholderImage),
-            
-            FilterContent(primaryName: "Friendship Hiking Adventure", fullName: "Friendship Hiking Adventure", afterName: "activity", description: "Embark on a scenic hiking adventure with a friend, enjoying nature and each other's company.", filter: "with a friend", image: placeholderImage),
-
-            FilterContent(primaryName: "Culinary Exploration with a Pal", fullName: "Culinary Exploration with a Pal", afterName: "activity", description: "Explore local eateries or cook together, discovering new flavors and enjoying a delightful culinary experience.", filter: "with a friend", image: placeholderImage),
-
-            FilterContent(primaryName: "Movie Night with a Friend", fullName: "Movie Night with a Friend", afterName: "activity", description: "Host a movie night with a friend, complete with popcorn, snacks, and a selection of your favorite films.", filter: "with a friend", image: placeholderImage),
-
-            FilterContent(primaryName: "Fitness Buddy Workout", fullName: "Fitness Buddy Workout", afterName: "activity", description: "Stay fit together by engaging in a joint workout or trying a new fitness class with a friend.", filter: "with a friend", image: placeholderImage),
-
-            FilterContent(primaryName: "Creative Art Collaboration", fullName: "Creative Art Collaboration", afterName: "activity", description: "Join forces with a friend for a collaborative art project, combining your artistic talents for a unique creation.", filter: "with a friend", image: placeholderImage),
-
-            FilterContent(primaryName: "Friendship Photography Expedition", fullName: "Friendship Photography Expedition", afterName: "activity", description: "Capture moments and explore photography together, creating lasting memories with a friend.", filter: "with a friend", image: placeholderImage),
-
-            FilterContent(primaryName: "Board Game Night", fullName: "Board Game Night", afterName: "activity", description: "Organize a fun-filled board game night with a friend, engaging in friendly competition and laughter.", filter: "with a friend", image: placeholderImage),
-
-            FilterContent(primaryName: "Outdoor Adventure Day", fullName: "Outdoor Adventure Day", afterName: "activity", description: "Plan an outdoor adventure day with a friend, whether it's biking, hiking, or exploring a new area together.", filter: "with a friend", image: placeholderImage),
-
-            FilterContent(primaryName: "DIY Craft Party", fullName: "DIY Craft Party", afterName: "activity", description: "Host a DIY craft party with a friend, unleashing your creativity and making personalized crafts together.", filter: "with a friend", image: placeholderImage),
-
-            FilterContent(primaryName: "Friendship Book Club", fullName: "Friendship Book Club", afterName: "activity", description: "Start a book club with a friend, reading and discussing books together to share literary experiences.", filter: "with a friend", image: placeholderImage),
-            
-            FilterContent(primaryName: "Romantic Dinner Date", fullName: "Romantic Dinner Date", afterName: "activity", description: "Plan a romantic dinner date with your partner, whether it's at a favorite restaurant or a cozy homemade meal.", filter: "with a partner", image: placeholderImage),
-
-            FilterContent(primaryName: "Couples Spa Day", fullName: "Couples Spa Day", afterName: "activity", description: "Indulge in a relaxing spa day with your partner, enjoying massages, facials, and a tranquil atmosphere.", filter: "with a partner", image: placeholderImage),
-
-            FilterContent(primaryName: "Scenic Sunset Picnic", fullName: "Scenic Sunset Picnic", afterName: "activity", description: "Pack a picnic and enjoy a scenic sunset with your partner, creating a romantic and memorable evening.", filter: "with a partner", image: placeholderImage),
-
-            FilterContent(primaryName: "Couples Cooking Class", fullName: "Couples Cooking Class", afterName: "activity", description: "Take a cooking class together to learn new culinary skills and enjoy a delicious meal you've prepared.", filter: "with a partner", image: placeholderImage),
-
-            FilterContent(primaryName: "Dancing Under the Stars", fullName: "Dancing Under the Stars", afterName: "activity", description: "Enjoy a night of dancing under the stars with your partner, whether it's a formal dance or a spontaneous groove.", filter: "with a partner", image: placeholderImage),
-
-            FilterContent(primaryName: "Adventure Getaway Weekend", fullName: "Adventure Getaway Weekend", afterName: "activity", description: "Plan a getaway weekend full of adventurous activities like hiking, exploring, and trying new experiences with your partner.", filter: "with a partner", image: placeholderImage),
-
-            FilterContent(primaryName: "Couples Yoga Retreat", fullName: "Couples Yoga Retreat", afterName: "activity", description: "Reconnect with your partner through a couples yoga retreat, focusing on relaxation and wellness together.", filter: "with a partner", image: placeholderImage),
-
-            FilterContent(primaryName: "Private Movie Screening at Home", fullName: "Private Movie Screening at Home", afterName: "activity", description: "Create a cozy home movie experience with your partner, complete with favorite films, snacks, and blankets.", filter: "with a partner", image: placeholderImage),
-
-            FilterContent(primaryName: "Stargazing Cruise", fullName: "Stargazing Cruise", afterName: "activity", description: "Embark on a romantic stargazing cruise with your partner, enjoying the beauty of the night sky over calm waters.", filter: "with a partner", image: placeholderImage),
-
-            FilterContent(primaryName: "Couples Art Workshop", fullName: "Couples Art Workshop", afterName: "activity", description: "Join a couples art workshop to create beautiful art together, expressing your creativity as a team.", filter: "with a partner", image: placeholderImage),
-            
-            FilterContent(primaryName: "Family Game Night", fullName: "Family Game Night", afterName: "activity", description: "Gather the family for a fun-filled game night with board games, card games, and laughter for all.", filter: "family", image: placeholderImage),
-
-            FilterContent(primaryName: "Outdoor Family Picnic", fullName: "Outdoor Family Picnic", afterName: "activity", description: "Enjoy quality time outdoors with a family picnic, complete with delicious food and outdoor games.", filter: "family", image: placeholderImage),
-
-            FilterContent(primaryName: "DIY Family Craft Day", fullName: "DIY Family Craft Day", afterName: "activity", description: "Engage in creative activities as a family, from crafting and painting to creating lasting memories.", filter: "family", image: placeholderImage),
-
-            FilterContent(primaryName: "Family Movie Marathon", fullName: "Family Movie Marathon", afterName: "activity", description: "Create a cozy movie marathon at home with family-friendly films, popcorn, and shared enjoyment.", filter: "family", image: placeholderImage),
-
-            FilterContent(primaryName: "Family Bike Ride Adventure", fullName: "Family Bike Ride Adventure", afterName: "activity", description: "Embark on a family bike ride adventure, exploring scenic trails and enjoying the great outdoors.", filter: "family", image: placeholderImage),
-
-            FilterContent(primaryName: "Cooking Together as a Family", fullName: "Cooking Together as a Family", afterName: "activity", description: "Bring the family together in the kitchen for a collaborative cooking experience and a delicious meal.", filter: "family", image: placeholderImage),
-
-            FilterContent(primaryName: "Family Karaoke Night", fullName: "Family Karaoke Night", afterName: "activity", description: "Unleash your inner performers with a family karaoke night, singing and dancing together for fun.", filter: "family", image: placeholderImage),
-
-            FilterContent(primaryName: "Family Nature Walk", fullName: "Family Nature Walk", afterName: "activity", description: "Take a leisurely nature walk as a family, exploring local parks and enjoying the beauty of the outdoors.", filter: "family", image: placeholderImage),
-
-            FilterContent(primaryName: "Family Storytime", fullName: "Family Storytime", afterName: "activity", description: "Gather for a cozy family storytime, reading favorite books and creating cherished storytelling moments.", filter: "family", image: placeholderImage),
-
-            FilterContent(primaryName: "Family DIY Garden Project", fullName: "Family DIY Garden Project", afterName: "activity", description: "Work together on a family garden project, planting flowers or vegetables and nurturing them as a team.", filter: "family", image: placeholderImage)
-        
-        ]
-        
-        eatFilterContent = [
-            FilterContent(primaryName: "Avocado Toast", fullName: "Avocado Toast", afterName: "dish", description: "A delicious and nutritious dish featuring mashed avocado spread over toasted bread, often topped with various seasonings.", filter: "Vegan", image: placeholderImage),
-
-            FilterContent(primaryName: "Quinoa Salad", fullName: "Quinoa Salad", afterName: "dish", description: "A refreshing salad made with protein-rich quinoa, mixed with colorful vegetables, herbs, and a zesty dressing.", filter: "Vegan", image: placeholderImage),
-
-            FilterContent(primaryName: "Chickpea Curry", fullName: "Chickpea Curry", afterName: "dish", description: "A flavorful and hearty curry made with chickpeas, tomatoes, and a blend of aromatic spices.", filter: "Vegan", image: placeholderImage),
-
-            FilterContent(primaryName: "Sweet Potato Bowl", fullName: "Sweet Potato Bowl", afterName: "dish", description: "A nourishing bowl featuring roasted sweet potatoes, quinoa, and a variety of veggies, drizzled with a tahini dressing.", filter: "Vegan", image: placeholderImage),
-
-            FilterContent(primaryName: "Vegan Sushi Rolls", fullName: "Vegan Sushi Rolls", afterName: "dish", description: "Sushi rolls filled with colorful vegetables, avocado, and sometimes tofu, wrapped in nori and rice.", filter: "Vegan", image: placeholderImage),
-
-            FilterContent(primaryName: "Lentil Soup", fullName: "Lentil Soup", afterName: "dish", description: "A hearty soup made with lentils, vegetables, and aromatic spices, providing a comforting and nutritious meal.", filter: "Vegan", image: placeholderImage),
-
-            FilterContent(primaryName: "Stuffed Bell Peppers", fullName: "Stuffed Bell Peppers", afterName: "dish", description: "Bell peppers filled with a savory mixture of rice, beans, and vegetables, baked to perfection.", filter: "Vegan", image: placeholderImage),
-
-            FilterContent(primaryName: "Vegan Tacos", fullName: "Vegan Tacos", afterName: "dish", description: "Tacos filled with plant-based delights like seasoned tofu, beans, lettuce, and salsa for a tasty and satisfying meal.", filter: "Vegan", image: placeholderImage),
-
-            FilterContent(primaryName: "Coconut Curry Noodles", fullName: "Coconut Curry Noodles", afterName: "dish", description: "Noodles bathed in a creamy coconut curry sauce with a medley of vegetables, creating a flavorful and comforting dish.", filter: "Vegan", image: placeholderImage),
-
-            FilterContent(primaryName: "Mango Avocado Salad", fullName: "Mango Avocado Salad", afterName: "dish", description: "A refreshing salad combining sweet mangoes, creamy avocados, mixed greens, and a tangy vinaigrette.", filter: "Vegan", image: placeholderImage),
-            
-            FilterContent(primaryName: "Vegetarian Pizza", fullName: "Vegetarian Pizza", afterName: "dish", description: "A classic pizza topped with a medley of colorful vegetables such as bell peppers, tomatoes, olives, and mushrooms.", filter: "Vegetarian", image: placeholderImage),
-
-            FilterContent(primaryName: "Caprese Salad", fullName: "Caprese Salad", afterName: "dish", description: "A simple and elegant salad featuring fresh tomatoes, mozzarella cheese, basil leaves, and a drizzle of balsamic glaze.", filter: "Vegetarian", image: placeholderImage),
-
-            FilterContent(primaryName: "Spinach and Feta Stuffed Mushrooms", fullName: "Spinach and Feta Stuffed Mushrooms", afterName: "dish", description: "Mushroom caps stuffed with a flavorful mixture of spinach, feta cheese, breadcrumbs, and herbs.", filter: "Vegetarian", image: placeholderImage),
-
-            FilterContent(primaryName: "Vegetarian Stir-Fry", fullName: "Vegetarian Stir-Fry", afterName: "dish", description: "A quick and colorful stir-fry featuring a variety of vegetables like broccoli, bell peppers, carrots, and tofu in a tasty sauce.", filter: "Vegetarian", image: placeholderImage),
-
-            FilterContent(primaryName: "Eggplant Parmesan", fullName: "Eggplant Parmesan", afterName: "dish", description: "Slices of eggplant coated in breadcrumbs, baked or fried, and layered with marinara sauce and melted cheese.", filter: "Vegetarian", image: placeholderImage),
-
-            FilterContent(primaryName: "Vegetarian Burritos", fullName: "Vegetarian Burritos", afterName: "dish", description: "Burritos filled with a delicious mix of black beans, rice, sautéed vegetables, guacamole, and salsa.", filter: "Vegetarian", image: placeholderImage),
-
-            FilterContent(primaryName: "Mushroom Risotto", fullName: "Mushroom Risotto", afterName: "dish", description: "Creamy risotto made with Arborio rice, vegetable broth, and sautéed mushrooms, creating a comforting and flavorful dish.", filter: "Vegetarian", image: placeholderImage),
-
-            FilterContent(primaryName: "Vegetarian Chili", fullName: "Vegetarian Chili", afterName: "dish", description: "A hearty chili made with a mix of beans, tomatoes, corn, and spices for a satisfying and warming meal.", filter: "Vegetarian", image: placeholderImage),
-
-            FilterContent(primaryName: "Vegetarian Pad Thai", fullName: "Vegetarian Pad Thai", afterName: "dish", description: "A popular Thai noodle dish made with stir-fried rice noodles, tofu, bean sprouts, and peanuts in a flavorful sauce.", filter: "Vegetarian", image: placeholderImage),
-
-            FilterContent(primaryName: "Vegetarian Quiche", fullName: "Vegetarian Quiche", afterName: "dish", description: "A savory pie filled with a mixture of eggs, cream, cheese, and assorted vegetables, baked to golden perfection.", filter: "Vegetarian", image: placeholderImage),
-            
-            FilterContent(primaryName: "Gluten-Free Spaghetti Bolognese", fullName: "Gluten-Free Spaghetti Bolognese", afterName: "dish", description: "A classic Italian dish with gluten-free spaghetti topped with a rich and flavorful bolognese sauce made with ground meat and tomatoes.", filter: "Gluten Free", image: placeholderImage),
-
-            FilterContent(primaryName: "Quinoa-Stuffed Bell Peppers", fullName: "Quinoa-Stuffed Bell Peppers", afterName: "dish", description: "Bell peppers filled with a delicious stuffing made of quinoa, black beans, corn, and spices, all baked to perfection.", filter: "Gluten Free", image: placeholderImage),
-
-            FilterContent(primaryName: "Gluten-Free Chicken Stir-Fry", fullName: "Gluten-Free Chicken Stir-Fry", afterName: "dish", description: "A quick and tasty stir-fry featuring gluten-free tamari-marinated chicken, colorful vegetables, and rice.", filter: "Gluten Free", image: placeholderImage),
-
-            FilterContent(primaryName: "Zucchini Noodles with Pesto", fullName: "Zucchini Noodles with Pesto", afterName: "dish", description: "Spiralized zucchini noodles tossed in a homemade gluten-free pesto sauce, creating a light and flavorful dish.", filter: "Gluten Free", image: placeholderImage),
-
-            FilterContent(primaryName: "Gluten-Free Banana Pancakes", fullName: "Gluten-Free Banana Pancakes", afterName: "dish", description: "Fluffy gluten-free pancakes made with ripe bananas and served with your favorite toppings like berries and maple syrup.", filter: "Gluten Free", image: placeholderImage),
-
-            FilterContent(primaryName: "Cauliflower Crust Margherita Pizza", fullName: "Cauliflower Crust Margherita Pizza", afterName: "dish", description: "A gluten-free alternative to traditional pizza crust, topped with fresh tomatoes, mozzarella, and basil.", filter: "Gluten Free", image: placeholderImage),
-
-            FilterContent(primaryName: "Gluten-Free Vegetable Frittata", fullName: "Gluten-Free Vegetable Frittata", afterName: "dish", description: "A tasty frittata made with eggs and a medley of gluten-free vegetables, perfect for a hearty breakfast or brunch.", filter: "Gluten Free", image: placeholderImage),
-
-            FilterContent(primaryName: "Gluten-Free Teriyaki Salmon", fullName: "Gluten-Free Teriyaki Salmon", afterName: "dish", description: "Delicious teriyaki-glazed salmon fillets served with gluten-free side dishes like quinoa and steamed vegetables.", filter: "Gluten Free", image: placeholderImage),
-
-            FilterContent(primaryName: "Chickpea Flour Pancakes", fullName: "Chickpea Flour Pancakes", afterName: "dish", description: "Flavorful pancakes made with gluten-free chickpea flour and served with your favorite toppings.", filter: "Gluten Free", image: placeholderImage),
-
-            FilterContent(primaryName: "Gluten-Free Chocolate Avocado Mousse", fullName: "Gluten-Free Chocolate Avocado Mousse", afterName: "dish", description: "A decadent dessert made with ripe avocados, cocoa powder, and sweetened with natural sweeteners for a gluten-free treat.", filter: "Gluten Free", image: placeholderImage),
-            
-            FilterContent(primaryName: "Creamy Coconut Curry", fullName: "Creamy Coconut Curry", afterName: "dish", description: "A flavorful curry made with coconut milk, vegetables, and your choice of protein, creating a creamy and dairy-free delight.", filter: "No-Dairy", image: placeholderImage),
-
-            FilterContent(primaryName: "Dairy-Free Avocado Chocolate Mousse", fullName: "Dairy-Free Avocado Chocolate Mousse", afterName: "dish", description: "Indulge in a rich and velvety chocolate mousse made with avocados, sweetened with natural ingredients for a dairy-free dessert.", filter: "No-Dairy", image: placeholderImage),
-
-            FilterContent(primaryName: "Vegan Mac and Cheese", fullName: "Vegan Mac and Cheese", afterName: "dish", description: "A dairy-free twist on the classic comfort food, featuring a creamy sauce made with plant-based ingredients over gluten-free pasta.", filter: "No-Dairy", image: placeholderImage),
-
-            FilterContent(primaryName: "Coconut Milk Ice Cream", fullName: "Coconut Milk Ice Cream", afterName: "dish", description: "Delicious and creamy ice cream made with coconut milk, offering a dairy-free alternative to traditional ice cream.", filter: "No-Dairy", image: placeholderImage),
-
-            FilterContent(primaryName: "Dairy-Free Broccoli Cheddar Soup", fullName: "Dairy-Free Broccoli Cheddar Soup", afterName: "dish", description: "A comforting soup made with cashews, nutritional yeast, and flavorful spices to mimic the cheesy goodness without dairy.", filter: "No-Dairy", image: placeholderImage),
-
-            FilterContent(primaryName: "Almond Milk Smoothie Bowl", fullName: "Almond Milk Smoothie Bowl", afterName: "dish", description: "A refreshing smoothie bowl made with almond milk and topped with an assortment of fruits, seeds, and nuts.", filter: "No-Dairy", image: placeholderImage),
-
-            FilterContent(primaryName: "Dairy-Free Pesto Pasta", fullName: "Dairy-Free Pesto Pasta", afterName: "dish", description: "Pasta coated in a vibrant dairy-free pesto sauce made with fresh basil, garlic, pine nuts, and nutritional yeast.", filter: "No-Dairy", image: placeholderImage),
-
-            FilterContent(primaryName: "Cashew Cheese Stuffed Mushrooms", fullName: "Cashew Cheese Stuffed Mushrooms", afterName: "dish", description: "Mushroom caps filled with a creamy and savory cashew cheese mixture, baked to perfection.", filter: "No-Dairy", image: placeholderImage),
-
-            FilterContent(primaryName: "Dairy-Free Coconut Yogurt Parfait", fullName: "Dairy-Free Coconut Yogurt Parfait", afterName: "dish", description: "Layers of dairy-free coconut yogurt, granola, and fresh fruits come together to create a delicious parfait.", filter: "No-Dairy", image: placeholderImage),
-
-            FilterContent(primaryName: "Avocado Lime Sorbet", fullName: "Avocado Lime Sorbet", afterName: "dish", description: "A refreshing and dairy-free sorbet made with ripe avocados, lime juice, and a touch of sweetness.", filter: "No-Dairy", image: placeholderImage),
-        
-        ]
-
-        watchFilterContents = [
-            FilterContent(primaryName: "Inception", fullName: "Inception (2010)", afterName: "movie", description: "A mind-bending heist movie directed by Christopher Nolan.", filter: "movies", image: placeholderImage),
-
-            FilterContent(primaryName: "Attack on Titan", fullName: "Attack on Titan", afterName: "anime", description: "A thrilling anime series about humanity's fight against giant humanoid creatures.", filter: "anime", image: placeholderImage),
-
-            FilterContent(primaryName: "Stranger Things", fullName: "Stranger Things", afterName: "TV-show", description: "A popular sci-fi TV series that combines supernatural elements with 80s nostalgia.", filter: "TV-shows", image: placeholderImage),
-            
-            FilterContent(primaryName: "Fullmetal Alchemist: Brotherhood", fullName: "Fullmetal Alchemist: Brotherhood", afterName: "anime", description: "Two brothers use alchemy in their quest to search for the Philosopher's Stone to restore their bodies after a failed alchemical experiment.", filter: "anime", image: placeholderImage),
-
-            FilterContent(primaryName: "My Hero Academia", fullName: "My Hero Academia", afterName: "anime", description: "In a world where nearly every human has some form of superpower, follow the journey of Izuku Midoriya as he trains to become a hero.", filter: "anime", image: placeholderImage),
-
-            FilterContent(primaryName: "Death Parade", fullName: "Death Parade", afterName: "anime", description: "After death, souls are sent to bars where they must participate in games to determine their fate. A thought-provoking series exploring the nature of human morality.", filter: "anime", image: placeholderImage),
-
-            FilterContent(primaryName: "One Piece", fullName: "One Piece", afterName: "anime", description: "Monkey D. Luffy and his pirate crew embark on an epic journey to find the legendary One Piece treasure and become the Pirate King.", filter: "anime", image: placeholderImage),
-
-            FilterContent(primaryName: "Demon Slayer: Kimetsu no Yaiba", fullName: "Demon Slayer: Kimetsu no Yaiba", afterName: "anime", description: "Follow Tanjiro Kamado's quest to avenge his family and save his sister from demonic transformation in this beautifully animated series.", filter: "anime", image: placeholderImage),
-
-            FilterContent(primaryName: "Steins;Gate", fullName: "Steins;Gate", afterName: "anime", description: "A gripping sci-fi tale involving time travel, conspiracy, and the consequences of altering the past. Prepare for a mind-bending experience.", filter: "anime", image: placeholderImage),
-
-            FilterContent(primaryName: "Naruto", fullName: "Naruto", afterName: "anime", description: "Join Naruto Uzumaki, a young ninja with dreams of becoming the strongest ninja and earning the title of Hokage, the leader of his village.", filter: "anime", image: placeholderImage),
-
-            FilterContent(primaryName: "Attack on Titan", fullName: "Attack on Titan", afterName: "anime", description: "A thrilling anime series about humanity's fight against giant humanoid creatures.", filter: "anime", image: placeholderImage),
-
-            FilterContent(primaryName: "Hunter x Hunter", fullName: "Hunter x Hunter", afterName: "anime", description: "Follow Gon Freecss as he aspires to become a Hunter and find his missing father, encountering various challenges and adventures along the way.", filter: "anime", image: placeholderImage),
-
-            FilterContent(primaryName: "Tokyo Ghoul", fullName: "Tokyo Ghoul", afterName: "anime", description: "In a world where flesh-eating ghouls exist alongside humans, Kaneki Ken undergoes a transformation after a chance encounter with one of these creatures.", filter: "anime", image: placeholderImage),
-            
-            FilterContent(primaryName: "The Dark Knight", fullName: "The Dark Knight (2008)", afterName: "movie", description: "Christopher Nolan's epic superhero film featuring the Joker's chaotic quest against Batman.", filter: "movies", image: placeholderImage),
-
-            FilterContent(primaryName: "Pulp Fiction", fullName: "Pulp Fiction (1994)", afterName: "movie", description: "Quentin Tarantino's nonlinear masterpiece weaves multiple crime stories in Los Angeles.", filter: "movies", image: placeholderImage),
-
-            FilterContent(primaryName: "The Shawshank Redemption", fullName: "The Shawshank Redemption (1994)", afterName: "movie", description: "A powerful drama about hope and redemption in a prison setting.", filter: "movies", image: placeholderImage),
-
-            FilterContent(primaryName: "Inglourious Basterds", fullName: "Inglourious Basterds (2009)", afterName: "movie", description: "Quentin Tarantino's alternate history war film blending humor and intense action.", filter: "movies", image: placeholderImage),
-
-            FilterContent(primaryName: "Forrest Gump", fullName: "Forrest Gump (1994)", afterName: "movie", description: "Follow the life journey of Forrest Gump, a man with a low IQ but a remarkable story.", filter: "movies", image: placeholderImage),
-
-            FilterContent(primaryName: "The Matrix", fullName: "The Matrix (1999)", afterName: "movie", description: "A sci-fi classic exploring a dystopian future and virtual reality.", filter: "movies", image: placeholderImage),
-
-            FilterContent(primaryName: "Fight Club", fullName: "Fight Club (1999)", afterName: "movie", description: "David Fincher's cult classic about an insomniac office worker and his alter ego.", filter: "movies", image: placeholderImage),
-
-            FilterContent(primaryName: "The Godfather", fullName: "The Godfather (1972)", afterName: "movie", description: "Francis Ford Coppola's iconic crime film chronicling the Corleone family's rise and fall.", filter: "movies", image: placeholderImage),
-
-            FilterContent(primaryName: "Inception", fullName: "Inception (2010)", afterName: "movie", description: "A mind-bending heist movie directed by Christopher Nolan.", filter: "movies", image: placeholderImage),
-
-            FilterContent(primaryName: "The Silence of the Lambs", fullName: "The Silence of the Lambs (1991)", afterName: "movie", description: "A psychological horror film featuring the hunt for a serial killer with the help of a brilliant but insane cannibalistic doctor.", filter: "movies", image: placeholderImage),
-
-            FilterContent(primaryName: "Schindler's List", fullName: "Schindler's List (1993)", afterName: "movie", description: "Steven Spielberg's powerful portrayal of a German businessman saving Jewish lives during the Holocaust.", filter: "movies", image: placeholderImage),
-            
-            FilterContent(primaryName: "Breaking Bad", fullName: "Breaking Bad", afterName: "TV-show", description: "A gripping crime drama series following the transformation of a chemistry teacher into a methamphetamine manufacturer.", filter: "TV-shows", image: placeholderImage),
-
-            FilterContent(primaryName: "Game of Thrones", fullName: "Game of Thrones", afterName: "TV-show", description: "An epic fantasy series based on George R.R. Martin's novels, filled with political intrigue and dragons.", filter: "TV-shows", image: placeholderImage),
-
-            FilterContent(primaryName: "Stranger Things", fullName: "Stranger Things", afterName: "TV-show", description: "A popular sci-fi TV series that combines supernatural elements with 80s nostalgia.", filter: "TV-shows", image: placeholderImage),
-
-            FilterContent(primaryName: "The Mandalorian", fullName: "The Mandalorian", afterName: "TV-show", description: "Set in the Star Wars universe, follow the adventures of a lone bounty hunter in the outer reaches of the galaxy.", filter: "TV-shows", image: placeholderImage),
-
-            FilterContent(primaryName: "The Witcher", fullName: "The Witcher", afterName: "TV-show", description: "Based on the book series, this fantasy series follows Geralt of Rivia, a monster hunter known as a Witcher.", filter: "TV-shows", image: placeholderImage),
-
-            FilterContent(primaryName: "The Office", fullName: "The Office", afterName: "TV-show", description: "A mockumentary sitcom following the daily lives of office employees at Dunder Mifflin's Scranton, Pennsylvania branch.", filter: "TV-shows", image: placeholderImage),
-
-            FilterContent(primaryName: "Breaking Bad", fullName: "Breaking Bad", afterName: "TV-show", description: "A gripping crime drama series following the transformation of a chemistry teacher into a methamphetamine manufacturer.", filter: "TV-shows", image: placeholderImage),
-
-            FilterContent(primaryName: "Black Mirror", fullName: "Black Mirror", afterName: "TV-show", description: "An anthology series exploring the dark and often dystopian aspects of modern society and technology.", filter: "TV-shows", image: placeholderImage),
-
-            FilterContent(primaryName: "Friends", fullName: "Friends", afterName: "TV-show", description: "A classic sitcom following the lives and adventures of six friends living in New York City.", filter: "TV-shows", image: placeholderImage),
-
-            FilterContent(primaryName: "Stranger Things", fullName: "Stranger Things", afterName: "TV-show", description: "A popular sci-fi TV series that combines supernatural elements with 80s nostalgia.", filter: "TV-shows", image: placeholderImage),
-
-            FilterContent(primaryName: "The Crown", fullName: "The Crown", afterName: "TV-show", description: "A historical drama series chronicling the reign of Queen Elizabeth II and the events that shaped the second half of the 20th century.", filter: "TV-shows", image: placeholderImage),
-        ]
+    
+    func randomizeContent(for category: GeneralCategory, with filter: String) -> FilterContent? {
+        guard let selectedFilter = category.filters.first(where: { $0.filterName == filter }) else {
+            return nil
+        }
+        let filterContents = selectedFilter.filterContents
+        return filterContents.randomElement()
     }
     
-    let watchCategory = GeneralCategory(
-        categoryName: "watch",
-        categoryBeforeName: "randomize what to",
-        description: "Let us help you decide what to watch, be it movies, anime or TV-shows. We've got it all! Try it for yourself.",
-        filters: ["movies", "TV-shows", "anime", "IdontCare"]
-    )
+    init() {
+        
+        let eatFilters = [
+            Filter(filterName: "Gluten Free", filterContents: [
+                FilterContent(primaryName: "Gluten-Free Quinoa Salad Bowl", fullName: "Gluten-Free Quinoa Salad Bowl", afterName: "dish", description: "Savor the wholesome goodness of a Gluten-Free Quinoa Salad Bowl. Packed with colorful veggies, protein-rich quinoa, and drizzled with a zesty gluten-free vinaigrette. A nourishing and satisfying gluten-free option for your lunch or dinner.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Paleo Almond Flour Banana Bread", fullName: "Paleo Almond Flour Banana Bread", afterName: "dessert", description: "Indulge in the delectable aroma of freshly baked Paleo Almond Flour Banana Bread. A gluten-free treat made with almond flour, ripe bananas, and a hint of sweetness. Enjoy a guilt-free slice of this gluten-free delight.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Gluten-Free Cauliflower Pizza Crust", fullName: "Gluten-Free Cauliflower Pizza Crust", afterName: "dish", description: "Create a gluten-free pizza masterpiece with a Gluten-Free Cauliflower Pizza Crust. A low-carb alternative featuring cauliflower, cheese, and gluten-free flour. Top it with your favorite ingredients for a gluten-free pizza delight.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Quinoa-Stuffed Bell Peppers", fullName: "Quinoa-Stuffed Bell Peppers", afterName: "dish", description: "Experience a burst of flavors with Quinoa-Stuffed Bell Peppers. A gluten-free dish filled with a hearty mix of quinoa, veggies, and savory spices. A gluten-free and wholesome option for a satisfying meal.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Gluten-Free Raspberry Almond Tart", fullName: "Gluten-Free Raspberry Almond Tart", afterName: "dessert", description: "Delight in the sweetness of a Gluten-Free Raspberry Almond Tart. A gluten-free pastry crust filled with luscious almond cream and topped with fresh raspberries. A gluten-free dessert that's both elegant and delicious.", image: placeholderImage),
+                
+            ]),
+            
+            
+            
+            Filter(filterName: "Vegan", filterContents: [
+                FilterContent(primaryName: "Quinoa and Roasted Vegetable Bowl", fullName: "Quinoa and Roasted Vegetable Bowl", afterName: "dish", description: "Savor the wholesome goodness of a Quinoa and Roasted Vegetable Bowl. Nutrient-packed quinoa combined with a medley of colorful roasted vegetables, drizzled with a zesty vinaigrette. A satisfying and nutritious vegan delight.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Chickpea and Spinach Curry", fullName: "Chickpea and Spinach Curry", afterName: "dish", description: "Experience the bold flavors of India with a Chickpea and Spinach Curry. Tender chickpeas simmered in aromatic spices and fresh spinach, served over fluffy basmati rice. A vegan dish that's a celebration of taste.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Vegan Avocado Toast", fullName: "Vegan Avocado Toast", afterName: "dish", description: "Start your day with a burst of flavors from Vegan Avocado Toast. Creamy avocado slices on toasted whole-grain bread, topped with cherry tomatoes, red pepper flakes, and a sprinkle of nutritional yeast. A delicious and energizing vegan breakfast.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Plant-Based Buddha Bowl", fullName: "Plant-Based Buddha Bowl", afterName: "dish", description: "Nourish your body with a Plant-Based Buddha Bowl. A colorful array of roasted sweet potatoes, quinoa, sautéed kale, and creamy tahini dressing. Packed with nutrients and vibrant flavors, this vegan bowl is a feast for the senses. ", image: placeholderImage),
+                
+                FilterContent(primaryName: "Vegan Chocolate Avocado Mousse", fullName: "Vegan Chocolate Avocado Mousse", afterName: "dessert", description: "Indulge your sweet tooth with a guilt-free treat – Vegan Chocolate Avocado Mousse. Silky smooth mousse made from ripe avocados, cocoa powder, and a touch of sweetness. A decadent vegan dessert that satisfies your chocolate cravings. ", image: placeholderImage),
+                
+            ]),
+            
+            
+            Filter(filterName: "Vegetarian", filterContents: [
+                
+                FilterContent(primaryName: "Caprese Salad with Balsamic Glaze", fullName: "Caprese Salad with Balsamic Glaze", afterName: "dish", description: "Indulge in the freshness of a classic Caprese Salad drizzled with tangy balsamic glaze. A burst of flavors awaits you with juicy tomatoes, creamy mozzarella, and aromatic basil leaves. A taste of Italy on your plate, promising a delightful experience.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Vegetarian Spinach and Feta Stuffed Peppers", fullName: "Vegetarian Spinach and Feta Stuffed Peppers", afterName: "dish", description: "Experience the Mediterranean goodness in every bite of these stuffed peppers. Colorful bell peppers filled with a delectable mix of spinach, feta cheese, and aromatic herbs. A wholesome and flavorful vegetarian dish that promises to satisfy your taste buds.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Eggplant Parmesan", fullName: "Eggplant Parmesan", afterName: "dish", description: "Delight in the rich taste of Eggplant Parmesan with layers of thinly sliced eggplant, marinara sauce, and melted cheese. A comforting and hearty vegetarian dish that transports you to the heart of Italian home cooking.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Vegetarian Sushi Rolls", fullName: "Vegetarian Sushi Rolls", afterName: "dish", description: "Embark on a culinary journey with these Vegetarian Sushi Rolls. Nori-wrapped sushi filled with vibrant vegetables, avocado, and seasoned rice. A light and flavorful vegetarian option that brings the art of sushi to your table.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Mushroom and Spinach Quiche", fullName: "Mushroom and Spinach Quiche", afterName: "dish", description: "Savor the flaky goodness of Mushroom and Spinach Quiche with a buttery crust embracing a savory filling of mushrooms, spinach, and creamy cheese. A sophisticated and satisfying vegetarian brunch or dinner option.", image: placeholderImage),
+            ]),
+            
+            Filter(filterName: "No-Dairy", filterContents: [
+                
+                FilterContent(primaryName: "Dairy-Free Coconut Curry Chickpeas", fullName: "Dairy-Free Coconut Curry Chickpeas", afterName: "dish", description: "Indulge in the aromatic flavors of Coconut Curry Chickpeas. A dairy-free delight featuring chickpeas simmered in a luscious coconut curry sauce, infused with a blend of spices. A comforting and flavorful option for those seeking dairy-free goodness.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Vegan Avocado Chocolate Mousse", fullName: "Vegan Avocado Chocolate Mousse", afterName: "dessert", description: "Experience the creamy decadence of Avocado Chocolate Mousse without dairy. A velvety blend of ripe avocados, cocoa powder, and sweetened with natural alternatives. A guilt-free and delicious dairy-free dessert to satisfy your sweet cravings.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Dairy-Free Spinach and Artichoke Dip", fullName: "Dairy-Free Spinach and Artichoke Dip", afterName: "appetizer", description: "Delight your taste buds with a Dairy-Free Spinach and Artichoke Dip. A creamy and savory blend of spinach, artichokes, and dairy-free cheese. Perfect for dipping your favorite veggies or chips, offering a dairy-free twist on a classic appetizer.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Coconut Milk Ice Cream Cones", fullName: "Coconut Milk Ice Cream Cones", afterName: "dessert", description: "Cool down with the sweet goodness of Coconut Milk Ice Cream Cones. A dairy-free frozen delight featuring coconut milk-based ice cream in a crispy cone. An indulgent and refreshing treat for those who prefer dairy-free options.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Dairy-Free Blueberry Almond Smoothie", fullName: "Dairy-Free Blueberry Almond Smoothie", afterName: "beverage", description: "Start your day with a burst of freshness from a Dairy-Free Blueberry Almond Smoothie. A delightful blend of blueberries, almond milk, and natural sweetness. A dairy-free and nutritious beverage to kickstart your mornings.", image: placeholderImage),
+            ]),
+            
+            Filter(filterName: "No restrictions", filterContents: [
+                FilterContent(primaryName: "Classic Cheeseburger", fullName: "Classic Cheeseburger", afterName: "dish", description: "This is a type of burger that you might find in traditional American diners. A juicy beef patty topped with melted cheese, lettuce, tomato, and pickles, sandwiched between a soft sesame seed bun. You will not regret eating this meal.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Margarita Pizza", fullName: "Margarita Pizza", afterName: "dish", description: "Experience the essence of Italian cuisine with a Margarita Pizza. Thin crust, tomato sauce, fresh mozzarella, basil leaves, and a drizzle of olive oil. This classic pizza will transport you to the streets of Naples. You will not regret eating this meal.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Spicy Tofu Stir-Fry", fullName: "Spicy Tofu Stir-Fry", afterName: "dish", description: "Embrace the flavors of Asia with a Spicy Tofu Stir-Fry. Cubes of tofu sautéed with colorful vegetables in a spicy soy-based sauce. Served over steamed rice, this dish brings the perfect balance of heat and savory goodness. You will not regret eating this meal.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Mouthwatering Sushi Platter", fullName: "Mouthwatering Sushi Platter", afterName: "dish", description: "Indulge in the artistry of Japanese cuisine with a Mouthwatering Sushi Platter. A selection of fresh nigiri and rolls featuring a variety of seafood. Each bite is a symphony of flavors and textures. You will not regret eating this meal.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Savory Chicken Alfredo", fullName: "Savory Chicken Alfredo", afterName: "dish", description: "Delight in the richness of Italian-American comfort food with Savory Chicken Alfredo. Tender pieces of chicken in a creamy Alfredo sauce, tossed with fettuccine pasta. A satisfying and indulgent dish to warm your soul. You will not regret eating this meal.", image: placeholderImage)
+                
+            ])
+        ]
+        
+        let cookFilters = [
+            
+            Filter(filterName: "Gluten Free", filterContents: [
+                FilterContent(primaryName: "Gluten-Free Quinoa Salad", fullName: "Gluten-Free Quinoa Salad", afterName: "recipe", description: "Ingredients: quinoa, cherry tomatoes, cucumbers, red bell pepper, feta cheese, olives, olive oil, lemon juice, herbs. Cook quinoa. Mix with chopped vegetables, feta, and olives. Drizzle with olive oil and lemon juice. Garnish with herbs.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Gluten-Free Chickpea Pasta with Pesto", fullName: "Gluten-Free Chickpea Pasta with Pesto", afterName: "recipe", description: "Ingredients: gluten-free chickpea pasta, cherry tomatoes, basil pesto, pine nuts, Parmesan cheese. Cook chickpea pasta. Toss with halved cherry tomatoes, basil pesto, and toasted pine nuts. Sprinkle with Parmesan.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Gluten-Free Zucchini Noodles with Avocado Sauce", fullName: "Gluten-Free Zucchini Noodles with Avocado Sauce", afterName: "recipe", description: "Ingredients: zucchini, cherry tomatoes, avocado, garlic, lime, cilantro. Spiralize zucchini into noodles. Blend avocado, garlic, lime juice, and cilantro into a creamy sauce. Toss zucchini noodles with sauce and halved cherry tomatoes.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Gluten-Free Quinoa Pizza Crust", fullName: "Gluten-Free Quinoa Pizza Crust", afterName: "recipe", description: "Ingredients: quinoa, water, baking powder, salt, Italian herbs. Blend quinoa, water, baking powder, and salt. Pour batter onto a pizza pan. Sprinkle with Italian herbs. Bake until golden. Add your favorite gluten-free toppings.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Gluten-Free Stuffed Bell Peppers with Ground Turkey", fullName: "Gluten-Free Stuffed Bell Peppers with Ground Turkey", afterName: "recipe", description: "Ingredients: bell peppers, ground turkey, quinoa, black beans, corn, salsa, cumin, chili powder. Cook quinoa. Brown ground turkey. Mix with cooked quinoa, black beans, corn, salsa, cumin, and chili powder. Stuff bell peppers. Bake until peppers are tender.",image: placeholderImage),
+                
+                FilterContent(primaryName: "Gluten-Free Cauliflower Crust Margherita Pizza", fullName: "Gluten-Free Cauliflower Crust Margherita Pizza", afterName: "recipe", description: "Ingredients: cauliflower, eggs, mozzarella cheese, tomato sauce, fresh mozzarella, tomatoes, basil. Rice cauliflower. Mix with eggs and mozzarella. Press into a crust. Bake until golden. Top with tomato sauce, fresh mozzarella, tomatoes, and basil.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Gluten-Free Lemon Garlic Shrimp Quinoa", fullName: "Gluten-Free Lemon Garlic Shrimp Quinoa", afterName: "recipe", description: "Ingredients: quinoa, shrimp, garlic, lemon, cherry tomatoes, spinach. Cook quinoa. Sauté shrimp with garlic. Mix with cooked quinoa, lemon juice, halved cherry tomatoes, and spinach. Serve warm.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Gluten-Free Banana Pancakes", fullName: "Gluten-Free Banana Pancakes", afterName: "recipe", description: "Ingredients: gluten-free flour, ripe bananas, almond milk, eggs, baking powder, vanilla extract. Mash bananas. Mix with gluten-free flour, almond milk, eggs, baking powder, and vanilla extract. Cook as pancakes. Serve with your favorite toppings.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Gluten-Free Chicken and Vegetable Stir-Fry", fullName: "Gluten-Free Chicken and Vegetable Stir-Fry", afterName: "recipe", description: "Ingredients: chicken breast, broccoli, bell peppers, carrots, gluten-free soy sauce, ginger. Slice chicken. Stir-fry with vegetables in gluten-free soy sauce and ginger until cooked through. Serve over rice or gluten-free noodles.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Gluten-Free Chocolate Avocado Mousse", fullName: "Gluten-Free Chocolate Avocado Mousse", afterName: "recipe", description: "Ingredients: avocados, cocoa powder, maple syrup, vanilla extract, almond milk. Blend avocados, cocoa powder, maple syrup, vanilla extract, and almond milk until smooth. Chill in the refrigerator. Serve as a rich and creamy dessert.", image: placeholderImage),
+            ]),
+            
+            Filter(filterName: "Vegan", filterContents: [
+                
+                FilterContent(primaryName: "Vegan Chickpea Curry", fullName: "Vegan Chickpea Curry", afterName: "recipe", description: "Ingredients: chickpeas, coconut milk, tomatoes, onions, garlic, ginger, curry spices. To prepare, sauté onions, garlic, and ginger. Add tomatoes, coconut milk, and chickpeas. Simmer until chickpeas are tender. Season with curry spices. Serve over rice or quinoa.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Vegan Lentil and Vegetable Stir-Fry", fullName: "Vegan Lentil and Vegetable Stir-Fry", afterName: "recipe", description: "Ingredients: green lentils, broccoli, bell peppers, carrots, soy sauce, garlic, ginger. Sauté garlic and ginger. Add lentils and stir-fry with vegetables in soy sauce until tender. Serve over rice or noodles.",  image: placeholderImage),
+                
+                FilterContent(primaryName: "Vegan Roasted Vegetable Buddha Bowl", fullName: "Vegan Roasted Vegetable Buddha Bowl", afterName: "recipe", description: "Ingredients: quinoa, roasted sweet potatoes, Brussels sprouts, avocado, tahini dressing. Cook quinoa. Roast sweet potatoes and Brussels sprouts. Assemble bowl with quinoa, roasted veggies, sliced avocado. Drizzle with tahini dressing.",image: placeholderImage),
+                
+                FilterContent(primaryName: "Vegan Avocado and Black Bean Wrap", fullName: "Vegan Avocado and Black Bean Wrap", afterName: "recipe", description: "Ingredients: black beans, avocado, tomatoes, lettuce, whole wheat wraps, salsa. Mash black beans and avocado. Assemble wraps with mashed mixture, sliced tomatoes, lettuce. Top with salsa.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Vegan Quinoa and Chickpea Salad", fullName: "Vegan Quinoa and Chickpea Salad", afterName: "recipe", description: "Ingredients: quinoa, chickpeas, cucumber, cherry tomatoes, red onion, olives, olive oil, lemon juice, herbs. Cook quinoa. Mix with chickpeas, chopped vegetables, olives, dressing. Serve as a refreshing salad.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Vegan Sweet Potato and Black Bean Chili", fullName: "Vegan Sweet Potato and Black Bean Chili", afterName: "recipe", description: "Ingredients: sweet potatoes, black beans, tomatoes, onions, garlic, chili spices. Sauté onions and garlic. Add sweet potatoes, tomatoes, black beans, and spices. Simmer until sweet potatoes are tender. Serve with your favorite toppings.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Vegan Spinach and Mushroom Stuffed Bell Peppers", fullName: "Vegan Spinach and Mushroom Stuffed Bell Peppers", afterName: "recipe", description: "Ingredients: bell peppers, spinach, mushrooms, quinoa, nutritional yeast, garlic. Cook quinoa. Sauté mushrooms, spinach, and garlic. Mix with quinoa and nutritional yeast. Stuff bell peppers. Bake until peppers are tender.",image: placeholderImage),
+                
+                FilterContent(primaryName: "Vegan Coconut and Lime Cauliflower Rice", fullName: "Vegan Coconut and Lime Cauliflower Rice", afterName: "recipe", description: "Ingredients: cauliflower rice, coconut milk, lime, cilantro, peanuts. Cook cauliflower rice. Mix with coconut milk, lime juice, and cilantro. Garnish with peanuts. Serve as a flavorful side dish.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Vegan Teriyaki Tofu Stir-Fry", fullName: "Vegan Teriyaki Tofu Stir-Fry", afterName: "recipe", description: "Ingredients: tofu, broccoli, bell peppers, carrots, teriyaki sauce, sesame oil. Press tofu and cut into cubes. Stir-fry with vegetables in sesame oil and teriyaki sauce until tofu is golden and veggies are tender. Serve over rice.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Vegan Mediterranean Quinoa Bowl", fullName: "Vegan Mediterranean Quinoa Bowl", afterName: "recipe", description: "Ingredients: quinoa, chickpeas, cherry tomatoes, cucumber, Kalamata olives, red onion, hummus. Cook quinoa. Mix with chickpeas, chopped vegetables, and olives. Serve in a bowl with a dollop of hummus.", image: placeholderImage)
+            ]),
+            
+            Filter(filterName: "Vegetarian", filterContents: [
+                
+                FilterContent(primaryName: "Vegetarian Quinoa Salad with Roasted Vegetables", fullName: "Vegetarian Quinoa Salad with Roasted Vegetables", afterName: "recipe", description: "Ingredients: quinoa, bell peppers, zucchini, cherry tomatoes, red onion, feta cheese, olive oil, balsamic vinegar, herbs. Cook quinoa. Roast vegetables. Mix with quinoa, feta, and dressing. Serve chilled.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Vegetarian Lentil Soup", fullName: "Vegetarian Lentil Soup", afterName: "recipe", description: "Ingredients: green lentils, carrots, celery, onion, garlic, vegetable broth, tomatoes, cumin, coriander. Sauté onions, garlic, and veggies. Add lentils, broth, and tomatoes. Season with cumin and coriander. Simmer until lentils are tender.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Vegetarian Spinach and Ricotta Stuffed Shells", fullName: "Vegetarian Spinach and Ricotta Stuffed Shells", afterName: "recipe", description: "Ingredients: jumbo pasta shells, spinach, ricotta cheese, mozzarella cheese, marinara sauce, garlic, herbs. Cook pasta. Mix spinach, ricotta, mozzarella, garlic, and herbs. Stuff shells. Bake with marinara sauce.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Vegetarian Eggplant Parmesan", fullName: "Vegetarian Eggplant Parmesan", afterName: "recipe", description: "Ingredients: eggplant, breadcrumbs, marinara sauce, mozzarella cheese, Parmesan cheese, basil. Coat eggplant in breadcrumbs. Bake until crispy. Layer with marinara sauce, mozzarella, and Parmesan. Bake until cheese melts. Garnish with fresh basil.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Vegetarian Black Bean Tacos", fullName: "Vegetarian Black Bean Tacos", afterName: "recipe", description: "Ingredients: black beans, corn tortillas, avocado, salsa, lime, cilantro. Heat black beans. Assemble tacos with beans, sliced avocado, salsa, and a squeeze of lime. Garnish with fresh cilantro.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Vegetarian Mushroom Risotto", fullName: "Vegetarian Mushroom Risotto", afterName: "recipe", description: "Ingredients: Arborio rice, mushrooms, vegetable broth, white wine, Parmesan cheese, onion, garlic. Sauté onion and garlic. Add rice and mushrooms. Deglaze with white wine. Cook risotto, adding broth gradually. Stir in Parmesan.",  image: placeholderImage),
+                
+                FilterContent(primaryName: "Vegetarian Pesto Pasta with Cherry Tomatoes", fullName: "Vegetarian Pesto Pasta with Cherry Tomatoes", afterName: "recipe", description: "Ingredients: pasta, cherry tomatoes, pesto sauce, pine nuts, Parmesan cheese. Cook pasta. Toss with halved cherry tomatoes, pesto, and toasted pine nuts. Sprinkle with Parmesan.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Vegetarian Sweet Potato and Black Bean Burritos", fullName: "Vegetarian Sweet Potato and Black Bean Burritos", afterName: "recipe", description: "Ingredients: sweet potatoes, black beans, tortillas, salsa, avocado, cilantro. Roast sweet potatoes. Mash black beans. Assemble burritos with sweet potatoes, black beans, salsa, sliced avocado, and cilantro.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Vegetarian Greek Quinoa Salad", fullName: "Vegetarian Greek Quinoa Salad", afterName: "recipe", description: "Ingredients: quinoa, cherry tomatoes, cucumber, Kalamata olives, feta cheese, red onion, Greek dressing. Cook quinoa. Mix with chopped vegetables, olives, feta, and dressing. Serve as a refreshing salad.",  image: placeholderImage),
+                
+                FilterContent(primaryName: "Vegetarian Stuffed Bell Peppers with Quinoa", fullName: "Vegetarian Stuffed Bell Peppers with Quinoa", afterName: "recipe", description: "Ingredients: bell peppers, quinoa, black beans, corn, tomatoes, Mexican spices, cheese. Cook quinoa. Mix with black beans, corn, tomatoes, and spices. Stuff bell peppers. Bake until peppers are tender. Sprinkle with cheese.", image: placeholderImage),
+            ]),
+            
+            Filter(filterName: "No-Dairy", filterContents: [
+                FilterContent(primaryName: "Dairy-Free Tomato Basil Pasta", fullName: "Dairy-Free Tomato Basil Pasta", afterName: "recipe", description: "Ingredients: pasta, tomatoes, garlic, fresh basil, olive oil, pine nuts. Cook pasta. Sauté garlic in olive oil. Add chopped tomatoes and cook until softened. Toss with cooked pasta. Garnish with fresh basil and pine nuts.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Dairy-Free Cauliflower Alfredo Sauce with Zoodles", fullName: "Dairy-Free Cauliflower Alfredo Sauce with Zoodles", afterName: "recipe", description: "Ingredients: cauliflower, garlic, almond milk, nutritional yeast, zucchini noodles. Steam cauliflower and blend with garlic, almond milk, and nutritional yeast. Pour over zucchini noodles. Enjoy a creamy, dairy-free Alfredo.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Dairy-Free Avocado Chocolate Mousse", fullName: "Dairy-Free Avocado Chocolate Mousse", afterName: "recipe", description: "Ingredients: avocados, cocoa powder, maple syrup, almond milk. Blend avocados, cocoa powder, maple syrup, and almond milk until smooth. Chill in the refrigerator. Indulge in a rich and creamy chocolate mousse.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Dairy-Free Thai Coconut Curry", fullName: "Dairy-Free Thai Coconut Curry", afterName: "recipe", description: "Ingredients: tofu, broccoli, bell peppers, coconut milk, red curry paste, ginger, garlic. Sauté tofu, ginger, and garlic. Add coconut milk and red curry paste. Simmer with vegetables until cooked. Serve over rice.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Dairy-Free Spinach and Sun-Dried Tomato Stuffed Mushrooms", fullName: "Dairy-Free Spinach and Sun-Dried Tomato Stuffed Mushrooms", afterName: "recipe", description: "Ingredients: mushrooms, spinach, sun-dried tomatoes, garlic, breadcrumbs. Remove mushroom stems and stuff with sautéed spinach, sun-dried tomatoes, and breadcrumbs. Bake until mushrooms are tender.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Dairy-Free Lemon Garlic Roasted Potatoes", fullName: "Dairy-Free Lemon Garlic Roasted Potatoes", afterName: "recipe", description: "Ingredients: potatoes, lemon, garlic, olive oil, herbs. Toss potatoes with lemon, garlic, and herbs. Roast until golden brown. Enjoy flavorful and crispy roasted potatoes without dairy.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Dairy-Free Vegetable Spring Rolls with Peanut Sauce", fullName: "Dairy-Free Vegetable Spring Rolls with Peanut Sauce", afterName: "recipe", description: "Ingredients: rice paper, lettuce, carrots, cucumbers, vermicelli noodles, peanut sauce. Assemble spring rolls with fresh vegetables and noodles. Dip in dairy-free peanut sauce for a tasty snack or appetizer.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Dairy-Free Mediterranean Quinoa Stuffed Bell Peppers", fullName: "Dairy-Free Mediterranean Quinoa Stuffed Bell Peppers", afterName: "recipe", description: "Ingredients: bell peppers, quinoa, chickpeas, cherry tomatoes, Kalamata olives, olive oil, lemon juice. Cook quinoa. Mix with chickpeas, tomatoes, olives, and lemon dressing. Stuff bell peppers. Bake until peppers are tender.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Dairy-Free Spicy Black Bean and Corn Salsa", fullName: "Dairy-Free Spicy Black Bean and Corn Salsa", afterName: "recipe", description: "Ingredients: black beans, corn, tomatoes, red onion, jalapeño, lime juice, cilantro. Mix black beans, corn, diced tomatoes, onion, jalapeño, lime juice, and cilantro. Serve as a refreshing salsa without dairy.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Dairy-Free Coconut Lime Chia Pudding", fullName: "Dairy-Free Coconut Lime Chia Pudding", afterName: "recipe", description: "Ingredients: chia seeds, coconut milk, lime zest, maple syrup. Mix chia seeds with coconut milk, lime zest, and sweeten with maple syrup. Refrigerate until the pudding sets. Enjoy a dairy-free and nutritious dessert.", image: placeholderImage)
+            ]),
+            
+            Filter(filterName: "No restrictions", filterContents: [
+                
+                FilterContent(primaryName: "Vegetarian Margherita Pizza", fullName: "Vegetarian Margherita Pizza", afterName: "recipe", description: "Ingredients: pizza dough, tomato sauce, fresh mozzarella, cherry tomatoes, basil leaves. Roll out the dough, spread tomato sauce, top with mozzarella and tomatoes. Bake until golden. Garnish with fresh basil. A classic and delicious vegetarian pizza.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Mango Avocado Salsa", fullName: "Mango Avocado Salsa", afterName: "recipe", description: "Ingredients: mango, avocado, red onion, cilantro, lime juice. Dice mango and avocado, mix with finely chopped red onion and cilantro. Drizzle with lime juice. Serve as a refreshing salsa with tortilla chips or as a topping.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Quinoa Salad with Roasted Vegetables", fullName: "Quinoa Salad with Roasted Vegetables", afterName: "recipe", description: "Ingredients: quinoa, bell peppers, zucchini, cherry tomatoes, feta cheese. Cook quinoa, roast vegetables, and toss together. Crumble feta on top. A wholesome and flavorful vegetarian quinoa salad.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Caprese Stuffed Avocados", fullName: "Caprese Stuffed Avocados", afterName: "recipe", description: "Ingredients: avocados, cherry tomatoes, fresh mozzarella, balsamic glaze. Hollow out avocados, fill with diced tomatoes and mozzarella. Drizzle with balsamic glaze. A simple and elegant appetizer or side dish.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Vegetarian Margherita Pizza", fullName: "Vegetarian Margherita Pizza", afterName: "recipe", description: "Ingredients: pizza dough, tomato sauce, fresh mozzarella, cherry tomatoes, basil leaves. Roll out the dough, spread tomato sauce, top with mozzarella and tomatoes. Bake until golden. Garnish with fresh basil. A classic and delicious vegetarian pizza.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Mango Avocado Salsa", fullName: "Mango Avocado Salsa", afterName: "recipe", description: "Ingredients: mango, avocado, red onion, cilantro, lime juice. Dice mango and avocado, mix with finely chopped red onion and cilantro. Drizzle with lime juice. Serve as a refreshing salsa with tortilla chips or as a topping.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Quinoa Salad with Roasted Vegetables", fullName: "Quinoa Salad with Roasted Vegetables", afterName: "recipe", description: "Ingredients: quinoa, bell peppers, zucchini, cherry tomatoes, feta cheese. Cook quinoa, roast vegetables, and toss together. Crumble feta on top. A wholesome and flavorful vegetarian quinoa salad.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Caprese Stuffed Avocados", fullName: "Caprese Stuffed Avocados", afterName: "recipe", description: "Ingredients: avocados, cherry tomatoes, fresh mozzarella, balsamic glaze. Hollow out avocados, fill with diced tomatoes and mozzarella. Drizzle with balsamic glaze. A simple and elegant appetizer or side dish.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Dairy-Free Coconut Lime Chia Pudding", fullName: "Dairy-Free Coconut Lime Chia Pudding", afterName: "recipe", description: "Ingredients: chia seeds, coconut milk, lime zest, maple syrup. Mix chia seeds with coconut milk, lime zest, and sweeten with maple syrup. Refrigerate until the pudding sets. Enjoy a dairy-free and nutritious dessert.", image: placeholderImage)
+            ])
+        ]
+        
+        
+        let watchFilters = [
+            Filter(filterName: "movies", filterContents: [
+                FilterContent(primaryName: "Whispers of the Heart", fullName: "Whispers of the Heart", afterName: "movie", description: "Embark on a heartwarming journey with 'Whispers of the Heart.' A touching tale of self-discovery, dreams, and the magic of ordinary life. Directed by Yoshifumi Kondō, this Studio Ghibli gem is a must-watch for animation enthusiasts.", image: placeholderImage),
 
-    let eatCategory = GeneralCategory(
-        categoryName: "eat",
-        categoryBeforeName: "randomize what to",
-        description: "We will help you make a decision about your next meal. Can't decide? Try our our randomizer!",
-        filters: ["Gluten Free", "Vegan", "Vegetarian", "No-Dairy", "No restrictions"]
-    )
+                FilterContent(primaryName: "The Fall", fullName: "The Fall", afterName: "movie", description: "Experience the visually stunning and emotionally captivating 'The Fall.' Directed by Tarsem Singh, this fantasy adventure takes you on an epic journey through breathtaking landscapes and imaginative storytelling.", image: placeholderImage),
 
-    let activityCategory = GeneralCategory(
-        categoryName: "activity",
-        categoryBeforeName: "randomize an",
-        description: "Are you bored? Can't decide what activity to dive into next? We will help! Try out our randomizer.",
-        filters: ["for myself", "family", "for a group of friends", "with a partner", "with a friend", "idontcare"]
-    )
+                FilterContent(primaryName: "In Bruges", fullName: "In Bruges", afterName: "movie", description: "Dive into the darkly comedic world of 'In Bruges.' Directed by Martin McDonagh, this crime-comedy film follows two hitmen who find themselves in the picturesque city of Bruges, Belgium, leading to unexpected and hilarious consequences.", image: placeholderImage),
 
-    let listenCategory = GeneralCategory(
-        categoryName: "listen to",
-        categoryBeforeName: "randomize what to",
-        description: "Are you bored of your usual playlists? Let us bring a little sparkle into your musical taste. Try it out!",
-        filters: ["rock music", "pop music", "classical music", "jazz music", "I don't care"]
-    )
+                FilterContent(primaryName: "Moon", fullName: "Moon", afterName: "movie", description: "Explore the thought-provoking science fiction of 'Moon.' Directed by Duncan Jones, this indie gem stars Sam Rockwell in a gripping solo performance as a man working alone on a lunar base, questioning reality and identity.", image: placeholderImage),
 
-    let colorPaletteCategory = GeneralCategory(
-        categoryName: "Color Palette",
-        categoryBeforeName: "randomize a",
-        description: "Are you having trouble deciding what colors to use in your next presentation? Or perhaps in your next project? Let us help you out.",
-        filters: ["monochrome", "warm tones", "cold tones", "I dont care"]
-    )
+                FilterContent(primaryName: "The Secret Life of Walter Mitty", fullName: "The Secret Life of Walter Mitty", afterName: "movie", description: "Join Walter Mitty on an inspiring journey in 'The Secret Life of Walter Mitty.' Directed by Ben Stiller, this adventure film combines breathtaking visuals with a heartwarming narrative about self-discovery and embracing life's extraordinary moments.", image: placeholderImage),
 
-    let giftCategory = GeneralCategory(
-        categoryName: "gift",
-        categoryBeforeName: "randomize what to",
-        description: "Can't decide what to gift your close ones? Let us help you out!",
-        filters: ["female", "male", "Idontcare"]
-    )
+            
+            ]),
+            Filter(filterName: "TV-shows", filterContents: [
+            
+                FilterContent(primaryName: "Chronicles of the Unknown", fullName: "Chronicles of the Unknown", afterName: "TV-show", description: "Embark on a mysterious journey with 'Chronicles of the Unknown.' This lesser-known TV-show weaves together elements of suspense, supernatural occurrences, and unexpected twists, keeping viewers on the edge of their seats.", image: placeholderImage),
 
-    let readCategory = GeneralCategory(
-        categoryName: "read",
-        categoryBeforeName: "randomize what to",
-        description: "Having trouble deciding what to read next? Let us help you out! Randomize it!",
-        filters: ["books", "manga", "scientific articles", "idontcare"]
-    )
+                    FilterContent(primaryName: "Beyond the Horizon", fullName: "Beyond the Horizon", afterName: "TV-show", description: "Discover the unexplored territories of 'Beyond the Horizon.' This hidden gem offers a unique blend of adventure, fantasy, and a touch of the extraordinary, making it a must-watch for those seeking something off the beaten path.", image: placeholderImage),
 
-    let cookCategory = GeneralCategory(
-        categoryName: "cook",
-        categoryBeforeName: "randomize what to",
-        description: "Can't decide which recipe to follow next? Let us help you plan your next meal with thousands of randomized recipes.",
-        filters: ["Gluten Free", "Vegan", "Vegetarian", "No-Dairy", "No restrictions"]
-    )
+                    FilterContent(primaryName: "Whispers in the Shadows", fullName: "Whispers in the Shadows", afterName: "TV-show", description: "Uncover the secrets concealed within 'Whispers in the Shadows.' A lesser-known TV-show that masterfully combines elements of mystery and psychological thriller, leaving audiences captivated by its enigmatic narrative.", image: placeholderImage),
+
+                    FilterContent(primaryName: "Ephemeral Echoes", fullName: "Ephemeral Echoes", afterName: "TV-show", description: "Immerse yourself in the transient world of 'Ephemeral Echoes.' This hidden gem explores the complexities of time, relationships, and the fleeting nature of existence, offering a fresh perspective within the realm of TV-shows.", image: placeholderImage),
+
+                    FilterContent(primaryName: "Spectral Symphony", fullName: "Spectral Symphony", afterName: "TV-show", description: "Experience the haunting melodies of 'Spectral Symphony.' This lesser-known TV-show blends supernatural elements with a musical backdrop, creating a unique and captivating narrative that resonates with those who enjoy the extraordinary.", image: placeholderImage),
+                
+            ]),
+            
+            Filter(filterName: "anime", filterContents: [
+            
+                FilterContent(primaryName: "Spirited Away", fullName: "Spirited Away", afterName: "anime", description: "Immerse yourself in the enchanting world of 'Spirited Away.' Directed by Hayao Miyazaki, this Studio Ghibli masterpiece follows the journey of a young girl navigating a mysterious and magical realm.", image: placeholderImage),
+
+                FilterContent(primaryName: "Steins;Gate", fullName: "Steins;Gate", afterName: "anime", description: "Embark on a mind-bending adventure with 'Steins;Gate.' This science fiction anime, directed by Hiroshi Hamasaki, explores time travel, consequences, and the struggle to alter fate.", image: placeholderImage),
+
+                FilterContent(primaryName: "Cowboy Bebop", fullName: "Cowboy Bebop", afterName: "anime", description: "Enter the futuristic world of bounty hunters in 'Cowboy Bebop.' Directed by Shinichirō Watanabe, this space western seamlessly blends action, jazz, and a compelling narrative.", image: placeholderImage),
+
+                FilterContent(primaryName: "My Neighbor Totoro", fullName: "My Neighbor Totoro", afterName: "anime", description: "Experience the magic of childhood and friendship in 'My Neighbor Totoro.' Directed by Hayao Miyazaki, this heartwarming anime captures the whimsical adventures of two sisters and their encounters with forest spirits.", image: placeholderImage),
+
+                FilterContent(primaryName: "Attack on Titan", fullName: "Attack on Titan", afterName: "anime", description: "Dive into the intense world of 'Attack on Titan.' Directed by Tetsurō Araki, this anime explores humanity's fight for survival against gigantic humanoid creatures, unraveling mysteries and political intrigue.", image: placeholderImage),
+
+                FilterContent(primaryName: "Fullmetal Alchemist: Brotherhood", fullName: "Fullmetal Alchemist: Brotherhood", afterName: "anime", description: "Embark on an epic journey of alchemy, morality, and sacrifice in 'Fullmetal Alchemist: Brotherhood.' Directed by Yasuhiro Irie, this anime is a masterpiece that delves into profound themes.", image: placeholderImage),
+
+                FilterContent(primaryName: "Death Note", fullName: "Death Note", afterName: "anime", description: "Enter the psychological thriller realm of 'Death Note.' Directed by Tetsurō Araki, this anime follows the gripping story of a high school student who gains possession of a supernatural notebook with deadly consequences.", image: placeholderImage),
+
+                FilterContent(primaryName: "One Punch Man", fullName: "One Punch Man", afterName: "anime", description: "Enjoy the comedic and action-packed world of 'One Punch Man.' Directed by Shingo Natsume, this anime follows Saitama, a hero who defeats his enemies with a single punch, leading to a unique and entertaining narrative.", image: placeholderImage),
+
+                FilterContent(primaryName: "Neon Genesis Evangelion", fullName: "Neon Genesis Evangelion", afterName: "anime", description: "Delve into the complex and philosophical narrative of 'Neon Genesis Evangelion.' Directed by Hideaki Anno, this mecha anime explores the psychological struggles of young pilots in a world threatened by mysterious beings.", image: placeholderImage),
+
+                FilterContent(primaryName: "Hunter x Hunter", fullName: "Hunter x Hunter", afterName: "anime", description: "Embark on a thrilling adventure in 'Hunter x Hunter.' Directed by Hiroshi Kōjina, this anime follows Gon Freecss as he aspires to become a Hunter, encountering challenges, friendships, and powerful foes.", image: placeholderImage),
+
+            ]),
+            
+            
+            Filter(filterName: "I dont Care", filterContents: [
+            
+                    FilterContent(primaryName: "Chronicles of the Unknown", fullName: "Chronicles of the Unknown", afterName: "TV-show", description: "Embark on a mysterious journey with 'Chronicles of the Unknown.' This lesser-known TV-show weaves together elements of suspense, supernatural occurrences, and unexpected twists, keeping viewers on the edge of their seats.", image: placeholderImage),
+                    FilterContent(primaryName: "Lunar Serenade", fullName: "Lunar Serenade", afterName: "anime", description: "Dive into the enchanting world of 'Lunar Serenade.' This anime combines breathtaking visuals, a compelling storyline, and fantastical elements, offering a mesmerizing experience for anime enthusiasts.", image: placeholderImage),
+                    FilterContent(primaryName: "Whispers in the Wind", fullName: "Whispers in the Wind", afterName: "movie", description: "Let the 'Whispers in the Wind' carry you away on a cinematic journey. This lesser-known movie unfolds a tale of love, mystery, and self-discovery against a backdrop of breathtaking landscapes and evocative storytelling.", image: placeholderImage),
+                    
+                    FilterContent(primaryName: "Ephemeral Echoes", fullName: "Ephemeral Echoes", afterName: "TV-show", description: "Get lost in the captivating narrative of 'Ephemeral Echoes.' This TV-show intricately weaves together drama, mystery, and human emotions, offering a thought-provoking and unforgettable viewing experience.", image: placeholderImage),
+
+                    FilterContent(primaryName: "Crimson Horizon", fullName: "Crimson Horizon", afterName: "anime", description: "Embark on an epic journey with 'Crimson Horizon.' This anime unfolds in a fantastical world filled with mythical creatures, magic, and unexpected alliances. Anime enthusiasts will find themselves drawn into a rich and imaginative story.", image: placeholderImage),
+
+                    FilterContent(primaryName: "Silent Whispers", fullName: "Silent Whispers", afterName: "movie", description: "Indulge in the cinematic beauty of 'Silent Whispers.' This lesser-known movie combines breathtaking visuals with a poignant narrative, exploring the complexities of human relationships and the power of silence.", image: placeholderImage)
+         ])
+        ]
+    
+        
+        let readFilters = [
+            
+            Filter(filterName: "books", filterContents: [
+                FilterContent(primaryName: "Whispers of Autumn", fullName: "Whispers of Autumn", afterName: "novel", description: "Dive into the enchanting world of 'Whispers of Autumn.' This novel paints a vivid portrait of seasonal beauty, love, and introspection, intertwining the lives of characters in a small town where secrets and destinies collide.", image: placeholderImage),
+
+                 FilterContent(primaryName: "Ephemeral Shadows", fullName: "Ephemeral Shadows", afterName: "novel", description: "Explore the depths of mystery and intrigue with 'Ephemeral Shadows.' This gripping novel follows the journey of a detective caught in a web of deception, leading to a heart-pounding revelation that will keep you on the edge of your seat.", image: placeholderImage),
+
+                 FilterContent(primaryName: "Silent Echoes", fullName: "Silent Echoes", afterName: "novel", description: "Immerse yourself in the poignant narrative of 'Silent Echoes.' This novel weaves a tale of love, loss, and the enduring power of memories. The evocative storytelling will leave a lasting impression on your heart.", image: placeholderImage),
+
+                 FilterContent(primaryName: "The Labyrinth's Enigma", fullName: "The Labyrinth's Enigma", afterName: "novel", description: "Embark on an adventurous journey with 'The Labyrinth's Enigma.' This novel combines elements of fantasy and suspense as characters navigate a labyrinth of challenges, secrets, and unexpected alliances.", image: placeholderImage)
+            ]),
+            Filter(filterName: "manga", filterContents: [
+            
+                FilterContent(primaryName: "Crimson Serenade", fullName: "Crimson Serenade", afterName: "manga", description: "Delve into the world of 'Crimson Serenade,' a captivating manga that combines supernatural elements with a gripping storyline. Follow the journey of characters entangled in the threads of fate as they navigate challenges beyond the veil of reality.", image: placeholderImage),
+
+                    FilterContent(primaryName: "Ephemeral Whispers", fullName: "Ephemeral Whispers", afterName: "manga", description: "Experience the magic of 'Ephemeral Whispers,' a lesser-known gem in the manga world. This story unfolds in a realm where dreams and reality intersect, taking readers on a visually stunning and emotionally resonant journey.", image: placeholderImage),
+
+                    FilterContent(primaryName: "Lunar Melody", fullName: "Lunar Melody", afterName: "manga", description: "Immerse yourself in the enchanting melodies of 'Lunar Melody.' This manga follows the lives of individuals connected by the power of music, exploring themes of friendship, passion, and the pursuit of one's true self.", image: placeholderImage),
+
+                    FilterContent(primaryName: "Chronicles of Ether", fullName: "Chronicles of Ether", afterName: "manga", description: "Embark on an epic adventure with 'Chronicles of Ether,' a hidden gem among manga series. Unravel the mysteries of a fantastical world where ancient prophecies, magical beings, and a young hero's journey converge in an unforgettable tale.", image: placeholderImage)
+]),
+            Filter(filterName: "scientific articles", filterContents: [
+                
+                FilterContent(primaryName: "Exploring Quantum Entanglement", fullName: "Exploring Quantum Entanglement", afterName: "scientific article", description: "Dive into the fascinating world of quantum physics with this scientific article. 'Exploring Quantum Entanglement' sheds light on the intricate phenomenon of entanglement and its implications for our understanding of the quantum realm.", image: placeholderImage),
+
+                    FilterContent(primaryName: "Genome Sequencing Breakthroughs", fullName: "Genome Sequencing Breakthroughs", afterName: "scientific article", description: "Stay informed about the latest advancements in genomics with 'Genome Sequencing Breakthroughs.' This article explores recent breakthroughs in genome sequencing technology and their potential impact on various fields, from medicine to evolutionary biology.", image: placeholderImage),
+
+                    FilterContent(primaryName: "Neuroplasticity: Unraveling the Brain's Adaptive Secrets", fullName: "Neuroplasticity: Unraveling the Brain's Adaptive Secrets", afterName: "scientific article", description: "Delve into the mysteries of the brain with this insightful article on neuroplasticity. Learn how the brain adapts and rewires itself in response to experiences, providing valuable insights into cognition, learning, and rehabilitation.", image: placeholderImage),
+
+                    FilterContent(primaryName: "The Quantum Computing Revolution", fullName: "The Quantum Computing Revolution", afterName: "scientific article", description: "Explore the revolutionary field of quantum computing with this in-depth article. 'The Quantum Computing Revolution' discusses the principles, challenges, and potential applications of quantum computing that could reshape the landscape of computational technology.", image: placeholderImage),
+            
+            ]),
+            
+            Filter(filterName: "idontcare", filterContents: [
+                
+                FilterContent(primaryName: "The Great Gatsby", fullName: "The Great Gatsby", afterName: "book", description: "F. Scott Fitzgerald's classic tale of love, wealth, and the American Dream. 'The Great Gatsby' is a timeless exploration of the Jazz Age.", image: placeholderImage),
+
+                FilterContent(primaryName: "To Kill a Mockingbird", fullName: "To Kill a Mockingbird", afterName: "novel", description: "Harper Lee's poignant exploration of racial injustice and moral growth in the American South. 'To Kill a Mockingbird' remains a literary gem.", image: placeholderImage),
+
+                FilterContent(primaryName: "The Neuroscience of Memory", fullName: "The Neuroscience of Memory", afterName: "scientific article", description: "Delve into the intricate workings of memory in the human brain. 'The Neuroscience of Memory' provides insights into the fascinating world of cognitive science.", image: placeholderImage),
+
+                FilterContent(primaryName: "One Piece", fullName: "One Piece", afterName: "manga", description: "Embark on an epic journey with Monkey D. Luffy and his crew. 'One Piece' is a captivating manga filled with adventure, friendship, and discovery.", image: placeholderImage)
+                
+            ])
+        ]
+        
+        let activityFilters = [
+            
+            Filter(filterName: "for myself", filterContents: [
+            
+                FilterContent(primaryName: "Creative Writing Challenge", fullName: "Creative Writing Challenge", afterName: "activity", description: "Unleash your creativity with a writing challenge. Choose a theme or prompt and let your imagination flow. Express yourself through words and enjoy the process.", image: placeholderImage),
+
+                FilterContent(primaryName: "DIY Craft Project", fullName: "DIY Craft Project", afterName: "activity", description: "Engage in a do-it-yourself (DIY) craft project. Whether it's making handmade cards, decorating your space, or trying a new craft, enjoy the therapeutic and creative benefits of hands-on creativity.", image: placeholderImage),
+
+                FilterContent(primaryName: "Nature Photography Expedition", fullName: "Nature Photography Expedition", afterName: "activity", description: "Embark on a photography expedition in nature. Capture the beauty of landscapes, flora, and fauna. Immerse yourself in the art of photography and connect with the natural world.", image: placeholderImage),
+
+                FilterContent(primaryName: "Mindful Meditation Session", fullName: "Mindful Meditation Session", afterName: "activity", description: "Indulge in a mindful meditation session. Find a quiet space, focus on your breath, and let go of stress. Experience the calming effects of meditation and promote overall well-being.", image: placeholderImage),
+
+                FilterContent(primaryName: "Home Yoga Practice", fullName: "Home Yoga Practice", afterName: "activity", description: "Practice yoga in the comfort of your home. Follow a guided yoga routine or create your sequence. Enhance flexibility, strength, and mindfulness through a rejuvenating yoga session.", image: placeholderImage)
+         ]),
+            
+            Filter(filterName: "family", filterContents: [
+            
+                FilterContent(primaryName: "Family Game Night", fullName: "Family Game Night", afterName: "activity", description: "Organize a family game night. Choose a variety of games suitable for all ages, gather around, and enjoy quality time filled with laughter and friendly competition.", image: placeholderImage),
+
+                   FilterContent(primaryName: "Homemade Pizza Night", fullName: "Homemade Pizza Night", afterName: "activity", description: "Create a homemade pizza night with your family. Prepare various toppings, let everyone customize their pizzas, and enjoy a delicious and interactive dinner together.", image: placeholderImage),
+
+                   FilterContent(primaryName: "DIY Arts and Crafts", fullName: "DIY Arts and Crafts", afterName: "activity", description: "Engage in do-it-yourself arts and crafts with your family. Choose a creative project, gather supplies, and spend quality time expressing your artistic side together.", image: placeholderImage),
+
+                   FilterContent(primaryName: "Family Movie Night", fullName: "Family Movie Night", afterName: "activity", description: "Host a family movie night with everyone's favorite films. Set up a cozy movie-watching area, prepare snacks, and enjoy a cinematic experience with your loved ones.", image: placeholderImage),
+
+                   FilterContent(primaryName: "Nature Scavenger Hunt", fullName: "Nature Scavenger Hunt", afterName: "activity", description: "Organize a nature scavenger hunt for your family. Explore outdoor spaces, search for items on your list, and enjoy a fun and adventurous day together.", image: placeholderImage)
+                
+            ]),
+            
+            Filter(filterName: "for a group of friends", filterContents: [
+                
+                FilterContent(primaryName: "Escape Room Challenge", fullName: "Escape Room Challenge", afterName: "activity", description: "Take on an escape room challenge with your group of friends. Test your problem-solving skills, work together as a team, and see if you can escape before time runs out.", image: placeholderImage),
+
+                    FilterContent(primaryName: "Karaoke Night", fullName: "Karaoke Night", afterName: "activity", description: "Host a karaoke night with your friends. Sing your favorite songs, unleash your inner rock star, and enjoy a fun-filled evening of music and laughter.", image: placeholderImage),
+
+                    FilterContent(primaryName: "Outdoor Adventure", fullName: "Outdoor Adventure", afterName: "activity", description: "Embark on an outdoor adventure with your group of friends. Whether it's hiking, camping, or exploring a new area, embrace the thrill of exploration and create unforgettable memories together.", image: placeholderImage),
+
+                    FilterContent(primaryName: "Game Tournament", fullName: "Game Tournament", afterName: "activity", description: "Organize a game tournament with your friends. Choose your favorite video games, board games, or sports activities, and compete against each other in a friendly and competitive tournament.", image: placeholderImage),
+
+                    FilterContent(primaryName: "DIY Pizza Night", fullName: "DIY Pizza Night", afterName: "activity", description: "Host a DIY pizza night with your friends. Set up a pizza bar with various toppings, get creative with your pizza creations, and enjoy a delicious homemade meal together.", image: placeholderImage)
+            
+            ]),
+            
+            Filter(filterName: "with a partner", filterContents: [
+                
+                FilterContent(primaryName: "Cooking Class for Two", fullName: "Cooking Class for Two", afterName: "activity", description: "Take a cooking class together with your partner. Choose a cuisine you both enjoy, learn new recipes, and savor the joy of creating a delicious meal as a team.", image: placeholderImage),
+
+                FilterContent(primaryName: "Stargazing Date Night", fullName: "Stargazing Date Night", afterName: "activity", description: "Plan a stargazing date night with your partner. Find a cozy spot, bring blankets, and enjoy the beauty of the night sky together. Share stories, dreams, and the wonders of the universe.", image: placeholderImage),
+
+                FilterContent(primaryName: "Couple's Spa Day", fullName: "Couple's Spa Day", afterName: "activity", description: "Indulge in a relaxing spa day for two. Create a spa-like atmosphere at home, pamper yourselves with massages, facials, and soothing treatments, and unwind together.", image: placeholderImage),
+
+                FilterContent(primaryName: "Adventure Hike", fullName: "Adventure Hike", afterName: "activity", description: "Embark on an adventure hike with your partner. Choose a scenic trail, explore nature together, and enjoy quality time surrounded by the beauty of the outdoors.", image: placeholderImage),
+
+                FilterContent(primaryName: "Couples Yoga Session", fullName: "Couples Yoga Session", afterName: "activity", description: "Practice yoga together with your partner. Find a calming space, follow a yoga routine, and experience the benefits of wellness and connection in a shared practice.", image: placeholderImage)
+            
+            ]),
+            
+            Filter(filterName: "with a friend", filterContents: [
+                
+                FilterContent(primaryName: "Board Game Night", fullName: "Board Game Night", afterName: "activity", description: "Host a board game night with your friend. Pick your favorite board games, enjoy some snacks, and have a fun-filled evening of friendly competition and laughter.", image: placeholderImage),
+
+                   FilterContent(primaryName: "Movie Marathon", fullName: "Movie Marathon", afterName: "activity", description: "Plan a movie marathon with your friend. Choose a theme or genre, prepare some popcorn, and enjoy a cinematic experience together. Discuss your favorite scenes and movies.", image: placeholderImage),
+
+                   FilterContent(primaryName: "Cooking Challenge", fullName: "Cooking Challenge", afterName: "activity", description: "Take on a cooking challenge with your friend. Select a unique recipe, gather ingredients, and cook together. Explore new culinary skills and savor the delicious results.", image: placeholderImage),
+
+                   FilterContent(primaryName: "Outdoor Adventure", fullName: "Outdoor Adventure", afterName: "activity", description: "Embark on an outdoor adventure with your friend. Whether it's hiking, biking, or exploring nature trails, enjoy the beauty of the outdoors and create lasting memories together.", image: placeholderImage),
+
+                   FilterContent(primaryName: "Escape Room Experience", fullName: "Escape Room Experience", afterName: "activity", description: "Challenge yourselves with an escape room experience. Work together to solve puzzles and unlock mysteries. Test your teamwork and problem-solving skills for an exciting adventure.", image: placeholderImage)
+                
+            ]),
+            
+            Filter(filterName: "I dont Care", filterContents: [
+            
+                FilterContent(primaryName: "Art and Craft Session", fullName: "Art and Craft Session", afterName: "activity", description: "Unleash your creativity with an art and craft session. Whether it's painting, drawing, or DIY crafts, enjoy a relaxing and fulfilling time expressing yourself through art.", image: placeholderImage),
+
+                    FilterContent(primaryName: "Picnic in the Park", fullName: "Picnic in the Park", afterName: "activity", description: "Plan a delightful picnic in the park. Pack your favorite snacks, bring a blanket, and enjoy a leisurely day outdoors surrounded by nature and good company.", image: placeholderImage),
+
+                    FilterContent(primaryName: "Book Club Meeting", fullName: "Book Club Meeting", afterName: "activity", description: "Gather with fellow book enthusiasts for a book club meeting. Discuss your latest literary discoveries, share insights, and immerse yourself in the world of captivating stories.", image: placeholderImage),
+
+                    FilterContent(primaryName: "Fitness Challenge", fullName: "Fitness Challenge", afterName: "activity", description: "Embark on a fitness challenge to stay active and healthy. Whether it's a home workout, yoga session, or outdoor jog, make physical activity a fun and rewarding part of your routine.", image: placeholderImage),
+
+                    FilterContent(primaryName: "Movie Marathon", fullName: "Movie Marathon", afterName: "activity", description: "Host a movie marathon with a selection of your favorite films. Grab some popcorn, create a cozy movie-watching setup, and enjoy a cinematic journey from the comfort of your home.", image: placeholderImage),
+        ])
+        ]
+        
+        let giftFilters = [
+            
+            Filter(filterName: "female", filterContents: [
+            
+            
+                FilterContent(primaryName: "Elegant Orchid Jewelry Set", fullName: "Elegant Orchid Jewelry Set", afterName: "gift", description: "Surprise her with this exquisite jewelry set featuring delicate orchid motifs. The set includes a necklace, earrings, and a bracelet, adding a touch of elegance to any outfit.", image: placeholderImage),
+
+                FilterContent(primaryName: "Luxurious Spa Day Experience", fullName: "Luxurious Spa Day Experience", afterName: "gift", description: "Treat her to a day of pampering and relaxation with a luxurious spa experience. From soothing massages to rejuvenating facials, this gift promises a blissful escape from the everyday hustle.", image: placeholderImage),
+
+                FilterContent(primaryName: "Chic Leather Tote Bag", fullName: "Chic Leather Tote Bag", afterName: "gift", description: "Upgrade her style with a chic leather tote bag that seamlessly combines fashion and functionality. This versatile accessory is perfect for work, travel, or a day out on the town.", image: placeholderImage),
+
+                FilterContent(primaryName: "Personalized Floral Scented Candle Set", fullName: "Personalized Floral Scented Candle Set", afterName: "gift", description: "Create a serene ambiance with a set of personalized floral scented candles. Each candle is carefully crafted with a unique floral fragrance, making it a thoughtful and aromatic gift.", image: placeholderImage),
+
+                FilterContent(primaryName: "Artisanal Chocolate Truffle Collection", fullName: "Artisanal Chocolate Truffle Collection", afterName: "gift", description: "Indulge her sweet tooth with an exquisite collection of artisanal chocolate truffles. Handcrafted with premium ingredients, these delectable treats are a delightful way to satisfy her chocolate cravings.", image: placeholderImage)
+            
+            ]),
+            
+            Filter(filterName: "male", filterContents: [
+            
+                FilterContent(primaryName: "Classic Leather Wallet & Keychain Set", fullName: "Classic Leather Wallet & Keychain Set", afterName: "gift", description: "Upgrade his everyday essentials with this classic leather wallet and keychain set. Crafted for durability and style, it's a practical gift that adds a touch of sophistication to his daily routine.", image: placeholderImage),
+
+                FilterContent(primaryName: "Tech Enthusiast's Gadget Organizer", fullName: "Tech Enthusiast's Gadget Organizer", afterName: "gift", description: "Keep his gadgets organized with a sleek and functional gadget organizer. Featuring multiple compartments, this gift is perfect for tech-savvy individuals who value both style and practicality.", image: placeholderImage),
+
+                FilterContent(primaryName: "Adventure-Ready Portable Coffee Maker", fullName: "Adventure-Ready Portable Coffee Maker", afterName: "gift", description: "For the coffee aficionado with a sense of adventure, gift a portable coffee maker. Whether camping or traveling, this compact gadget ensures a quality cup of coffee on the go.", image: placeholderImage),
+
+                FilterContent(primaryName: "Tailored Men's Grooming Kit", fullName: "Tailored Men's Grooming Kit", afterName: "gift", description: "Elevate his grooming routine with a tailored men's grooming kit. Packed with high-quality grooming essentials, this gift promises a refined and well-groomed look for any occasion.", image: placeholderImage),
+
+                FilterContent(primaryName: "Premium Whiskey Tasting Set", fullName: "Premium Whiskey Tasting Set", afterName: "gift", description: "Indulge his taste for fine spirits with a premium whiskey tasting set. This sophisticated gift includes a selection of top-notch whiskies, offering a delightful experience for the whiskey connoisseur.", image: placeholderImage)
+
+            ]),
+            
+            Filter(filterName: "Idontcare", filterContents: [
+            
+                FilterContent(primaryName: "Mystical Constellation Projector Lamp", fullName: "Mystical Constellation Projector Lamp", afterName: "gift", description: "Transform any room into a mesmerizing night sky with this constellation projector lamp. A unique and enchanting gift for those who appreciate a touch of magic in their living space.", image: placeholderImage),
+
+                FilterContent(primaryName: "Artisanal Handcrafted Soy Candle Set", fullName: "Artisanal Handcrafted Soy Candle Set", afterName: "gift", description: "Create a cozy atmosphere with this set of artisanal handcrafted soy candles. Each candle is thoughtfully made, filling the room with delightful scents and warm ambiance. A perfect gift for relaxation.", image: placeholderImage),
+
+                FilterContent(primaryName: "Personalized Star Map Print", fullName: "Personalized Star Map Print", afterName: "gift", description: "Celebrate a special moment with a personalized star map print. Capture the alignment of the stars on a significant date, creating a unique and sentimental piece of art. A meaningful gift for cherished memories.", image: placeholderImage),
+
+                FilterContent(primaryName: "Whimsical Succulent Terrarium Kit", fullName: "Whimsical Succulent Terrarium Kit", afterName: "gift", description: "Bring nature indoors with a whimsical succulent terrarium kit. An easy-to-assemble gift that adds a touch of greenery to any space, making it a delightful and low-maintenance present.", image: placeholderImage),
+
+                FilterContent(primaryName: "Interactive Puzzle Board Game", fullName: "Interactive Puzzle Board Game", afterName: "gift", description: "Challenge the mind with an interactive puzzle board game. Ideal for solo or group play, this gift combines entertainment and mental stimulation for hours of fun. A great way to unwind and bond with loved ones.", image: placeholderImage)
+            ])
+        ]
+        
+        let listenFilters = [
+            Filter(filterName: "rock music", filterContents: [
+            
+                FilterContent(primaryName: "Thunderstruck", fullName: "Thunderstruck", afterName: "song", description: "Experience the electrifying energy of AC/DC's 'Thunderstruck.' This iconic rock anthem is sure to get your adrenaline pumping with its powerful riffs and captivating rhythm.", image: placeholderImage),
+
+                  FilterContent(primaryName: "Bohemian Rhapsody", fullName: "Bohemian Rhapsody", afterName: "song", description: "Indulge in the operatic brilliance of Queen's 'Bohemian Rhapsody.' This genre-defying classic takes you on a musical journey, blending rock, ballad, and opera elements seamlessly.", image: placeholderImage),
+
+                  FilterContent(primaryName: "Stairway to Heaven", fullName: "Stairway to Heaven", afterName: "song", description: "Immerse yourself in the timeless allure of Led Zeppelin's 'Stairway to Heaven.' This epic rock masterpiece unfolds with enchanting guitar solos and poetic lyrics.", image: placeholderImage),
+
+                  FilterContent(primaryName: "Sweet Child o' Mine", fullName: "Sweet Child o' Mine", afterName: "song", description: "Savor the iconic guitar riff and soulful vocals in Guns N' Roses' 'Sweet Child o' Mine.' This rock ballad remains a classic, resonating with generations of music enthusiasts.", image: placeholderImage),
+
+                  FilterContent(primaryName: "Back in Black", fullName: "Back in Black", afterName: "song", description: "Feel the power of AC/DC's 'Back in Black,' a rock anthem known for its infectious energy and memorable guitar riffs. Let the music take you on a wild ride.", image: placeholderImage),
+
+                  FilterContent(primaryName: "Comfortably Numb", fullName: "Comfortably Numb", afterName: "song", description: "Embark on a surreal journey with Pink Floyd's 'Comfortably Numb.' Let the haunting melody and poignant lyrics transport you to a world of musical transcendence.", image: placeholderImage),
+
+                  FilterContent(primaryName: "Light My Fire", fullName: "Light My Fire", afterName: "song", description: "Immerse yourself in the psychedelic sounds of The Doors' 'Light My Fire.' This iconic track captures the essence of 1960s rock with its distinctive organ and Jim Morrison's charismatic vocals.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Holy Diver", fullName: "Holy Diver", afterName: "song", description: "Experience the powerful vocals and epic guitar riffs of Dio's 'Holy Diver.' This classic metal anthem will transport you to the realm of fantasy and heavy metal greatness.", image: placeholderImage)
+
+       ]),
+            
+            Filter(filterName: "pop music", filterContents: [
+                
+                FilterContent(primaryName: "Dancing Queen", fullName: "Dancing Queen", afterName: "song", description: "Get ready to hit the dance floor with ABBA's timeless hit 'Dancing Queen.' This upbeat pop anthem will bring joy and energy to any occasion.", image: placeholderImage),
+
+                FilterContent(primaryName: "Shape of You", fullName: "Shape of You", afterName: "song", description: "Ed Sheeran's 'Shape of You' is a chart-topping pop sensation that combines infectious beats with catchy lyrics. A modern classic for your playlist.", image: placeholderImage),
+                
+                FilterContent(primaryName: "Happy", fullName: "Happy", afterName: "song", description: "Pharrell Williams' 'Happy' is a feel-good anthem that will instantly lift your spirits. Add this joyful tune to your playlist for an instant mood boost.", image: placeholderImage),
+
+                FilterContent(primaryName: "Uptown Funk", fullName: "Uptown Funk", afterName: "song", description: "Mark Ronson and Bruno Mars deliver a funky and energetic performance in 'Uptown Funk.' This song is a perfect choice to get the party started.", image: placeholderImage),
+
+                FilterContent(primaryName: "Waka Waka (This Time for Africa)", fullName: "Waka Waka (This Time for Africa)", afterName: "song", description: "Shakira's 'Waka Waka' is a spirited anthem that captures the excitement of global celebrations. Dance to the rhythm of this infectious track.", image: placeholderImage)
+
+            ]),
+            
+            Filter(filterName: "classical music", filterContents: [
+            
+                FilterContent(primaryName: "Eine kleine Nachtmusik", fullName: "Eine kleine Nachtmusik", afterName: "piece", description: "Mozart's 'Eine kleine Nachtmusik' is a delightful and uplifting chamber music masterpiece. Let the enchanting melodies of this composition transport you.", image: placeholderImage),
+
+                FilterContent(primaryName: "Clair de Lune", fullName: "Clair de Lune", afterName: "piece", description: "Debussy's 'Clair de Lune' is a mesmerizing piano piece that evokes a sense of calm and beauty. Immerse yourself in the soothing atmosphere created by this timeless classic.", image: placeholderImage),
+
+                FilterContent(primaryName: "The Four Seasons", fullName: "The Four Seasons", afterName: "piece", description: "Vivaldi's 'The Four Seasons' is a set of violin concertos that vividly captures the essence of each season. Experience the rich and expressive sounds of this iconic work.", image: placeholderImage),
+
+                FilterContent(primaryName: "Moonlight Sonata", fullName: "Moonlight Sonata", afterName: "piece", description: "Beethoven's 'Moonlight Sonata' is a hauntingly beautiful piano composition. Let the melancholic yet captivating melodies of this classical gem resonate with your emotions.", image: placeholderImage),
+
+                FilterContent(primaryName: "Carmen Suite No. 1", fullName: "Carmen Suite No. 1", afterName: "piece", description: "Bizet's 'Carmen Suite No. 1' features lively and passionate orchestral arrangements. Immerse yourself in the dramatic and expressive world of this beloved suite.", image: placeholderImage)
+]),
+            
+            Filter(filterName: "jazz music", filterContents: [
+                
+                FilterContent(primaryName: "Take Five", fullName: "Take Five", afterName: "song", description: "Dave Brubeck's 'Take Five' is a classic jazz piece known for its unique time signature and memorable saxophone melodies. Let the cool and sophisticated vibes of this iconic composition captivate you.", image: placeholderImage),
+
+                FilterContent(primaryName: "So What", fullName: "So What", afterName: "song", description: "Miles Davis's 'So What' is a cornerstone of modal jazz, featuring smooth improvisation and a laid-back atmosphere. Immerse yourself in the effortless brilliance of this jazz standard.", image: placeholderImage),
+
+                FilterContent(primaryName: "Autumn Leaves", fullName: "Autumn Leaves", afterName: "song", description: "'Autumn Leaves' is a jazz standard with various interpretations. The melancholic and evocative melodies make it a timeless piece in the jazz repertoire. Explore different renditions of this classic.", image: placeholderImage),
+
+                FilterContent(primaryName: "A Love Supreme", fullName: "A Love Supreme", afterName: "album", description: "John Coltrane's 'A Love Supreme' is a groundbreaking jazz album, known for its spiritual and transcendent qualities. Immerse yourself in the profound and innovative sounds of Coltrane's masterpiece.", image: placeholderImage),
+
+                FilterContent(primaryName: "Sing, Sing, Sing", fullName: "Sing, Sing, Sing", afterName: "song", description: "Benny Goodman's 'Sing, Sing, Sing' is a lively and energetic big band jazz piece. Let the infectious rhythm and dynamic arrangements of this classic swing tune lift your spirits.", image: placeholderImage)
+
+            ]),
+            
+            Filter(filterName: "I don't care", filterContents: [
+                
+                FilterContent(primaryName: "Bohemian Rhapsody", fullName: "Bohemian Rhapsody", afterName: "song", description: "Queen's 'Bohemian Rhapsody' is a genre-defying masterpiece, blending rock, ballad, and opera elements. Experience the epic journey of this iconic song that continues to captivate audiences worldwide.", image: placeholderImage),
+
+                FilterContent(primaryName: "Shape of You", fullName: "Shape of You", afterName: "song", description: "Ed Sheeran's 'Shape of You' is a chart-topping pop hit known for its catchy melody and infectious rhythm. Dive into the contemporary sounds of Sheeran's romantic and upbeat track.", image: placeholderImage),
+
+                FilterContent(primaryName: "Billie Jean", fullName: "Billie Jean", afterName: "song", description: "Michael Jackson's 'Billie Jean' is a landmark in pop music, featuring his signature vocals and innovative production. Explore the timeless allure of this classic track that remains an essential part of music history.", image: placeholderImage),
+
+                FilterContent(primaryName: "Blinding Lights", fullName: "Blinding Lights", afterName: "song", description: "The Weeknd's 'Blinding Lights' is a synth-pop anthem known for its retro-futuristic sound. Immerse yourself in the captivating blend of '80s-inspired beats and The Weeknd's soulful vocals.", image: placeholderImage),
+
+                FilterContent(primaryName: "Smooth Operator", fullName: "Smooth Operator", afterName: "song", description: "Sade's 'Smooth Operator' is a smooth jazz and soul classic, characterized by Sade's sultry vocals and sophisticated arrangements. Let the timeless elegance of this song transport you to a world of effortless cool.", image: placeholderImage)
+            ])
+        ]
+        
+        let colorPaletteFilters = [
+            
+            Filter(filterName: "monochrome", filterContents: [
+            
+                FilterContent(primaryName: "Classic Monochrome", fullName: "Classic Monochrome", afterName: "color palette", description: "Embrace the timeless elegance of classic monochrome with this sophisticated palette. Featuring variations of black, gray, and white, it creates a refined and versatile look for any design.", image: placeholderImage),
+
+                FilterContent(primaryName: "Urban Noir", fullName: "Urban Noir", afterName: "color palette", description: "Capture the essence of urban sophistication with this noir-inspired color palette. Deep blacks, grays, and muted whites evoke a sense of mystery and drama, perfect for modern and edgy designs.", image: placeholderImage),
+
+                FilterContent(primaryName: "Moonlit Serenity", fullName: "Moonlit Serenity", afterName: "color palette", description: "Evoke a tranquil night under the moonlight with this serene monochrome palette. Shades of midnight black, soft grays, and silvery whites create a calming and sophisticated atmosphere.", image: placeholderImage),
+
+                FilterContent(primaryName: "Minimalist Chic", fullName: "Minimalist Chic", afterName: "color palette", description: "Achieve a minimalist and chic aesthetic with this monochrome palette. Clean whites, subtle grays, and deep blacks bring a sense of simplicity and modernity to your designs.", image: placeholderImage),
+
+                FilterContent(primaryName: "Eternal Grayscale", fullName: "Eternal Grayscale", afterName: "color palette", description: "Experience the enduring charm of grayscale with this timeless color palette. From light grays to deep blacks, it offers a range of tones for creating classic and versatile designs.", image: placeholderImage)
+            
+            ]),
+            
+            Filter(filterName: "warm tones", filterContents: [
+                
+                FilterContent(primaryName: "Autumn Glow", fullName: "Autumn Glow", afterName: "color palette", description: "Embrace the warmth of autumn with this color palette inspired by falling leaves. Featuring hues of rich orange, golden yellow, deep red, and earthy brown, it radiates the cozy and comforting vibes of the season.", image: placeholderImage),
+
+                FilterContent(primaryName: "Sunset Serenity", fullName: "Sunset Serenity", afterName: "color palette", description: "Capture the tranquil beauty of a sunset with this serene color palette. From warm coral and peach tones to soothing lavender and deep indigo, these colors evoke the peaceful moments of dusk.", image: placeholderImage),
+
+                FilterContent(primaryName: "Golden Hour", fullName: "Golden Hour", afterName: "color palette", description: "Experience the magic of the golden hour with this warm and inviting color palette. Featuring soft shades of amber, burnt sienna, and dusty rose, it brings the warmth and glow of a sun-kissed evening.", image: placeholderImage),
+
+                FilterContent(primaryName: "Spiced Chai Delight", fullName: "Spiced Chai Delight", afterName: "color palette", description: "Savor the cozy warmth of spiced chai with this delightful color palette. From creamy latte and cinnamon spice to deep chocolate and warm taupe, these colors create a comforting atmosphere.", image: placeholderImage),
+
+                FilterContent(primaryName: "Rustic Elegance", fullName: "Rustic Elegance", afterName: "color palette", description: "Infuse a touch of rustic elegance into your designs with this warm color palette. Rich terracotta, goldenrod, olive green, and deep burgundy come together to evoke a sense of refined charm.", image: placeholderImage)
+
+            ]),
+            
+            Filter(filterName: "cold tones", filterContents: [
+                
+                FilterContent(primaryName: "Arctic Breeze", fullName: "Arctic Breeze", afterName: "color palette", description: "Embrace the cool tranquility of the Arctic with this refreshing color palette. Featuring icy blues, frosty greens, and hints of lavender, it evokes the serene beauty of a crisp winter day.", image: placeholderImage),
+
+                FilterContent(primaryName: "Winter Wonderland", fullName: "Winter Wonderland", afterName: "color palette", description: "Step into a winter wonderland with this enchanting color palette. Shades of frosty white, silver, and icy blues create a magical atmosphere reminiscent of snow-covered landscapes.", image: placeholderImage),
+
+                FilterContent(primaryName: "Northern Lights Spectacle", fullName: "Northern Lights Spectacle", afterName: "color palette", description: "Capture the awe-inspiring beauty of the Northern Lights with this mesmerizing color palette. Deep indigo, emerald green, and violet hues dance across the palette, creating a celestial and enchanting feel.", image: placeholderImage),
+
+                FilterContent(primaryName: "Icy Elegance", fullName: "Icy Elegance", afterName: "color palette", description: "Infuse a touch of icy elegance into your designs with this cool color palette. Featuring shades of arctic blue, silver gray, and frosty lavender, it exudes a sense of sophistication and calmness.", image: placeholderImage),
+
+                FilterContent(primaryName: "Frozen Dreams", fullName: "Frozen Dreams", afterName: "color palette", description: "Let your imagination wander into a world of frozen dreams with this ethereal color palette. Soft aqua, lavender, and cool mint create a dreamy and whimsical ambiance.", image: placeholderImage)
+            ]),
+            
+            Filter(filterName: "I don't care", filterContents: [
+                
+                FilterContent(primaryName: "Vibrant Carnival", fullName: "Vibrant Carnival", afterName: "color palette", description: "Infuse your designs with the lively spirit of a carnival. Bold reds, electric blues, and sunny yellows create a vibrant and energetic color palette that's perfect for festive occasions.", image: placeholderImage),
+
+                FilterContent(primaryName: "Mystical Enchantment", fullName: "Mystical Enchantment", afterName: "color palette", description: "Embark on a journey of mystical enchantment with this ethereal color palette. Soft purples, deep blues, and shimmering golds evoke a sense of magic and wonder, adding a touch of fantasy to your designs.", image: placeholderImage),
+
+                FilterContent(primaryName: "Tropical Paradise", fullName: "Tropical Paradise", afterName: "color palette", description: "Escape to a tropical paradise with this refreshing color palette. Lush greens, vibrant blues, and sunset oranges transport you to a sun-drenched oasis, perfect for designs inspired by nature and relaxation.", image: placeholderImage),
+
+                FilterContent(primaryName: "Electric Neon Nights", fullName: "Electric Neon Nights", afterName: "color palette", description: "Illuminate your designs with the electrifying energy of neon lights. Neon pinks, electric blues, and bold yellows create a dynamic and modern color palette that's sure to make a statement.", image: placeholderImage),
+
+                FilterContent(primaryName: "Pastel Dreamscape", fullName: "Pastel Dreamscape", afterName: "color palette", description: "Create a dreamy and soothing atmosphere with this pastel color palette. Soft pinks, calming blues, and minty greens come together to evoke a sense of serenity and tranquility in your designs.", image: placeholderImage)
+
+            ])
+        ]
+        
+        categories = [
+            GeneralCategory(categoryName: "watch", categoryBeforeName: "randomize what to", description: "Let us help you decide what to watch, be it movies, anime, or TV-shows. We've got it all! Try it for yourself.", filters: watchFilters),
+            GeneralCategory(categoryName: "eat", categoryBeforeName: "randomize what to", description: "We will help you make a decision about your next meal. Can't decide? Try our randomizer!", filters: eatFilters),
+            GeneralCategory(categoryName: "cook", categoryBeforeName: "randomize what to", description: "Let's generate some recepies for you!", filters: cookFilters),
+            GeneralCategory(categoryName: "read", categoryBeforeName: "randomize what to read", description: "Let's find some good reads for you!", filters: readFilters),
+            GeneralCategory(categoryName: "activity", categoryBeforeName: "randomize an", description: "Bored? We will give you some ideas for new exciting activities!", filters: activityFilters),
+            GeneralCategory(categoryName: "gift", categoryBeforeName: "randomize what to ", description: "Having trouble coming up with gift ideas? Let us help!", filters: giftFilters),
+            GeneralCategory(categoryName: "listen to ", categoryBeforeName: "randomize what to", description: "Ready to dive into some exciting music? Let's randomize a new find!", filters: listenFilters),
+            GeneralCategory(categoryName: "Color Palette", categoryBeforeName: "randomize a ", description: "Choosing a color palette can be exhausting! Let us help!", filters: colorPaletteFilters)
+        ]
+        
+    }
 }
+
+
+        

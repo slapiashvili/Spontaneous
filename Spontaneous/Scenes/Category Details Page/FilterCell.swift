@@ -7,14 +7,15 @@
 
 import UIKit
 
+
 class FilterCell: UICollectionViewCell {
-    var filter: String? {
+    var filter: Filter? {
         didSet {
-            textLabel.text = filter
+            updateUI()
         }
     }
 
-    private var textLabel: UILabel = {
+    private var filterLabel: UILabel = {
         let label = UILabel()
         label.textColor = .black
         label.textAlignment = .center
@@ -31,17 +32,24 @@ class FilterCell: UICollectionViewCell {
     }
 
     private func setupSubviews() {
-        addSubview(textLabel)
-        textLabel.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(filterLabel)
+        filterLabel.translatesAutoresizingMaskIntoConstraints = false
         
         contentView.layer.cornerRadius = 10
         contentView.layer.masksToBounds = true
         
         NSLayoutConstraint.activate([
-            textLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            textLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            textLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            textLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)
+            filterLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            filterLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            filterLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            filterLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)
         ])
+    }
+
+    private func updateUI() {
+        guard let filter = filter else {
+            return
+        }
+        filterLabel.text = filter.filterName
     }
 }
