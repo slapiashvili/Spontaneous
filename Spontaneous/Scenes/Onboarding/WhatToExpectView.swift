@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct WhatToExpectView: View {
+    
     var body: some View {
         VStack {
             Text("What to Expect")
