@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct WelcomeView: View {
+    
     let images: [Image] = (1...10).map { String(format: "girl%01d", $0) }.map { Image($0) }
     @ObservedObject private var counter = Counter(interval: 0.15)
 

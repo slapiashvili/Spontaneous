@@ -21,8 +21,9 @@ import UIKit
 class MainPageViewController: UIViewController {
 
     var userNickname: String?
-    var categoryViewModel = CategoryViewModel()
-
+      var categoryViewModel = CategoryViewModel()
+      var nicknameViewModel = NicknameViewModel.shared 
+    
     let welcomeLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
