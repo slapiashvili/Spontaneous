@@ -27,7 +27,7 @@ struct HowItWorksView: ViewControllable {
                 decisionMakingAnimation
                 Spacer()
             }
-            additionalContent
+            additionalButton
         }
     }
 
@@ -52,37 +52,24 @@ struct HowItWorksView: ViewControllable {
             .frame(width: UIScreen.main.bounds.width * 2/3, height: UIScreen.main.bounds.height * 2/5)
     }
 
-    private var additionalContent: some View {
-        HStack {
-            additionalImage
-            additionalButton
-        }
-    }
 
-    private var additionalImage: some View {
-        Image("lookingUpGirl")
-            .resizable()
-            .aspectRatio(contentMode: .fill)
-            .frame(width: UIScreen.main.bounds.width * 2/5, height: UIScreen.main.bounds.height * 2/5)
-            .offset(x: UIScreen.main.bounds.width * 3/7, y: UIScreen.main.bounds.height * 1/6)
-    }
 
     private var additionalButton: some View {
         VStack {
-            Spacer()
-            Spacer()
-            Spacer()
+            Spacer(minLength: 505)
             Button("Got it!") {
                 navigationCoordinator.pushToNicknamePage()
             }
-            .font(Font.custom("Jura", size: 16))
-            .foregroundColor(.neoBackground)
+            .font(Font.custom("Jura", size: 16).bold())
+            .foregroundColor(.neoTextOpposite)
             .padding()
+            .frame(width: UIScreen.main.bounds.width * 2/3 - 5, height: 60)
             .background(
-                RoundedRectangle(cornerRadius: 12)
-                    .foregroundColor(.neoTextOpposite)
+                RoundedRectangle(cornerRadius: 20)
+                    .stroke(Color.neoTextOpposite, lineWidth: 2)
             )
             Spacer()
         }
     }
+
 }
