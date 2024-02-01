@@ -11,8 +11,10 @@ struct DecisionMakingAnimationView: View {
     @State private var selectedRectangleIndex = 0
 
     let rectangleTexts = ["Choice 1", "Choice 2", "Choice 3", "Choice 4"]
-    let rectangleColors: [Color] = [.neoPrimaryButtonColorGreen, .neoPrimaryButtonColorGreen, .neoPrimaryButtonColorGreen, .neoPrimaryButtonColorGreen]
-
+    let rectangleColors: [Color] = [.neoTextOpposite, .neoTextOpposite, .neoTextOpposite, .neoTextOpposite]
+    
+    // MARK: - Body
+    
     var body: some View {
         VStack(spacing: 20) {
             ForEach(0..<4) { index in
@@ -20,6 +22,8 @@ struct DecisionMakingAnimationView: View {
                     RoundedRectangle(cornerRadius: 20)
                         .foregroundColor(index == selectedRectangleIndex ? .red : rectangleColors[index])
                         .overlay(Text(rectangleTexts[index]))
+                        .font(Font.custom("Jura", size: 16))
+                        .foregroundColor(.neoBackground)
                         .scaleEffect(index == selectedRectangleIndex ? 1.1 : 1.0)
                 }
             }
