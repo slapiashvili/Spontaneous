@@ -20,11 +20,16 @@ struct DecisionMakingAnimationView: View {
             ForEach(0..<4) { index in
                 HStack {
                     RoundedRectangle(cornerRadius: 20)
-                        .foregroundColor(index == selectedRectangleIndex ? .red : rectangleColors[index])
-                        .overlay(Text(rectangleTexts[index]))
-                        .font(Font.custom("Jura", size: 16))
+                        .foregroundColor(index == selectedRectangleIndex ? .neoAlwaysGreen : rectangleColors[index])
+                        .overlay(
+                            Text(rectangleTexts[index])
+                              .foregroundColor(index == selectedRectangleIndex ? .neoTextOpposite : .neoBackground)
+                              .bold()
+                              .font(Font.custom("Jura", size: index == selectedRectangleIndex ? 20 : 16))
+                        )
                         .foregroundColor(.neoBackground)
                         .scaleEffect(index == selectedRectangleIndex ? 1.1 : 1.0)
+                    
                 }
             }
         }
