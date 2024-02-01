@@ -25,7 +25,7 @@ struct WelcomeView: View {
                 }
 
             Text("We make decision-making easier")
-                .font(.title2)
+                .font(Font.custom("Jura", size: 20, relativeTo: .title2))
                 .foregroundColor(.neoTextOpposite)
                 .multilineTextAlignment(.center)
                 .padding()

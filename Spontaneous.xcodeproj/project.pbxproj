@@ -27,6 +27,7 @@
 		3CA2012C2B67D67600823386 /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA2012B2B67D67600823386 /* FilterCell.swift */; };
 		3CA201302B693D8000823386 /* RandomizedResultPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA2012F2B693D8000823386 /* RandomizedResultPage.swift */; };
 		3CA201342B6A50BE00823386 /* NicknameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA201332B6A50BE00823386 /* NicknameViewModel.swift */; };
+		3CA201422B6BF17F00823386 /* Jura-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3CA201412B6BF17F00823386 /* Jura-VariableFont_wght.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		3CA2012B2B67D67600823386 /* FilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
 		3CA2012F2B693D8000823386 /* RandomizedResultPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomizedResultPage.swift; sourceTree = "<group>"; };
 		3CA201332B6A50BE00823386 /* NicknameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NicknameViewModel.swift; sourceTree = "<group>"; };
+		3CA201412B6BF17F00823386 /* Jura-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Jura-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,8 @@
 		3CA200F02B5F73CC00823386 /* Spontaneous */ = {
 			isa = PBXGroup;
 			children = (
+				3CA201432B6BF18800823386 /* Fonts */,
+				3CA201412B6BF17F00823386 /* Jura-VariableFont_wght.ttf */,
 				3CA201322B69456200823386 /* Model */,
 				3CA2011A2B5F8BD000823386 /* Components */,
 				3CA2010F2B5F7B9F00823386 /* Navigation */,
@@ -189,6 +193,13 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		3CA201432B6BF18800823386 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -249,6 +260,7 @@
 			files = (
 				3CA200FE2B5F73CE00823386 /* LaunchScreen.storyboard in Resources */,
 				3CA200FB2B5F73CE00823386 /* Assets.xcassets in Resources */,
+				3CA201422B6BF17F00823386 /* Jura-VariableFont_wght.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

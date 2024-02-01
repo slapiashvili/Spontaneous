@@ -18,6 +18,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         window = UIWindow(windowScene: windowScene)
         window?.rootViewController = UINavigationController(rootViewController: view.viewController)
+        
+        if let fontPath = Bundle.main.path(forResource: "Jura-VariableFont_wght", ofType: "ttf"),
+           let fontData = NSData(contentsOfFile: fontPath),
+           let dataProvider = CGDataProvider(data: fontData),
+           let font = CGFont(dataProvider) {
+            CTFontManagerRegisterGraphicsFont(font, nil)
+        } else {
+            print("Failed to load font.")
+        }
+        
         window?.makeKeyAndVisible()
     }
 }

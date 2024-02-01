@@ -29,7 +29,7 @@ class MainPageViewController: UIViewController {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .neoTextOpposite
         label.textAlignment = .center
-        label.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        label.font = UIFont(name: "Jura", size: 20)
         return label
     }()
     
