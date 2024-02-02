@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct NicknameViewController: ViewControllable {
     // MARK: - Properties
 
@@ -28,7 +27,10 @@ struct NicknameViewController: ViewControllable {
             VStack {
                 topZStack()
                 Text("or")
+                    .font(.custom("Jura", size: 20))
+                    .bold()
                     .padding()
+                
                 bottomZStack()
             }
         }
@@ -48,29 +50,20 @@ struct NicknameViewController: ViewControllable {
             RoundedRectangle(cornerRadius: 15)
                 .frame(width: generalWidthIndicator, height: generalHeightIndicator)
                 .background(Color.neoBackground)
-
+            
             VStack(alignment: .center, spacing: 20) {
                 Text("Please enter a nickname")
-                    .foregroundColor(.neoBackground)
-                    .frame(width: generalWidthIndicator - 40)
-
-                TextField("Start typing", text: $viewModel.userNickname)
-                    .textFieldStyle(PlainTextFieldStyle())
-                    .padding()
-                    .frame(width: generalWidthIndicator - 20, height: generalHeightIndicator * 1/4)
-                    .border(Color.neoBackground, width: 2)
-                    .foregroundColor(.neoBackground)
-                    .accentColor(.white)
-                    .cornerRadius(8)
-
-                Button("Confirm") {
-                    confirmNickname()
+                    .applyNeoRegularTextStyle()
+                VStack {
+                    TextField("Start typing", text: $viewModel.userNickname)
+                        .applyNeoTextFieldStyle()
+                        .frame(width: generalWidthIndicator - 20)
+                    
+                    Button("Confirm") {
+                        confirmNickname()
+                    }
+                    .applyNeoRegularButtonStyle()
                 }
-                .frame(width: generalWidthIndicator - 20, height: generalHeightIndicator * 1/4)
-                .buttonStyle(PlainButtonStyle())
-                .background(Color.neoBackground)
-                .foregroundColor(Color.neoTextOpposite)
-                .cornerRadius(4)
             }
         }
     }
@@ -83,19 +76,14 @@ struct NicknameViewController: ViewControllable {
 
             VStack (alignment: .center, spacing: 40) {
                 Text("Let us randomize a nickname for you")
-                    .foregroundColor(.neoBackground)
-                    .frame(width: generalWidthIndicator - 40)
-                    .multilineTextAlignment(.center)
+                    .applyNeoRegularTextStyle()
+
                     .padding(.bottom)
 
                 Button("Randomize") {
                     viewModel.randomizeNickname()
                 }
-                .frame(width: generalWidthIndicator - 20, height: generalHeightIndicator * 1/4)
-                .buttonStyle(PlainButtonStyle())
-                .background(Color.neoBackground)
-                .foregroundColor(Color.neoTextOpposite)
-                .cornerRadius(4)
+                .applyNeoRandomizeButtonStyle()
             }
         }
     }
