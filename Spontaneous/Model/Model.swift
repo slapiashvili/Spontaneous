@@ -12,6 +12,7 @@ struct GeneralCategory {
     var categoryBeforeName: String
     var description: String
     var filters: [Filter]
+    var symbolName: String?
 }
 
 struct Filter {

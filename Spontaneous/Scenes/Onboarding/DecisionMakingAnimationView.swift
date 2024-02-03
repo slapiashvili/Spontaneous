@@ -23,7 +23,7 @@ struct DecisionMakingAnimationView: View {
                         .foregroundColor(index == selectedRectangleIndex ? .neoAlwaysGreen : rectangleColors[index])
                         .overlay(
                             Text(rectangleTexts[index])
-                              .foregroundColor(index == selectedRectangleIndex ? .neoTextOpposite : .neoBackground)
+                              .foregroundColor(index == selectedRectangleIndex ? .neoTextField : .neoBackground)
                               .bold()
                               .font(Font.custom("Jura", size: index == selectedRectangleIndex ? 20 : 16))
                         )
