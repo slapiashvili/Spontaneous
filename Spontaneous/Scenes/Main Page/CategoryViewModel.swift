@@ -598,14 +598,14 @@ struct CategoryViewModel {
         ]
         
         categories = [
-                GeneralCategory(categoryName: "watch", categoryBeforeName: "randomize what to", description: "Let us help you decide what to watch, be it movies, anime, or TV-shows. We've got it all! Try it for yourself.", filters: watchFilters, symbolName: "sparkles.tv"),
-                GeneralCategory(categoryName: "eat", categoryBeforeName: "randomize what to", description: "We will help you make a decision about your next meal. Can't decide? Try our randomizer!", filters: eatFilters, symbolName: "fork.knife"),
-                GeneralCategory(categoryName: "cook", categoryBeforeName: "randomize what to", description: "Let's generate some recipes for you!", filters: cookFilters, symbolName: "stove.fill"),
-                GeneralCategory(categoryName: "read", categoryBeforeName: "randomize what to read", description: "Let's find some good reads for you!", filters: readFilters, symbolName: "book.pages"),
-                GeneralCategory(categoryName: "activity", categoryBeforeName: "randomize an", description: "Bored? We will give you some ideas for new exciting activities!", filters: activityFilters, symbolName: "figure.badminton"),
-                GeneralCategory(categoryName: "gift", categoryBeforeName: "randomize what to", description: "Having trouble coming up with gift ideas? Let us help!", filters: giftFilters, symbolName: "app.gift.fill"),
-                GeneralCategory(categoryName: "listen to", categoryBeforeName: "randomize what to", description: "Ready to dive into some exciting music? Let's randomize a new find!", filters: listenFilters, symbolName: "music.quarternote.3"),
-                GeneralCategory(categoryName: "Color Palette", categoryBeforeName: "randomize a", description: "Choosing a color palette can be exhausting! Let us help!", filters: colorPaletteFilters, symbolName: "paintbrush.fill")
+            GeneralCategory(categoryName: "watch", categoryBeforeName: "randomize what to", description: "Let us help you decide what to watch, be it movies, anime, or TV-shows. We've got it all! Try it for yourself.", filters: watchFilters, symbolName: "watch.symbol"),
+            GeneralCategory(categoryName: "eat", categoryBeforeName: "randomize what to", description: "We will help you make a decision about your next meal. Can't decide? Try our randomizer!", filters: eatFilters, symbolName: "eat.symbol"),
+            GeneralCategory(categoryName: "cook", categoryBeforeName: "randomize what to", description: "Let's generate some recipes for you!", filters: cookFilters, symbolName: "cook.symbol"),
+            GeneralCategory(categoryName: "read", categoryBeforeName: "randomize what to read", description: "Let's find some good reads for you!", filters: readFilters, symbolName: "read.symbol"),
+            GeneralCategory(categoryName: "activity", categoryBeforeName: "randomize an", description: "Bored? We will give you some ideas for new exciting activities!", filters: activityFilters, symbolName: "activity.symbol"),
+            GeneralCategory(categoryName: "gift", categoryBeforeName: "randomize what to", description: "Having trouble coming up with gift ideas? Let us help!", filters: giftFilters, symbolName: "gift.symbol"),
+            GeneralCategory(categoryName: "listen to", categoryBeforeName: "randomize what to", description: "Ready to dive into some exciting music? Let's randomize a new find!", filters: listenFilters, symbolName: "listen.symbol"),
+            GeneralCategory(categoryName: "Color Palette", categoryBeforeName: "randomize a", description: "Choosing a color palette can be exhausting! Let us help!", filters: colorPaletteFilters, symbolName: "colorpalette.symbol")
         ]
     }
 }
