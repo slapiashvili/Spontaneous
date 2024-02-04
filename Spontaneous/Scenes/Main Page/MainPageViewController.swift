@@ -205,6 +205,8 @@ extension MainPageViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - UICollectionViewDelegate
 
 class CustomCollectionViewCell: UICollectionViewCell {
+    
+    
     let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -215,76 +217,79 @@ class CustomCollectionViewCell: UICollectionViewCell {
     let roundedView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .neoTextOpposite
+        view.backgroundColor = .neoBackground
         view.layer.cornerRadius = 10
+        view.layer.borderWidth = 2
+        view.layer.borderColor = UIColor.neoAlwaysGreen.cgColor
+        return view
+    }()
+     
+     override init(frame: CGRect) {
+         super.init(frame: frame)
+         setupViews()
+     }
+     
+     required init?(coder: NSCoder) {
+         fatalError("init(coder:) has not been implemented")
+     }
+     
+    let innerRoundedView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .red
+        view.layer.cornerRadius = 8
+        
         return view
     }()
 
-    let stackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.alignment = .center
-        stackView.distribution = .fillEqually
-        return stackView
-    }()
-
-    let beforeNameLabel: UILabel = {
+    let label: UILabel = {
         let label = UILabel()
-        label.textColor = .neoBackground
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .white
         label.textAlignment = .center
-        label.font = UIFont(name: "Jura", size: 15)
-        label.numberOfLines = 2
+        label.text = "Hello"
         return label
     }()
-
-    let nameLabel: UILabel = {
+    
+    let anotherLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .neoBackground
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .white
         label.textAlignment = .center
-        label.font = UIFont(name: "Jura", size: 35)
-        label.numberOfLines = 2
+        label.text = "YALLLL"
         return label
     }()
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupViews()
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
 
     private func setupViews() {
         contentView.addSubview(roundedView)
         contentView.addSubview(imageView)
-        roundedView.addSubview(stackView)
-        stackView.addArrangedSubview(beforeNameLabel)
-        stackView.addArrangedSubview(nameLabel)
+        roundedView.addSubview(innerRoundedView)
+        innerRoundedView.addSubview(label)
+        innerRoundedView.addSubview(anotherLabel)
 
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            imageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.5),
-        ])
+            imageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.7),
 
-        NSLayoutConstraint.activate([
-            roundedView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -40),
+            roundedView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -80),
             roundedView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             roundedView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             roundedView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-        ])
 
-        // Constraints for the stack view
-        NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: roundedView.topAnchor, constant: 5),
-            stackView.leadingAnchor.constraint(equalTo: roundedView.leadingAnchor, constant: 10),
-            stackView.trailingAnchor.constraint(equalTo: roundedView.trailingAnchor, constant: -10),
-            stackView.bottomAnchor.constraint(equalTo: roundedView.bottomAnchor, constant: -5),
+            innerRoundedView.centerXAnchor.constraint(equalTo: roundedView.centerXAnchor),
+            innerRoundedView.centerYAnchor.constraint(equalTo: roundedView.centerYAnchor),
+            innerRoundedView.widthAnchor.constraint(equalTo: roundedView.widthAnchor, multiplier: 0.8),
+            innerRoundedView.heightAnchor.constraint(equalTo: roundedView.heightAnchor, multiplier: 0.8),
+            label.centerXAnchor.constraint(equalTo: innerRoundedView.centerXAnchor),
+            label.topAnchor.constraint(equalTo: innerRoundedView.topAnchor, constant: 40),
+            anotherLabel.centerXAnchor.constraint(equalTo: innerRoundedView.centerXAnchor),
+            anotherLabel.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 2)
+            
         ])
     }
+
 
 
     func configureCell(category: GeneralCategory) {
@@ -293,7 +298,6 @@ class CustomCollectionViewCell: UICollectionViewCell {
             imageView.image = symbolImage
         }
 
-        beforeNameLabel.text = category.categoryBeforeName
-        nameLabel.text = category.categoryName
     }
+
 }
