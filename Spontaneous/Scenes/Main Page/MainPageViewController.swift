@@ -15,7 +15,6 @@
 //TODO: move some logic to the viewModel
 //TODO: make sure the searchbar is working
 
-
 import UIKit
 
 class MainPageViewController: UIViewController {
@@ -77,7 +76,7 @@ class MainPageViewController: UIViewController {
         return collectionView
     }()
 
-    let cellIdentifier = "Cell"
+    let cellIdentifier = "CustomCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,7 +104,7 @@ class MainPageViewController: UIViewController {
 
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellIdentifier)
+        collectionView.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: cellIdentifier)
 
         view.addSubview(collectionView)
 
@@ -168,54 +167,17 @@ extension MainPageViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath)
-         cell.backgroundColor = .neoTextOpposite
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! CustomCollectionViewCell
 
-         let category = categoryViewModel.categories[indexPath.item]
+        let category = categoryViewModel.categories[indexPath.item]
 
-         let beforeNameLabel = UILabel()
-         beforeNameLabel.text = category.categoryBeforeName
-         beforeNameLabel.textColor = .neoBackground
-         beforeNameLabel.textAlignment = .center
-         beforeNameLabel.numberOfLines = 2
-         beforeNameLabel.font = UIFont(name: "Jura", size: 15)
-         beforeNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        if let symbolName = category.symbolName {
+            let symbolImage = UIImage(named: symbolName)
+            cell.imageView.image = symbolImage
+        }
 
-         let symbolImageView = UIImageView()
-         symbolImageView.translatesAutoresizingMaskIntoConstraints = false
-         symbolImageView.tintColor = .neoBackground
-
-         if let symbolName = category.symbolName {
-             let symbolImage = UIImage(systemName: symbolName)
-             symbolImageView.image = symbolImage
-         }
-
-         let nameLabel = UILabel()
-         nameLabel.text = category.categoryName
-         nameLabel.textColor = .neoBackground
-         nameLabel.textAlignment = .center
-         nameLabel.font = UIFont(name: "Jura", size: 35)
-         nameLabel.numberOfLines = 2
-         nameLabel.translatesAutoresizingMaskIntoConstraints = false
-
-         let stackView = UIStackView(arrangedSubviews: [beforeNameLabel, symbolImageView, nameLabel])
-         stackView.axis = .vertical
-         stackView.alignment = .center
-         stackView.spacing = 5
-         stackView.translatesAutoresizingMaskIntoConstraints = false
-         cell.contentView.addSubview(stackView)
-         cell.layer.cornerRadius = 20
-         cell.layer.masksToBounds = true
-
-         NSLayoutConstraint.activate([
-             stackView.topAnchor.constraint(equalTo: cell.contentView.topAnchor, constant: 10),
-             stackView.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor, constant: 5),
-             stackView.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -5),
-             stackView.bottomAnchor.constraint(equalTo: cell.contentView.bottomAnchor, constant: -30)
-         ])
-
-         return cell
-     }
+        return cell
+    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
@@ -223,7 +185,10 @@ extension MainPageViewController: UICollectionViewDataSource {
 extension MainPageViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellWidth = (collectionView.bounds.width - 25) / 2
-        let cellHeight = collectionView.bounds.height / 4
+        let cellHeight = view.bounds.height / 3
+        let symbolHeight = (2 * cellHeight) / 3
+        let roundedRectHeight = cellHeight / 3
+
         return CGSize(width: cellWidth, height: cellHeight)
     }
 
@@ -232,22 +197,107 @@ extension MainPageViewController: UICollectionViewDelegateFlowLayout {
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 25
+        return 20
     }
 }
 
+
 // MARK: - UICollectionViewDelegate
 
-extension MainPageViewController: UICollectionViewDelegate {
+class CustomCollectionViewCell: UICollectionViewCell {
+    
+    
+    let imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
 
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedCategory = categoryViewModel.categories[indexPath.item]
-        navigateToCategoryDetail(category: selectedCategory)
+    let roundedView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .neoBackground
+        view.layer.cornerRadius = 10
+        view.layer.borderWidth = 2
+        view.layer.borderColor = UIColor.neoAlwaysGreen.cgColor
+        return view
+    }()
+     
+     override init(frame: CGRect) {
+         super.init(frame: frame)
+         setupViews()
+     }
+     
+     required init?(coder: NSCoder) {
+         fatalError("init(coder:) has not been implemented")
+     }
+     
+    let innerRoundedView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .red
+        view.layer.cornerRadius = 8
+        
+        return view
+    }()
+
+    let label: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .white
+        label.textAlignment = .center
+        label.text = "Hello"
+        return label
+    }()
+    
+    let anotherLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .white
+        label.textAlignment = .center
+        label.text = "YALLLL"
+        return label
+    }()
+
+    private func setupViews() {
+        contentView.addSubview(roundedView)
+        contentView.addSubview(imageView)
+        roundedView.addSubview(innerRoundedView)
+        innerRoundedView.addSubview(label)
+        innerRoundedView.addSubview(anotherLabel)
+
+        NSLayoutConstraint.activate([
+            imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            imageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.7),
+
+            roundedView.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: -80),
+            roundedView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            roundedView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            roundedView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+
+            innerRoundedView.centerXAnchor.constraint(equalTo: roundedView.centerXAnchor),
+            innerRoundedView.centerYAnchor.constraint(equalTo: roundedView.centerYAnchor),
+            innerRoundedView.widthAnchor.constraint(equalTo: roundedView.widthAnchor, multiplier: 0.8),
+            innerRoundedView.heightAnchor.constraint(equalTo: roundedView.heightAnchor, multiplier: 0.8),
+            label.centerXAnchor.constraint(equalTo: innerRoundedView.centerXAnchor),
+            label.topAnchor.constraint(equalTo: innerRoundedView.topAnchor, constant: 40),
+            anotherLabel.centerXAnchor.constraint(equalTo: innerRoundedView.centerXAnchor),
+            anotherLabel.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 2)
+            
+        ])
     }
 
-    private func navigateToCategoryDetail(category: GeneralCategory) {
-        let categoryDetailVC = CategoryDetailViewController(category: category, categoryViewModel: CategoryViewModel())
 
-        navigationController?.pushViewController(categoryDetailVC, animated: true)
+
+    func configureCell(category: GeneralCategory) {
+        if let symbolName = category.symbolName {
+            let symbolImage = UIImage(named: symbolName)
+            imageView.image = symbolImage
+        }
+
     }
+
 }
