@@ -13,14 +13,13 @@
 import UIKit
 
 class MainPageViewController: UIViewController {
-
+    
+    private var imageLoader: ImageLoader?
     var userNickname: String?
     var filteredCategories: [GeneralCategory] = []
     var categoryViewModel = CategoryViewModel()
     var nicknameViewModel = NicknameViewModel.shared
-    var girlImages: [UIImage] = []
-    var imageIndex = 0
-    var timer: Timer?
+
 
     let girlImageView: UIImageView = {
         let imageView = UIImageView()
@@ -79,18 +78,10 @@ class MainPageViewController: UIViewController {
         self.navigationItem.hidesBackButton = true
         view.backgroundColor = .neoBackground
         view.addSubview(girlImageView)
+        imageLoader = ImageLoader(girlImageView: girlImageView)
 
-        for i in 1...10 {
-            if let image = UIImage(named: "gggirl\(i)") {
-                girlImages.append(image)
-            }
-        }
         searchTextField.delegate = self
         searchTextField.autocorrectionType = .no
-
-        girlImageView.image = girlImages.first
-
-        timer = Timer.scheduledTimer(timeInterval: 0.12, target: self, selector: #selector(updateGirlImage), userInfo: nil, repeats: true)
 
         view.addSubview(welcomeLabel)
         welcomeLabel.text = "Hello, \(userNickname ?? "")"
@@ -107,11 +98,11 @@ class MainPageViewController: UIViewController {
         view.addSubview(collectionView)
 
         setupConstraints()
-
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-            self.timer?.invalidate()
-            self.girlImageView.image = self.girlImages[2]
+            self.imageLoader?.stopAndSetImage(index: 2)
         }
+
     }
 
     private func setupConstraints() {
@@ -143,17 +134,6 @@ class MainPageViewController: UIViewController {
         ])
     }
 
-    @objc func updateGirlImage() {
-        if imageIndex == girlImages.count * 3 {
-            timer?.invalidate()
-        } else {
-            UIView.transition(with: girlImageView, duration: 0.5, options: .transitionCrossDissolve, animations: {
-                self.girlImageView.image = self.girlImages[self.imageIndex % self.girlImages.count]
-            }, completion: { _ in
-                self.imageIndex += 1
-            })
-        }
-    }
 }
 
 
@@ -376,5 +356,4 @@ extension MainPageViewController: UITextFieldDelegate {
         }
         collectionView.reloadData()
     }
-
 }
