@@ -9,19 +9,15 @@ import UIKit
 
 class CustomCollectionViewCell: UICollectionViewCell {
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupViews()
-        backgroundColor = .neoBackground
-    }
-    
-    var imageView: UIImageView = {
+    // MARK: - Properties
+
+    let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-    
-    private var roundedView: UIView = {
+
+    private let roundedView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .neoBackground
@@ -30,15 +26,15 @@ class CustomCollectionViewCell: UICollectionViewCell {
         view.layer.borderColor = UIColor.neoAlwaysGreen.cgColor
         return view
     }()
-    
-    private var innerRoundedView: UIView = {
+
+    private let innerRoundedView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 8
         return view
     }()
-    
-    private var label: UILabel = {
+
+    private let label: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .neoTextOpposite
@@ -47,8 +43,8 @@ class CustomCollectionViewCell: UICollectionViewCell {
         label.font = UIFont(name: "Jura", size: 16)
         return label
     }()
-    
-    private var anotherLabel: UILabel = {
+
+    private let anotherLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .neoTextOpposite
@@ -56,8 +52,8 @@ class CustomCollectionViewCell: UICollectionViewCell {
         label.font = UIFont(name: "Jura", size: 16)
         return label
     }()
-    
-    private var nameLabel: UILabel = {
+
+    private let nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .neoTextOpposite
@@ -65,10 +61,20 @@ class CustomCollectionViewCell: UICollectionViewCell {
         label.font = UIFont(name: "Jura", size: 27)
         return label
     }()
-    
+
+    // MARK: - Init
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupViews()
+        backgroundColor = .neoBackground
+    }
+
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    // MARK: - Setup
 
     private func setupViews() {
         contentView.addSubview(roundedView)
@@ -77,6 +83,11 @@ class CustomCollectionViewCell: UICollectionViewCell {
         innerRoundedView.addSubview(label)
         innerRoundedView.addSubview(anotherLabel)
         innerRoundedView.addSubview(nameLabel)
+        setupConstraints()
+    }
+    
+    
+        private func setupConstraints() {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         roundedView.translatesAutoresizingMaskIntoConstraints = false
         innerRoundedView.translatesAutoresizingMaskIntoConstraints = false
@@ -109,24 +120,31 @@ class CustomCollectionViewCell: UICollectionViewCell {
         ])
     }
 
+    // MARK: - Configuration
+
     func configureCell(category: GeneralCategory, searchText: String?) {
+        setImage(for: category)
+        anotherLabel.text = category.categoryBeforeName
+        nameLabel.text = category.categoryName
+        updateVisibility(for: searchText)
+    }
+
+    private func setImage(for category: GeneralCategory) {
         if let symbolName = category.symbolName {
             let symbolImage = UIImage(named: symbolName)
             imageView.image = symbolImage
         }
+    }
 
-        anotherLabel.text = category.categoryBeforeName
-        nameLabel.text = category.categoryName
-
-        if let searchText = searchText?.lowercased(), !searchText.isEmpty {
-            if nameLabel.text?.lowercased().contains(searchText) == true ||
-                anotherLabel.text?.lowercased().contains(searchText) == true {
-                contentView.isHidden = false
-            } else {
-                contentView.isHidden = true
-            }
-        } else {
+    private func updateVisibility(for searchText: String?) {
+        guard let searchText = searchText?.lowercased(), !searchText.isEmpty else {
             contentView.isHidden = false
+            return
         }
+
+        let containsText = nameLabel.text?.lowercased().contains(searchText) == true ||
+                           anotherLabel.text?.lowercased().contains(searchText) == true
+
+        contentView.isHidden = !containsText
     }
 }
