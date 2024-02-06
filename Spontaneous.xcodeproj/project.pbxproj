@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C4EEBB22B723CB0001A8AF5 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4EEBB12B723CB0001A8AF5 /* SearchBar.swift */; };
 		3CA200F22B5F73CC00823386 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA200F12B5F73CC00823386 /* AppDelegate.swift */; };
 		3CA200F42B5F73CC00823386 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA200F32B5F73CC00823386 /* SceneDelegate.swift */; };
 		3CA200FB2B5F73CE00823386 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CA200FA2B5F73CE00823386 /* Assets.xcassets */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C4EEBB12B723CB0001A8AF5 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		3CA200EE2B5F73CC00823386 /* Spontaneous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spontaneous.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CA200F12B5F73CC00823386 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3CA200F32B5F73CC00823386 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				3CA201172B5F86A900823386 /* MainPageViewController.swift */,
+				3C4EEBB12B723CB0001A8AF5 /* SearchBar.swift */,
 				3CA201242B679E9600823386 /* CategoryViewModel.swift */,
 			);
 			path = "Main Page";
@@ -286,6 +289,7 @@
 				3CA201142B5F7D7200823386 /* WhatToExpectView.swift in Sources */,
 				3CA200F42B5F73CC00823386 /* SceneDelegate.swift in Sources */,
 				3CA201302B693D8000823386 /* RandomizedResultPage.swift in Sources */,
+				3C4EEBB22B723CB0001A8AF5 /* SearchBar.swift in Sources */,
 				3CA201122B5F7D0C00823386 /* HowItWorksView.swift in Sources */,
 				3CA2011C2B5F8BDD00823386 /* ApplyStyles.swift in Sources */,
 				3CA2010C2B5F7AF100823386 /* WelcomeView.swift in Sources */,

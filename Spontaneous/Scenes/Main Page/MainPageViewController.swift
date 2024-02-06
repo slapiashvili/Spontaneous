@@ -6,20 +6,16 @@
 //
 
 //TODO: add marks
-//TODO: fix UI
-//TODO: change the colors
-//TODO: add searchbar logic
 //TODO: better oranize the code: make sure to use setupviews
 //TODO: make sure the constraints are dynamic
-//TODO: add the other categories also
 //TODO: move some logic to the viewModel
-//TODO: make sure the searchbar is working
 
 import UIKit
 
 class MainPageViewController: UIViewController {
 
     var userNickname: String?
+    var filteredCategories: [GeneralCategory] = []
     var categoryViewModel = CategoryViewModel()
     var nicknameViewModel = NicknameViewModel.shared
     var girlImages: [UIImage] = []
@@ -89,6 +85,8 @@ class MainPageViewController: UIViewController {
                 girlImages.append(image)
             }
         }
+        searchTextField.delegate = self
+        searchTextField.autocorrectionType = .no
 
         girlImageView.image = girlImages.first
 
@@ -163,13 +161,20 @@ class MainPageViewController: UIViewController {
 
 extension MainPageViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categoryViewModel.categories.count
+        return searchTextField.text?.isEmpty == false ? filteredCategories.count : categoryViewModel.categories.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! CustomCollectionViewCell
 
-        let category = categoryViewModel.categories[indexPath.item]
+        let category: GeneralCategory
+        if searchTextField.text?.isEmpty == false {
+            category = filteredCategories[indexPath.item]
+        } else {
+            category = categoryViewModel.categories[indexPath.item]
+        }
+
+        cell.configureCell(category: category, searchText: searchTextField.text)
 
         if let symbolName = category.symbolName {
             let symbolImage = UIImage(named: symbolName)
@@ -213,7 +218,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-
+    
     let roundedView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -223,40 +228,51 @@ class CustomCollectionViewCell: UICollectionViewCell {
         view.layer.borderColor = UIColor.neoAlwaysGreen.cgColor
         return view
     }()
-     
-     override init(frame: CGRect) {
-         super.init(frame: frame)
-         setupViews()
-     }
-     
-     required init?(coder: NSCoder) {
-         fatalError("init(coder:) has not been implemented")
-     }
-     
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupViews()
+        backgroundColor = .neoBackground
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     let innerRoundedView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .red
         view.layer.cornerRadius = 8
         
         return view
     }()
-
+    
     let label: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .white
+        label.textColor = .neoTextOpposite
         label.textAlignment = .center
-        label.text = "Hello"
+        label.text = "randomize"
+        label.font = UIFont(name: "Jura", size: 16)
         return label
     }()
     
     let anotherLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .white
+        label.textColor = .neoTextOpposite
         label.textAlignment = .center
-        label.text = "YALLLL"
+        label.font = UIFont(name: "Jura", size: 16)
+        return label
+
+    }()
+    
+    let nameLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textColor = .neoTextOpposite
+        label.textAlignment = .center
+        label.font = UIFont(name: "Jura", size: 27)
         return label
     }()
 
@@ -266,6 +282,8 @@ class CustomCollectionViewCell: UICollectionViewCell {
         roundedView.addSubview(innerRoundedView)
         innerRoundedView.addSubview(label)
         innerRoundedView.addSubview(anotherLabel)
+        innerRoundedView.addSubview(nameLabel)
+
 
         NSLayoutConstraint.activate([
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
@@ -282,22 +300,81 @@ class CustomCollectionViewCell: UICollectionViewCell {
             innerRoundedView.centerYAnchor.constraint(equalTo: roundedView.centerYAnchor),
             innerRoundedView.widthAnchor.constraint(equalTo: roundedView.widthAnchor, multiplier: 0.8),
             innerRoundedView.heightAnchor.constraint(equalTo: roundedView.heightAnchor, multiplier: 0.8),
+
             label.centerXAnchor.constraint(equalTo: innerRoundedView.centerXAnchor),
-            label.topAnchor.constraint(equalTo: innerRoundedView.topAnchor, constant: 40),
+            label.topAnchor.constraint(equalTo: innerRoundedView.topAnchor, constant: 55),
             anotherLabel.centerXAnchor.constraint(equalTo: innerRoundedView.centerXAnchor),
-            anotherLabel.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 2)
-            
+            anotherLabel.topAnchor.constraint(equalTo: label.bottomAnchor, constant: 2),
+            nameLabel.centerXAnchor.constraint(equalTo: innerRoundedView.centerXAnchor),
+            nameLabel.topAnchor.constraint(equalTo: anotherLabel.bottomAnchor, constant: 2)
         ])
     }
 
 
 
-    func configureCell(category: GeneralCategory) {
+    func configureCell(category: GeneralCategory, searchText: String?) {
         if let symbolName = category.symbolName {
             let symbolImage = UIImage(named: symbolName)
             imageView.image = symbolImage
         }
 
+        anotherLabel.text = category.categoryBeforeName
+        nameLabel.text = category.categoryName
+
+        if let searchText = searchText?.lowercased(), !searchText.isEmpty {
+            if nameLabel.text?.lowercased().contains(searchText) == true ||
+               anotherLabel.text?.lowercased().contains(searchText) == true {
+                contentView.isHidden = false
+            } else {
+                contentView.isHidden = true
+            }
+        } else {
+            contentView.isHidden = false
+        }
+    }
+
+
+}
+
+extension MainPageViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedCategory = categoryViewModel.categories[indexPath.item]
+        navigateToCategoryDetail(category: selectedCategory)
+    }
+
+    private func navigateToCategoryDetail(category: GeneralCategory) {
+        let categoryDetailViewController = CategoryDetailViewController(category: category, categoryViewModel: categoryViewModel)
+        self.navigationController?.pushViewController(categoryDetailViewController, animated: true)
+    }
+}
+
+extension MainPageViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let newText = (textField.text! as NSString).replacingCharacters(in: range, with: string)
+        updateFilteredCategories(searchText: newText)
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+
+    private func updateFilteredCategories(searchText: String) {
+        print("Search Text: \(searchText)")
+        
+        if searchText.isEmpty {
+            filteredCategories = []
+        } else {
+            filteredCategories = categoryViewModel.categories.filter { category in
+                let lowercasedSearchText = searchText.lowercased()
+                let categoryNameContains = category.categoryName.lowercased().contains(lowercasedSearchText)
+                let categoryBeforeNameContains = category.categoryBeforeName.lowercased().contains(lowercasedSearchText)
+                
+                return categoryNameContains || categoryBeforeNameContains
+            }
+        }
+        collectionView.reloadData()
     }
 
 }
