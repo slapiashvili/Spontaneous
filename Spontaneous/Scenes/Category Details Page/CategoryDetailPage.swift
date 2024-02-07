@@ -72,10 +72,12 @@ class CategoryDetailViewController: UIViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Randomize", for: .normal)
-        button.setTitleColor(.neoButtonColorText, for: .normal)
+        button.setTitleColor(.neoTextOpposite, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
-        button.backgroundColor = .neoAnyColorYellow
-        button.layer.cornerRadius = 10
+        button.backgroundColor = .neoBackground
+        button.layer.borderColor = UIColor.neoTextOpposite.cgColor
+        button.layer.borderWidth = 7
+        button.layer.cornerRadius = 15
         return button
     }()
 
@@ -84,7 +86,6 @@ class CategoryDetailViewController: UIViewController {
         self.categoryViewModel = categoryViewModel
         super.init(nibName: nil, bundle: nil)
     }
-
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -128,15 +129,16 @@ class CategoryDetailViewController: UIViewController {
             filtersCollectionView.topAnchor.constraint(equalTo: instructionLabel.bottomAnchor, constant: 10),
             filtersCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
             filtersCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
-            filtersCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50),
+            filtersCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -200),
 
-            randomizeButton.topAnchor.constraint(equalTo: filtersCollectionView.bottomAnchor, constant: 10),
-            randomizeButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20),
-            randomizeButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            randomizeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            randomizeButton.heightAnchor.constraint(equalToConstant: 40)
+            randomizeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor), 
+            randomizeButton.topAnchor.constraint(equalTo: filtersCollectionView.bottomAnchor, constant: 20),
+            randomizeButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -40),
+            randomizeButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1/16),
+            randomizeButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 2/3)
         ])
     }
+
 
     @objc private func randomizeButtonTapped() {
         guard let selectedFilterIndex = selectedFilterIndex,
@@ -153,6 +155,7 @@ class CategoryDetailViewController: UIViewController {
         }
     }
 }
+
 // MARK: - UICollectionViewDataSource
 
 extension CategoryDetailViewController: UICollectionViewDataSource {
