@@ -5,106 +5,100 @@
 //  Created by Salome Lapiashvili on 23.01.24.
 //
 
-//TODO: add marks
-//TODO: better oranize the code: make sure to use setupviews
-//TODO: make sure the constraints are dynamic
-//TODO: move some logic to the viewModel
-
 import UIKit
 
 class MainPageViewController: UIViewController {
-    
+    // MARK: - Properties
     private var imageLoader: ImageLoader?
+    private var searchThrottleTimer: Timer?
     var userNickname: String?
     var filteredCategories: [GeneralCategory] = []
     var categoryViewModel = CategoryViewModel()
     var nicknameViewModel = NicknameViewModel.shared
 
-    let girlImageView: UIImageView = {
+    // MARK: - UI Components
+    private let girlImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
 
-    let welcomeLabel: UILabel = {
+    private lazy var welcomeLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .neoTextOpposite
-        label.textAlignment = .center
-        label.font = UIFont(name: "Jura", size: 20)
         return label
     }()
 
-    let categoryLabel: UILabel = {
+    private let categoryLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .neoTextOpposite
-        label.textAlignment = .center
-        label.font = UIFont(name: "Jura", size: 24)
         return label
     }()
 
-    let searchTextField: UITextField = {
+    private let searchTextField: UITextField = {
         let textField = UITextField()
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.placeholder = "Search..."
-        textField.borderStyle = .roundedRect
-        textField.layer.cornerRadius = 10
-        textField.backgroundColor = UIColor.neoTextField
-        textField.font = UIFont(name: "Jura", size: 18)
-        textField.autocorrectionType = .no
-        textField.textColor = UIColor.neoAlwaysGreen
-        textField.layer.borderWidth = 1
-        textField.layer.borderColor = UIColor.neoTextOpposite.cgColor
-
         return textField
     }()
 
-
-    let collectionView: UICollectionView = {
+    private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .neoBackground
         return collectionView
     }()
+    
+    // MARK: - Constants
+    lazy var cellIdentifier: String = {
+        return "CustomCell"
+    }()
 
-    let cellIdentifier = "CustomCell"
-
+    // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.hidesBackButton = true
-        view.backgroundColor = .neoBackground
-        view.addSubview(girlImageView)
-        imageLoader = ImageLoader(girlImageView: girlImageView)
+        
+        setupDelegates()
+        configureNavigationBar()
+        configureView()
+        registerCollectionViewCell()
+        loadImageAfterDelay()
+        setupUI()
+    }
 
+    // MARK: - Setup Methods
+
+    private func setupDelegates() {
         searchTextField.delegate = self
-        searchTextField.autocorrectionType = .no
-
-        view.addSubview(welcomeLabel)
-        welcomeLabel.text = "Hello, \(userNickname ?? "")"
-
-        view.addSubview(categoryLabel)
-        categoryLabel.text = "Choose a Category"
-
-        view.addSubview(searchTextField)
-
         collectionView.delegate = self
         collectionView.dataSource = self
+    }
+
+    private func configureNavigationBar() {
+        self.navigationItem.hidesBackButton = true
+    }
+
+    private func configureView() {
+        imageLoader = ImageLoader(girlImageView: girlImageView)
+        view.backgroundColor = .neoBackground
+    }
+
+    private func registerCollectionViewCell() {
         collectionView.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: cellIdentifier)
+    }
 
-        view.addSubview(collectionView)
-
-        setupConstraints()
-        
+    private func loadImageAfterDelay() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
             self.imageLoader?.stopAndSetImage(index: 2)
         }
-
+    }
+    
+    private func setupUI() {
+        setupGirlImageView()
+        setupWelcomeLabel()
+        setupCategoryLabel()
+        setupSearchBar()
+        setupConstraints()
     }
 
     private func setupConstraints() {
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(collectionView)
+
         NSLayoutConstraint.activate([
 
             girlImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -132,9 +126,45 @@ class MainPageViewController: UIViewController {
 
         ])
     }
-
+    
+    private func setupGirlImageView() {
+        girlImageView.contentMode = .scaleAspectFit
+        girlImageView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(girlImageView)
+    }
+    
+    private func setupWelcomeLabel() {
+        welcomeLabel.textColor = .neoTextOpposite
+        welcomeLabel.textAlignment = .center
+        welcomeLabel.font = UIFont(name: "Jura", size: 20)
+        welcomeLabel.text = "Hello, \(self.userNickname ?? "")"
+        welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(welcomeLabel)
+    }
+    
+    private func setupCategoryLabel() {
+        categoryLabel.textColor = .neoTextOpposite
+        categoryLabel.textAlignment = .center
+        categoryLabel.font = UIFont(name: "Jura", size: 24)
+        categoryLabel.text = "Choose a Category"
+        categoryLabel.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(categoryLabel)
+    }
+    
+    private func setupSearchBar() {
+        searchTextField.placeholder = "Search..."
+        searchTextField.borderStyle = .roundedRect
+        searchTextField.layer.cornerRadius = 10
+        searchTextField.backgroundColor = UIColor.neoTextField
+        searchTextField.font = UIFont(name: "Jura", size: 18)
+        searchTextField.textColor = UIColor.neoAlwaysGreen
+        searchTextField.layer.borderWidth = 1
+        searchTextField.layer.borderColor = UIColor.neoTextOpposite.cgColor
+        searchTextField.autocorrectionType = .no
+        searchTextField.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(searchTextField)
+    }
 }
-
 
 // MARK: - UICollectionViewDataSource
 
@@ -184,6 +214,7 @@ extension MainPageViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+// MARK: - UICollectionViewDelegate
 
 extension MainPageViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -196,6 +227,8 @@ extension MainPageViewController: UICollectionViewDelegate {
         self.navigationController?.pushViewController(categoryDetailViewController, animated: true)
     }
 }
+
+// MARK: - UITextFieldDelegate
 
 extension MainPageViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -210,19 +243,20 @@ extension MainPageViewController: UITextFieldDelegate {
     }
 
     private func updateFilteredCategories(searchText: String) {
-        print("Search Text: \(searchText)")
-        
-        if searchText.isEmpty {
-            filteredCategories = []
-        } else {
-            filteredCategories = categoryViewModel.categories.filter { category in
-                let lowercasedSearchText = searchText.lowercased()
-                let categoryNameContains = category.categoryName.lowercased().contains(lowercasedSearchText)
-                let categoryBeforeNameContains = category.categoryBeforeName.lowercased().contains(lowercasedSearchText)
-                
-                return categoryNameContains || categoryBeforeNameContains
+        searchThrottleTimer?.invalidate()
+        searchThrottleTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { _ in
+            if searchText.isEmpty {
+                self.filteredCategories = self.categoryViewModel.categories
+            } else {
+                self.filteredCategories = self.categoryViewModel.categories.filter { category in
+                    let lowercasedSearchText = searchText.lowercased()
+                    let categoryNameContains = category.categoryName.lowercased().contains(lowercasedSearchText)
+                    let categoryBeforeNameContains = category.categoryBeforeName.lowercased().contains(lowercasedSearchText)
+                    
+                    return categoryNameContains || categoryBeforeNameContains
+                }
             }
+            self.collectionView.reloadData()
         }
-        collectionView.reloadData()
     }
 }

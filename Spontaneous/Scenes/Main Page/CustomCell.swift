@@ -86,7 +86,6 @@ class CustomCollectionViewCell: UICollectionViewCell {
         setupConstraints()
     }
     
-    
         private func setupConstraints() {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         roundedView.translatesAutoresizingMaskIntoConstraints = false
@@ -126,7 +125,6 @@ class CustomCollectionViewCell: UICollectionViewCell {
         setImage(for: category)
         anotherLabel.text = category.categoryBeforeName
         nameLabel.text = category.categoryName
-        updateVisibility(for: searchText)
     }
 
     private func setImage(for category: GeneralCategory) {
@@ -134,17 +132,5 @@ class CustomCollectionViewCell: UICollectionViewCell {
             let symbolImage = UIImage(named: symbolName)
             imageView.image = symbolImage
         }
-    }
-
-    private func updateVisibility(for searchText: String?) {
-        guard let searchText = searchText?.lowercased(), !searchText.isEmpty else {
-            contentView.isHidden = false
-            return
-        }
-
-        let containsText = nameLabel.text?.lowercased().contains(searchText) == true ||
-                           anotherLabel.text?.lowercased().contains(searchText) == true
-
-        contentView.isHidden = !containsText
     }
 }
