@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C4EEBB62B729708001A8AF5 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4EEBB52B729708001A8AF5 /* ImageLoader.swift */; };
+		3C4EEBBA2B72A924001A8AF5 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4EEBB92B72A924001A8AF5 /* CustomCell.swift */; };
 		3CA200F22B5F73CC00823386 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA200F12B5F73CC00823386 /* AppDelegate.swift */; };
 		3CA200F42B5F73CC00823386 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA200F32B5F73CC00823386 /* SceneDelegate.swift */; };
 		3CA200FB2B5F73CE00823386 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CA200FA2B5F73CE00823386 /* Assets.xcassets */; };
@@ -31,6 +33,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C4EEBB52B729708001A8AF5 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		3C4EEBB92B72A924001A8AF5 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		3CA200EE2B5F73CC00823386 /* Spontaneous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spontaneous.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CA200F12B5F73CC00823386 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3CA200F32B5F73CC00823386 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -146,6 +150,8 @@
 			isa = PBXGroup;
 			children = (
 				3CA201172B5F86A900823386 /* MainPageViewController.swift */,
+				3C4EEBB92B72A924001A8AF5 /* CustomCell.swift */,
+				3C4EEBB52B729708001A8AF5 /* ImageLoader.swift */,
 				3CA201242B679E9600823386 /* CategoryViewModel.swift */,
 			);
 			path = "Main Page";
@@ -273,6 +279,7 @@
 			files = (
 				3CA201182B5F86A900823386 /* MainPageViewController.swift in Sources */,
 				3CA201272B67A19A00823386 /* CategoryDetailPage.swift in Sources */,
+				3C4EEBB62B729708001A8AF5 /* ImageLoader.swift in Sources */,
 				3CA201342B6A50BE00823386 /* NicknameViewModel.swift in Sources */,
 				3CA2012C2B67D67600823386 /* FilterCell.swift in Sources */,
 				3CA201162B5F7EDB00823386 /* DecisionMakingAnimationView.swift in Sources */,
@@ -288,6 +295,7 @@
 				3CA201302B693D8000823386 /* RandomizedResultPage.swift in Sources */,
 				3CA201122B5F7D0C00823386 /* HowItWorksView.swift in Sources */,
 				3CA2011C2B5F8BDD00823386 /* ApplyStyles.swift in Sources */,
+				3C4EEBBA2B72A924001A8AF5 /* CustomCell.swift in Sources */,
 				3CA2010C2B5F7AF100823386 /* WelcomeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
