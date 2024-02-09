@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 class FilterCell: UICollectionViewCell {
     var filter: Filter? {
         didSet {
@@ -17,10 +16,18 @@ class FilterCell: UICollectionViewCell {
 
     private var filterLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = .neoTextOpposite
+        label.layer.borderWidth = 2
+        label.layer.cornerRadius = 10
         label.textAlignment = .center
         return label
     }()
+
+    override var isSelected: Bool {
+        didSet {
+            updateSelectionState(isSelected: false)
+        }
+    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,10 +41,10 @@ class FilterCell: UICollectionViewCell {
     private func setupSubviews() {
         addSubview(filterLabel)
         filterLabel.translatesAutoresizingMaskIntoConstraints = false
-        
+
         contentView.layer.cornerRadius = 10
         contentView.layer.masksToBounds = true
-        
+
         NSLayoutConstraint.activate([
             filterLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             filterLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
@@ -51,5 +58,15 @@ class FilterCell: UICollectionViewCell {
             return
         }
         filterLabel.text = filter.filterName
+    }
+
+    func updateSelectionState(isSelected: Bool) {
+        if isSelected {
+            filterLabel.layer.borderColor = UIColor.neoAlwaysGreen.cgColor
+            filterLabel.textColor = .neoAlwaysGreen
+        } else {
+            filterLabel.layer.borderColor = UIColor.neoTextOpposite.cgColor
+            filterLabel.textColor = .neoTextOpposite
+        }
     }
 }
