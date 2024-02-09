@@ -7,6 +7,7 @@
 
 
 import SwiftUI
+import UIKit
 
 private let generalWidthIndicator: CGFloat = UIScreen.main.bounds.size.width * 3/4
 private let generalHeightIndicator: CGFloat = UIScreen.main.bounds.size.height * 1/4
@@ -70,5 +71,22 @@ extension View {
             .bold()
             .multilineTextAlignment(.center)
         
+    }
+}
+
+
+class DoubleBorderButton: UIButton {
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+
+        let outerBorderPath = UIBezierPath(roundedRect: rect.insetBy(dx: 5, dy: 5), cornerRadius: 14)
+        UIColor.neoAlwaysGreen.setStroke()
+        outerBorderPath.lineWidth = 1
+        outerBorderPath.stroke()
+
+        let innerBorderPath = UIBezierPath(roundedRect: rect.insetBy(dx: 13, dy: 13), cornerRadius: 9)
+        UIColor.neoAlwaysGreen.setStroke()
+        innerBorderPath.lineWidth = 1
+        innerBorderPath.stroke()
     }
 }
