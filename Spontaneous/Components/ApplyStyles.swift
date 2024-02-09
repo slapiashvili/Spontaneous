@@ -5,7 +5,6 @@
 //  Created by Salome Lapiashvili on 23.01.24.
 //
 
-
 import SwiftUI
 import UIKit
 
@@ -88,5 +87,18 @@ class DoubleBorderButton: UIButton {
         UIColor.neoAlwaysGreen.setStroke()
         innerBorderPath.lineWidth = 1
         innerBorderPath.stroke()
+    }
+}
+
+
+class SingleBorderButton: UIButton {
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        
+        let BorderPath = UIBezierPath(roundedRect: rect.insetBy(dx: 5, dy: 5), cornerRadius: 14)
+        UIColor.neoAlwaysGreen.setStroke()
+        BorderPath.lineWidth = 1
+        BorderPath.stroke()
+        
     }
 }
