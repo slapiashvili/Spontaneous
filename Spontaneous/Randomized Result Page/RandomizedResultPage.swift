@@ -47,6 +47,11 @@ class RandomizedResultPage: UIViewController {
         setupMainMenuButton()
         setupTryAgainButton()
         setupConstraints()
+        
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor.neoAlwaysGreen.cgColor
+        view.layer.cornerRadius = 10
+
     }
     
     private func confifureView() {
