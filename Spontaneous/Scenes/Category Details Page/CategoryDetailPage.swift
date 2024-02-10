@@ -176,6 +176,20 @@ class CategoryDetailViewController: UIViewController {
     // MARK: - Private Methods
 
     @objc private func randomizeButtonTapped() {
+       
+        let popupView = PopupView(frame: view.bounds)
+        view.addSubview(popupView)
+        popupView.animateIn()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            popupView.animateOut {
+                popupView.removeFromSuperview()
+                self.transitionToSecondViewController()
+            }
+        }
+    }
+
+    func transitionToSecondViewController() {
         guard let selectedFilterIndex = selectedFilterIndex,
               let selectedCategory = selectedCategory,
               selectedFilterIndex < selectedCategory.filters.count else {
@@ -186,9 +200,12 @@ class CategoryDetailViewController: UIViewController {
 
         if let randomizedContent = categoryViewModel?.randomizeContent(for: selectedCategory, with: selectedFilter.filterName) {
             let randomizedResultPage = RandomizedResultPage(randomizedContent: randomizedContent)
-            navigationController?.pushViewController(randomizedResultPage, animated: true)
+            
+            // Use present instead of push
+            present(randomizedResultPage, animated: true, completion: nil)
         }
     }
+
 }
 
 // MARK: - UICollectionViewDataSource
