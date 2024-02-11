@@ -181,7 +181,7 @@ class CategoryDetailViewController: UIViewController {
         view.addSubview(popupView)
         popupView.animateIn()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             popupView.animateOut {
                 popupView.removeFromSuperview()
                 self.transitionToSecondViewController()
