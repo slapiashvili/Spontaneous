@@ -17,6 +17,7 @@ class FilterCell: UICollectionViewCell {
     private var filterLabel: UILabel = {
         let label = UILabel()
         label.textColor = .neoTextOpposite
+        label.font = UIFont(name: "Jura", size: 15)
         label.layer.borderWidth = 2
         label.layer.cornerRadius = 10
         label.textAlignment = .center
@@ -62,8 +63,8 @@ class FilterCell: UICollectionViewCell {
 
     func updateSelectionState(isSelected: Bool) {
         if isSelected {
-            filterLabel.layer.borderColor = UIColor.neoAlwaysGreen.cgColor
-            filterLabel.textColor = .neoAlwaysGreen
+            filterLabel.layer.borderColor = UIColor.systemOrange.cgColor
+            filterLabel.textColor = .systemOrange
         } else {
             filterLabel.layer.borderColor = UIColor.neoTextOpposite.cgColor
             filterLabel.textColor = .neoTextOpposite
