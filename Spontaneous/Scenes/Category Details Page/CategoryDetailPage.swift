@@ -176,16 +176,37 @@ class CategoryDetailViewController: UIViewController {
     // MARK: - Private Methods
 
     @objc private func randomizeButtonTapped() {
-       
+        guard let selectedFilterIndex = selectedFilterIndex else {
+            showCustomAlert(message: "Please select a category", imageName: "oops")
+            return
+        }
+
         let popupView = PopupView(frame: view.bounds)
         view.addSubview(popupView)
         popupView.animateIn()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             popupView.animateOut {
                 popupView.removeFromSuperview()
                 self.transitionToSecondViewController()
             }
+        }
+    }
+
+    private func showCustomAlert(message: String, imageName: String) {
+        let customAlert = CustomAlert(message: "Oops!", imageName: "oops")
+        customAlert.gotItAction = { [weak self] in
+            self?.dismissCustomAlert()
+        }
+        self.view.addSubview(customAlert)
+    }
+
+    @objc private func dismissCustomAlert() {
+        if let customAlertView = view.viewWithTag(1999) {
+            customAlertView.removeFromSuperview()
+        }
+        if let blurEffectView = view.subviews.first(where: { $0 is UIVisualEffectView }) {
+            blurEffectView.removeFromSuperview()
         }
     }
 
