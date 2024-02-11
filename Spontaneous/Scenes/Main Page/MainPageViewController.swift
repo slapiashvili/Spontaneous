@@ -43,6 +43,13 @@ class MainPageViewController: UIViewController {
         return collectionView
     }()
     
+    private let nothingImageView: UIImageView = {
+        let imageView = UIImageView(image: UIImage(named: "nothing"))
+        imageView.contentMode = .scaleAspectFit
+        imageView.isHidden = true
+        return imageView
+    }()
+    
     // MARK: - Constants
     lazy var cellIdentifier: String = {
         return "CustomCell"
@@ -57,7 +64,9 @@ class MainPageViewController: UIViewController {
         configureView()
         registerCollectionViewCell()
         loadImageAfterDelay()
-        setupUI()
+        setupUI()    
+        setupNothingImageView()
+
     }
 
     // MARK: - Setup Methods
@@ -93,6 +102,18 @@ class MainPageViewController: UIViewController {
         setupCategoryLabel()
         setupSearchBar()
         setupConstraints()
+    }
+    
+    private func setupNothingImageView() {
+        nothingImageView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(nothingImageView)
+
+        NSLayoutConstraint.activate([
+            nothingImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
+            nothingImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            nothingImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            nothingImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10),
+        ])
     }
 
     private func setupConstraints() {
@@ -252,11 +273,14 @@ extension MainPageViewController: UITextFieldDelegate {
                     let lowercasedSearchText = searchText.lowercased()
                     let categoryNameContains = category.categoryName.lowercased().contains(lowercasedSearchText)
                     let categoryBeforeNameContains = category.categoryBeforeName.lowercased().contains(lowercasedSearchText)
-                    
+
                     return categoryNameContains || categoryBeforeNameContains
                 }
             }
+
+            self.nothingImageView.isHidden = !self.filteredCategories.isEmpty
             self.collectionView.reloadData()
         }
     }
+
 }
