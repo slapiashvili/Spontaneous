@@ -10,7 +10,7 @@
 import UIKit
 
 class RandomizedResultPage: UIViewController {
-    //MARK: - Properties:
+    //MARK: - Properties
     var randomizedContent: FilterContent?
     let titleLabel = UILabel()
     let stackView = UIStackView()
@@ -35,7 +35,7 @@ class RandomizedResultPage: UIViewController {
         super.viewDidLoad()
         setupUI()
     }
-    //MARK: - Private Methods:
+    //MARK: - Private Methods
 
     private func setupUI(){
         confifureView()
@@ -137,7 +137,7 @@ class RandomizedResultPage: UIViewController {
         ])
     }
     
-    //MARK: - Navigation functions:
+    //MARK: - Navigation functions
 
     @objc func backToMainMenu() {
         navigationController?.pushViewController(MainPageViewController(), animated: true)

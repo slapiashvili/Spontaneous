@@ -201,7 +201,6 @@ class CategoryDetailViewController: UIViewController {
         if let randomizedContent = categoryViewModel?.randomizeContent(for: selectedCategory, with: selectedFilter.filterName) {
             let randomizedResultPage = RandomizedResultPage(randomizedContent: randomizedContent)
             
-            // Use present instead of push
             present(randomizedResultPage, animated: true, completion: nil)
         }
     }
