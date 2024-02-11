@@ -220,12 +220,16 @@ class CategoryDetailViewController: UIViewController {
         let selectedFilter = selectedCategory.filters[selectedFilterIndex]
 
         if let randomizedContent = categoryViewModel?.randomizeContent(for: selectedCategory, with: selectedFilter.filterName) {
-            let randomizedResultPage = RandomizedResultPage(randomizedContent: randomizedContent)
-            
-            navigationController?.pushViewController(randomizedResultPage, animated: true)
+            if selectedCategory.categoryName == "Color Palette" {
+                let colorPaletteViewController = ColorPaletteViewController()
+                colorPaletteViewController.randomizedContent = randomizedContent
+                navigationController?.pushViewController(colorPaletteViewController, animated: true)
+            } else {
+                let randomizedResultPage = RandomizedResultPage(randomizedContent: randomizedContent)
+                navigationController?.pushViewController(randomizedResultPage, animated: true)
+            }
         }
     }
-
 }
 
 // MARK: - UICollectionViewDataSource
