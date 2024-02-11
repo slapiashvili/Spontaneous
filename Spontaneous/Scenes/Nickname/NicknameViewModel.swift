@@ -10,7 +10,11 @@ import SwiftUI
 class NicknameViewModel: ObservableObject {
     
     static let shared = NicknameViewModel()
-    @Published var userNickname: String = ""
+    @Published var userNickname: String {
+        didSet {
+            saveNickname()
+        }
+    }
 
     private let defaultNicknames = [
         "Hunter", "Scout", "Teacup", "Maverick", "Shadow", "Breeze", "Blaze",
@@ -20,12 +24,24 @@ class NicknameViewModel: ObservableObject {
         "Blizzard", "Starlight"
     ]
     
-    private init() {}
+    private let nicknameKey = "selectedNickname"
+
+    private init() {
+        if let savedNickname = UserDefaults.standard.string(forKey: nicknameKey) {
+            userNickname = savedNickname
+        } else {
+            userNickname = ""
+        }
+    }
 
     func randomizeNickname() {
         if let randomNickname = defaultNicknames.randomElement() {
             userNickname = randomNickname
         }
+    }
+
+    func saveNickname() {
+        UserDefaults.standard.set(userNickname, forKey: nicknameKey)
     }
 }
 

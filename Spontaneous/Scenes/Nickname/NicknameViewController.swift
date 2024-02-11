@@ -92,6 +92,7 @@ struct NicknameViewController: ViewControllable {
         if viewModel.userNickname.isEmpty {
             showAlert = true
         } else {
+            viewModel.saveNickname()
             navigationCoordinator.pushToMainPage()
         }
     }
