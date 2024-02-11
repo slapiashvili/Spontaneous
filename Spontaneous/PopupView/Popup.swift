@@ -8,6 +8,7 @@
 import UIKit
 
 class PopupView: UIView {
+    //MARK: - Lifecycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -19,10 +20,10 @@ class PopupView: UIView {
         setupView()
     }
     
+    //MARK: - Private Methods
+
     private func setupView() {
-        
         backgroundColor = UIColor.neoBackground
-        
         let label = UILabel()
         label.text = "Randomizing in Progress ..."
         label.font = UIFont(name: "Jura", size: 20)
