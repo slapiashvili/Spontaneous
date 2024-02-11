@@ -158,11 +158,19 @@ class MainPageViewController: UIViewController {
         welcomeLabel.textColor = .neoTextOpposite
         welcomeLabel.textAlignment = .center
         welcomeLabel.font = UIFont(name: "Jura", size: 20)
-        welcomeLabel.text = "Hello, \(self.userNickname ?? "")"
+
+        let confirmedNickname = nicknameViewModel.userNickname
+        if !confirmedNickname.isEmpty {
+            welcomeLabel.text = "Hello, \(confirmedNickname)"
+        } else {
+            welcomeLabel.text = "Hello!"
+        }
+
         welcomeLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(welcomeLabel)
     }
-    
+
+
     private func setupCategoryLabel() {
         categoryLabel.textColor = .neoTextOpposite
         categoryLabel.textAlignment = .center
