@@ -11,6 +11,7 @@
 		3C4EEBBA2B72A924001A8AF5 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C4EEBB92B72A924001A8AF5 /* CustomCell.swift */; };
 		3C9A75F72B7531C800A1FC80 /* DetailImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9A75F62B7531C800A1FC80 /* DetailImageLoader.swift */; };
 		3C9A76072B77BF0D00A1FC80 /* Popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9A76062B77BF0D00A1FC80 /* Popup.swift */; };
+		3C9A76122B791D7100A1FC80 /* ButtonStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9A76112B791D7100A1FC80 /* ButtonStyles.swift */; };
 		3CA200F22B5F73CC00823386 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA200F12B5F73CC00823386 /* AppDelegate.swift */; };
 		3CA200F42B5F73CC00823386 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA200F32B5F73CC00823386 /* SceneDelegate.swift */; };
 		3CA200FB2B5F73CE00823386 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CA200FA2B5F73CE00823386 /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 		3C4EEBB92B72A924001A8AF5 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		3C9A75F62B7531C800A1FC80 /* DetailImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailImageLoader.swift; sourceTree = "<group>"; };
 		3C9A76062B77BF0D00A1FC80 /* Popup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Popup.swift; sourceTree = "<group>"; };
+		3C9A76112B791D7100A1FC80 /* ButtonStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyles.swift; sourceTree = "<group>"; };
 		3CA200EE2B5F73CC00823386 /* Spontaneous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spontaneous.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CA200F12B5F73CC00823386 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3CA200F32B5F73CC00823386 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +83,21 @@
 				3C9A76062B77BF0D00A1FC80 /* Popup.swift */,
 			);
 			path = PopupView;
+			sourceTree = "<group>";
+		};
+		3C9A760F2B791D4300A1FC80 /* SwiftUI Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "SwiftUI Components";
+			sourceTree = "<group>";
+		};
+		3C9A76102B791D5600A1FC80 /* UIKit Components */ = {
+			isa = PBXGroup;
+			children = (
+				3C9A76112B791D7100A1FC80 /* ButtonStyles.swift */,
+			);
+			path = "UIKit Components";
 			sourceTree = "<group>";
 		};
 		3CA200E52B5F73CC00823386 = {
@@ -173,6 +190,8 @@
 		3CA2011A2B5F8BD000823386 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				3C9A76102B791D5600A1FC80 /* UIKit Components */,
+				3C9A760F2B791D4300A1FC80 /* SwiftUI Components */,
 				3CA2011B2B5F8BDD00823386 /* ApplyStyles.swift */,
 			);
 			path = Components;
@@ -299,6 +318,7 @@
 				3CA201162B5F7EDB00823386 /* DecisionMakingAnimationView.swift in Sources */,
 				3CA201062B5F786100823386 /* OnboardingView.swift in Sources */,
 				3CA201232B67919300823386 /* Model.swift in Sources */,
+				3C9A76122B791D7100A1FC80 /* ButtonStyles.swift in Sources */,
 				3CA201082B5F796300823386 /* viewWrapper.swift in Sources */,
 				3CA2011F2B61827F00823386 /* NicknameViewController.swift in Sources */,
 				3CA201252B679E9600823386 /* CategoryViewModel.swift in Sources */,
