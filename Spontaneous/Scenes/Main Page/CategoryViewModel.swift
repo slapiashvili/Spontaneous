@@ -370,7 +370,7 @@ struct CategoryViewModel {
                 
             ]),
             
-            Filter(filterName: "for a group of friends", filterContents: [
+            Filter(filterName: "for a group", filterContents: [
                 
                 FilterContent(primaryName: "Escape Room Challenge", fullName: "Escape Room Challenge", afterName: "activity", description: "Take on an escape room challenge with your group of friends. Test your problem-solving skills, work together as a team, and see if you can escape before time runs out.", image: UIImage(named: "friends_placeholder") ?? UIImage(named: "placeholder_image")!),
                     FilterContent(primaryName: "Karaoke Night", fullName: "Karaoke Night", afterName: "activity", description: "Host a karaoke night with your friends. Sing your favorite songs, unleash your inner rock star, and enjoy a fun-filled evening of music and laughter.", image: UIImage(named: "friends_placeholder") ?? UIImage(named: "placeholder_image")!),
