@@ -58,7 +58,7 @@ class PopupView: UIView {
             dotView.alpha = 0.0
             dotView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
             
-            UIView.animate(withDuration: 0.5, delay: Double(i) * 0.2, options: [.curveEaseInOut], animations: {
+            UIView.animate(withDuration: 0.05, delay: Double(i) * 0.1, options: [.curveEaseInOut], animations: {
                 dotView.transform = .identity
                 dotView.alpha = 1.0
             }, completion: nil)
