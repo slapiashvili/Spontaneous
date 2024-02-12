@@ -63,8 +63,8 @@ class FilterCell: UICollectionViewCell {
 
     func updateSelectionState(isSelected: Bool) {
         if isSelected {
-            filterLabel.layer.borderColor = UIColor.systemOrange.cgColor
-            filterLabel.textColor = .systemOrange
+            filterLabel.layer.borderColor = UIColor.neoOrange.cgColor
+            filterLabel.textColor = .neoOrange
         } else {
             filterLabel.layer.borderColor = UIColor.neoTextOpposite.cgColor
             filterLabel.textColor = .neoTextOpposite

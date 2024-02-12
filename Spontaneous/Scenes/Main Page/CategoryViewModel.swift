@@ -5,13 +5,7 @@
 //  Created by Salome Lapiashvili on 29.01.24.
 //
 
-
-//TODO: add some images or different kinds of placeholder images
-//TODO: add some marks
-//TODO: better organize the code
-
 import UIKit
-
 
 struct CategoryViewModel {
     var categories: [GeneralCategory] = []
@@ -20,7 +14,6 @@ struct CategoryViewModel {
     let placeholderImage = UIImage(named: "placeholder_image")!
     
     var selectedFilterIndex: Int?
-    
     
     func randomizeContent(for category: GeneralCategory, with filter: String) -> FilterContent? {
         guard let selectedFilter = category.filters.first(where: { $0.filterName == filter }) else {

@@ -23,7 +23,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
         view.backgroundColor = .neoBackground
         view.layer.cornerRadius = 10
         view.layer.borderWidth = 2
-        view.layer.borderColor = UIColor.neoAlwaysGreen.cgColor
+        view.layer.borderColor = UIColor.neoGreen.cgColor
         return view
     }()
 

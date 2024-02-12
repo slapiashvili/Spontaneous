@@ -23,7 +23,11 @@ class PopupView: UIView {
     //MARK: - Private Methods
 
     private func setupView() {
-        backgroundColor = UIColor.neoBackground
+        let blurEffect = UIBlurEffect(style: .light) 
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = bounds
+        addSubview(blurEffectView)
+        
         let label = UILabel()
         label.text = "Randomizing in Progress ..."
         label.font = UIFont(name: "Jura", size: 20)

@@ -17,38 +17,23 @@ class MainPageViewController: UIViewController {
     var nicknameViewModel = NicknameViewModel.shared
 
     // MARK: - UI Components
-    private let girlImageView: UIImageView = {
-        let imageView = UIImageView()
-        return imageView
-    }()
+    
+    private let girlImageView = UIImageView()
 
-    private lazy var welcomeLabel: UILabel = {
-        let label = UILabel()
-        return label
-    }()
+    private lazy var welcomeLabel = UILabel()
 
-    private let categoryLabel: UILabel = {
-        let label = UILabel()
-        return label
-    }()
+    private let categoryLabel = UILabel()
 
-    private let searchTextField: UITextField = {
-        let textField = UITextField()
-        return textField
-    }()
+    private let searchTextField = UITextField()
 
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.backgroundColor = .neoBackground
         return collectionView
     }()
     
-    private let nothingImageView: UIImageView = {
-        let imageView = UIImageView(image: UIImage(named: "nothing"))
-        imageView.contentMode = .scaleAspectFit
-        imageView.isHidden = true
-        return imageView
-    }()
+    private let nothingImageView = UIImageView()
     
     // MARK: - Constants
     lazy var cellIdentifier: String = {
@@ -105,14 +90,19 @@ class MainPageViewController: UIViewController {
     }
     
     private func setupNothingImageView() {
+
+        nothingImageView.image = UIImage(named: "nothing")
+        nothingImageView.contentMode = .scaleAspectFit
+        nothingImageView.isHidden = true
         nothingImageView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(nothingImageView)
 
         NSLayoutConstraint.activate([
-            nothingImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
+            nothingImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 400),
             nothingImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             nothingImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             nothingImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10),
+            nothingImageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1/4)
         ])
     }
 
@@ -181,16 +171,16 @@ class MainPageViewController: UIViewController {
     }
     
     private func setupSearchBar() {
-        searchTextField.placeholder = "Search..."
         searchTextField.borderStyle = .roundedRect
-        searchTextField.layer.cornerRadius = 10
         searchTextField.backgroundColor = UIColor.neoTextField
         searchTextField.font = UIFont(name: "Jura", size: 18)
         searchTextField.textColor = UIColor.neoAlwaysGreen
         searchTextField.layer.borderWidth = 1
         searchTextField.layer.borderColor = UIColor.neoTextOpposite.cgColor
+        searchTextField.layer.cornerRadius = 5
         searchTextField.autocorrectionType = .no
         searchTextField.translatesAutoresizingMaskIntoConstraints = false
+        searchTextField.attributedPlaceholder = NSAttributedString(string: "Search...", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         view.addSubview(searchTextField)
     }
 }

@@ -106,7 +106,7 @@ class CategoryDetailViewController: UIViewController {
     }
 
     private func setupCategoryLabel() {
-        categoryLabel.textColor = .neoAlwaysGreen
+        categoryLabel.textColor = .neoGreen
         categoryLabel.textAlignment = .center
         categoryLabel.font = UIFont(name: "Jura", size: 30)
     }
@@ -120,7 +120,7 @@ class CategoryDetailViewController: UIViewController {
     
     private func setupInstructionLabel() {
         instructionLabel.text = "Please choose from the filters below"
-        instructionLabel.textColor = .neoAlwaysGreen
+        instructionLabel.textColor = .neoGreen
         instructionLabel.textAlignment = .center
         instructionLabel.font = UIFont(name: "Jura", size: 15)
         instructionLabel.numberOfLines = 0
@@ -134,13 +134,15 @@ class CategoryDetailViewController: UIViewController {
     
     private func setupRandomizeButton() {
         randomizeButton.translatesAutoresizingMaskIntoConstraints = false
+        randomizeButton.backgroundColor = .neoTextOpposite
         randomizeButton.setTitle("Randomize", for: .normal)
-        randomizeButton.setTitleColor(.neoTextOpposite, for: .normal)
+        randomizeButton.setTitleColor(.neoBackground, for: .normal)
         randomizeButton.titleLabel?.font = UIFont(name: "Jura", size: 20)
-        randomizeButton.backgroundColor = .neoBackground
+        randomizeButton.layer.cornerRadius = 15
+        randomizeButton.clipsToBounds = true
         randomizeButton.addTarget(self, action: #selector(randomizeButtonTapped), for: .touchUpInside)
-        
     }
+
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
@@ -176,7 +178,7 @@ class CategoryDetailViewController: UIViewController {
     // MARK: - Private Methods
 
     @objc private func randomizeButtonTapped() {
-        guard let selectedFilterIndex = selectedFilterIndex else {
+        guard selectedFilterIndex != nil else {
             showCustomAlert(message: "Please select a category", imageName: "oops")
             return
         }
@@ -253,7 +255,7 @@ extension CategoryDetailViewController: UICollectionViewDataSource {
 extension CategoryDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let cellWidth = (collectionView.bounds.width - 50) / 2
-        let cellHeight = collectionView.bounds.height / 8
+        let cellHeight = collectionView.bounds.height / 7
         return CGSize(width: cellWidth, height: cellHeight)
     }
 
