@@ -278,7 +278,7 @@ struct CategoryViewModel {
             ]),
             
             
-            Filter(filterName: "I dont Care", filterContents: [
+            Filter(filterName: "I don't Care", filterContents: [
             
                     FilterContent(primaryName: "Chronicles of the Unknown", fullName: "Chronicles of the Unknown", afterName: "TV-show", description: "Embark on a mysterious journey with 'Chronicles of the Unknown.' This lesser-known TV-show weaves together elements of suspense, supernatural occurrences, and unexpected twists, keeping viewers on the edge of their seats.", image: UIImage(named: "watch_placeholder") ?? UIImage(named: "placeholder_image")!),
                     
@@ -316,7 +316,7 @@ struct CategoryViewModel {
 
                     FilterContent(primaryName: "Chronicles of Ether", fullName: "Chronicles of Ether", afterName: "manga", description: "Embark on an epic adventure with 'Chronicles of Ether,' a hidden gem among manga series. Unravel the mysteries of a fantastical world where ancient prophecies, magical beings, and a young hero's journey converge in an unforgettable tale.", image: UIImage(named: "manga_placeholder") ?? UIImage(named: "placeholder_image")!),
 ]),
-            Filter(filterName: "scientific articles", filterContents: [
+            Filter(filterName: "articles", filterContents: [
                 
                 FilterContent(primaryName: "Exploring Quantum Entanglement", fullName: "Exploring Quantum Entanglement", afterName: "scientific article", description: "Dive into the fascinating world of quantum physics with this scientific article. 'Exploring Quantum Entanglement' sheds light on the intricate phenomenon of entanglement and its implications for our understanding of the quantum realm.", image: UIImage(named: "article_placeholder") ?? UIImage(named: "placeholder_image")!),
 
@@ -328,7 +328,7 @@ struct CategoryViewModel {
             
             ]),
             
-            Filter(filterName: "idontcare", filterContents: [
+            Filter(filterName: "I don't Care", filterContents: [
                 
                 FilterContent(primaryName: "The Great Gatsby", fullName: "The Great Gatsby", afterName: "book", description: "F. Scott Fitzgerald's classic tale of love, wealth, and the American Dream. 'The Great Gatsby' is a timeless exploration of the Jazz Age.",  image: UIImage(named: "book_placeholder") ?? UIImage(named: "placeholder_image")!),
 
@@ -411,7 +411,7 @@ struct CategoryViewModel {
                 
             ]),
             
-            Filter(filterName: "I dont Care", filterContents: [
+            Filter(filterName: "I don't Care", filterContents: [
             
                 FilterContent(primaryName: "Art and Craft Session", fullName: "Art and Craft Session", afterName: "activity", description: "Unleash your creativity with an art and craft session. Whether it's painting, drawing, or DIY crafts, enjoy a relaxing and fulfilling time expressing yourself through art.", image: UIImage(named: "diy_placeholder") ?? UIImage(named: "placeholder_image")!),
 
@@ -457,7 +457,7 @@ struct CategoryViewModel {
 
             ]),
             
-            Filter(filterName: "Idontcare", filterContents: [
+            Filter(filterName: "I don't Care", filterContents: [
             
                 FilterContent(primaryName: "Mystical Constellation Projector Lamp", fullName: "Mystical Constellation Projector Lamp", afterName: "gift", description: "Transform any room into a mesmerizing night sky with this constellation projector lamp. A unique and enchanting gift for those who appreciate a touch of magic in their living space.", image: UIImage(named: "gift_placeholder") ?? UIImage(named: "placeholder_image")!),
 
@@ -532,7 +532,7 @@ struct CategoryViewModel {
 
             ]),
             
-            Filter(filterName: "I don't care", filterContents: [
+            Filter(filterName: "I don't Care", filterContents: [
                 
                 FilterContent(primaryName: "Bohemian Rhapsody", fullName: "Bohemian Rhapsody", afterName: "song", description: "Queen's 'Bohemian Rhapsody' is a genre-defying masterpiece, blending rock, ballad, and opera elements. Experience the epic journey of this iconic song that continues to captivate audiences worldwide.", image: UIImage(named: "music_placeholder") ?? UIImage(named: "placeholder_image")!),
 
@@ -550,47 +550,54 @@ struct CategoryViewModel {
             
             Filter(filterName: "monochrome", filterContents: [
             
-                FilterContent(primaryName: "Classic Monochrome", fullName: "Classic Monochrome", afterName: "color palette", description: "Embrace the timeless elegance of classic monochrome with this sophisticated palette. Featuring variations of black, gray, and white, it creates a refined and versatile look for any design.", image: placeholderImage),
+                FilterContent(primaryName: "Classic Monochrome", fullName: "Classic Monochrome", afterName: "color palette", description: "Embrace the timeless elegance of classic monochrome with this sophisticated palette. Featuring variations of black, gray, and white, it creates a refined and versatile look for any design.", image: UIImage(named: "classic_monochrome") ?? UIImage(named: "placeholder_image")!),
 
 
-                FilterContent(primaryName: "Moonlit Serenity", fullName: "Moonlit Serenity", afterName: "color palette", description: "Evoke a tranquil night under the moonlight with this serene monochrome palette. Shades of midnight black, soft grays, and silvery whites create a calming and sophisticated atmosphere.", image: placeholderImage),
+                FilterContent(primaryName: "Moonlit Serenity", fullName: "Moonlit Serenity", afterName: "color palette", description: "Evoke a tranquil night under the moonlight with this serene monochrome palette. Shades of midnight black, soft grays, and silvery whites create a calming and sophisticated atmosphere.", image: UIImage(named: "moonlit_serenity") ?? UIImage(named: "placeholder_image")!),
 
-                FilterContent(primaryName: "Minimalist Browns", fullName: "Minimalist Browns", afterName: "color palette", description: "Achieve a minimalist and chic aesthetic with this monochrome palette. These colors bring a sense of simplicity and modernity to your designs.", image: placeholderImage),
+                FilterContent(primaryName: "Minimalist Browns", fullName: "Minimalist Browns", afterName: "color palette", description: "Achieve a minimalist and chic aesthetic with this monochrome palette. These colors bring a sense of simplicity and modernity to your designs.", image: UIImage(named: "minimalist_browns") ?? UIImage(named: "placeholder_image")!),
 
-                FilterContent(primaryName: "Forest Greens", fullName: "Forest Greens", afterName: "color palette", description: "Experience the enduring charm of the nature with this timeless color palette.This color combination offers a range of tones for creating classic and versatile designs.", image: placeholderImage)
-            
+                FilterContent(primaryName: "Forest Greens", fullName: "Forest Greens", afterName: "color palette", description: "Experience the enduring charm of the nature with this timeless color palette.This color combination offers a range of tones for creating classic and versatile designs.", image: UIImage(named: "forest_greens") ?? UIImage(named: "placeholder_image")!),
             ]),
             
             Filter(filterName: "warm tones", filterContents: [
                 
-                FilterContent(primaryName: "Autumn Glow", fullName: "Autumn Glow", afterName: "color palette", description: "Embrace the warmth of autumn with this color palette inspired by falling leaves. Featuring hues of rich orange, golden yellow, deep red, and earthy brown, it radiates the cozy and comforting vibes of the season.", image: placeholderImage),
+                FilterContent(primaryName: "Autumn Glow", fullName: "Autumn Glow", afterName: "color palette", description: "Embrace the warmth of autumn with this color palette inspired by falling leaves. Featuring hues of rich orange, golden yellow, deep red, and earthy brown, it radiates the cozy and comforting vibes of the season.", image: UIImage(named: "autumn_glow") ?? UIImage(named: "placeholder_image")!),
 
-                FilterContent(primaryName: "Sunset Serenity", fullName: "Sunset Serenity", afterName: "color palette", description: "Capture the tranquil beauty of a sunset with this serene color palette. From warm coral and peach tones to soothing lavender and deep indigo, these colors evoke the peaceful moments of dusk.", image: placeholderImage),
+                FilterContent(primaryName: "Sunset Serenity", fullName: "Sunset Serenity", afterName: "color palette", description: "Capture the tranquil beauty of a sunset with this serene color palette. From warm coral and peach tones to soothing lavender and deep indigo, these colors evoke the peaceful moments of dusk.", image: UIImage(named: "sunset_serenity") ?? UIImage(named: "placeholder_image")!),
 
-                FilterContent(primaryName: "Golden Hour", fullName: "Golden Hour", afterName: "color palette", description: "Experience the magic of the golden hour with this warm and inviting color palette. Featuring soft shades of amber, burnt sienna, and dusty rose, it brings the warmth and glow of a sun-kissed evening.", image: placeholderImage),
+                FilterContent(primaryName: "Golden Hour", fullName: "Golden Hour", afterName: "color palette", description: "Experience the magic of the golden hour with this warm and inviting color palette. Featuring soft shades of amber, burnt sienna, and dusty rose, it brings the warmth and glow of a sun-kissed evening.", image: UIImage(named: "golden_hour") ?? UIImage(named: "placeholder_image")!),
 
             ]),
             
             Filter(filterName: "cold tones", filterContents: [
                 
-                FilterContent(primaryName: "Arctic Breeze", fullName: "Arctic Breeze", afterName: "color palette", description: "Embrace the cool tranquility of the Arctic with this refreshing color palette. Featuring icy blues, frosty greens, and hints of lavender, it evokes the serene beauty of a crisp winter day.", image: placeholderImage),
+                FilterContent(primaryName: "Arctic Breeze", fullName: "Arctic Breeze", afterName: "color palette", description: "Embrace the cool tranquility of the Arctic with this refreshing color palette. Featuring icy blues, frosty greens, and hints of lavender, it evokes the serene beauty of a crisp winter day.", image: UIImage(named: "arctic_breeze") ?? UIImage(named: "placeholder_image")!),
 
-                FilterContent(primaryName: "Winter Wonderland", fullName: "Winter Wonderland", afterName: "color palette", description: "Step into a winter wonderland with this enchanting color palette. Shades of frosty white, silver, and icy blues create a magical atmosphere reminiscent of snow-covered landscapes.", image: placeholderImage),
 
-                FilterContent(primaryName: "Northern Lights Spectacle", fullName: "Northern Lights Spectacle", afterName: "color palette", description: "Capture the awe-inspiring beauty of the Northern Lights with this mesmerizing color palette. Deep indigo, emerald green, and violet hues dance across the palette, creating a celestial and enchanting feel.", image: placeholderImage),
+                FilterContent(primaryName: "Winter Wonderland", fullName: "Winter Wonderland", afterName: "color palette", description: "Step into a winter wonderland with this enchanting color palette. Shades of frosty white, silver, and icy blues create a magical atmosphere reminiscent of snow-covered landscapes.", image: UIImage(named: "winter_wonderland") ?? UIImage(named: "placeholder_image")!),
+
+
+                FilterContent(primaryName: "Northern Lights Spectacle", fullName: "Northern Lights Spectacle", afterName: "color palette", description: "Capture the awe-inspiring beauty of the Northern Lights with this mesmerizing color palette. Deep indigo, emerald green, and violet hues dance across the palette, creating a celestial and enchanting feel.", image: UIImage(named: "northern_lights_spectacle") ?? UIImage(named: "placeholder_image")!),
+
             ]),
             
-            Filter(filterName: "I don't care", filterContents: [
+            Filter(filterName: "I don't Care", filterContents: [
                 
-                FilterContent(primaryName: "Vibrant Carnival", fullName: "Vibrant Carnival", afterName: "color palette", description: "Infuse your designs with the lively spirit of a carnival. Bold reds, electric blues, and sunny yellows create a vibrant and energetic color palette that's perfect for festive occasions.", image: placeholderImage),
+                FilterContent(primaryName: "Vibrant Carnival", fullName: "Vibrant Carnival", afterName: "color palette", description: "Infuse your designs with the lively spirit of a carnival. Bold reds, electric blues, and sunny yellows create a vibrant and energetic color palette that's perfect for festive occasions.", image: UIImage(named: "vibrant_carnival") ?? UIImage(named: "placeholder_image")!),
 
-                FilterContent(primaryName: "Mystical Enchantment", fullName: "Mystical Enchantment", afterName: "color palette", description: "Embark on a journey of mystical enchantment with this ethereal color palette. Soft purples, deep blues, and shimmering golds evoke a sense of magic and wonder, adding a touch of fantasy to your designs.", image: placeholderImage),
 
-                FilterContent(primaryName: "Tropical Paradise", fullName: "Tropical Paradise", afterName: "color palette", description: "Escape to a tropical paradise with this refreshing color palette. Lush greens, vibrant blues, and sunset oranges transport you to a sun-drenched oasis, perfect for designs inspired by nature and relaxation.", image: placeholderImage),
+                FilterContent(primaryName: "Mystical Enchantment", fullName: "Mystical Enchantment", afterName: "color palette", description: "Embark on a journey of mystical enchantment with this ethereal color palette. Soft purples, deep blues, and shimmering golds evoke a sense of magic and wonder, adding a touch of fantasy to your designs.", image: UIImage(named: "mystical_enchantment") ?? UIImage(named: "placeholder_image")!),
 
-                FilterContent(primaryName: "Electric Neon Nights", fullName: "Electric Neon Nights", afterName: "color palette", description: "Illuminate your designs with the electrifying energy of neon lights. Neon pinks, electric blues, and bold yellows create a dynamic and modern color palette that's sure to make a statement.", image: placeholderImage),
 
-                FilterContent(primaryName: "Pastel Dreamscape", fullName: "Pastel Dreamscape", afterName: "color palette", description: "Create a dreamy and soothing atmosphere with this pastel color palette. Soft pinks, calming blues, and minty greens come together to evoke a sense of serenity and tranquility in your designs.", image: placeholderImage)
+                FilterContent(primaryName: "Tropical Paradise", fullName: "Tropical Paradise", afterName: "color palette", description: "Escape to a tropical paradise with this refreshing color palette. Lush greens, vibrant blues, and sunset oranges transport you to a sun-drenched oasis, perfect for designs inspired by nature and relaxation.", image: UIImage(named: "tropical_paradise") ?? UIImage(named: "placeholder_image")!),
+
+
+                FilterContent(primaryName: "Electric Neon Nights", fullName: "Electric Neon Nights", afterName: "color palette", description: "Illuminate your designs with the electrifying energy of neon lights. Neon pinks, electric blues, and bold yellows create a dynamic and modern color palette that's sure to make a statement.", image: UIImage(named: "electric_neon_nights") ?? UIImage(named: "placeholder_image")!),
+
+
+                FilterContent(primaryName: "Pastel Dreamscape", fullName: "Pastel Dreamscape", afterName: "color palette", description: "Create a dreamy and soothing atmosphere with this pastel color palette. Soft pinks, calming blues, and minty greens come together to evoke a sense of serenity and tranquility in your designs.", image: UIImage(named: "pastel_dreamscape") ?? UIImage(named: "placeholder_image")!),
+
 
             ])
         ]

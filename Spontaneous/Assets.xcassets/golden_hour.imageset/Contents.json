@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "Color Hunt Palette fff7d4ffd95ac07f004c3d3d.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
