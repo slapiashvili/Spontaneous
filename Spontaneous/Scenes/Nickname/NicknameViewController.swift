@@ -43,6 +43,7 @@ struct NicknameViewController: ViewControllable {
                 dismissButton: .default(Text("OK"))
             )
         }
+        .navigationBarHidden(true)
     }
 
     // MARK: - Private Methods
