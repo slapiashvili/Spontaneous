@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class NicknameViewModel: ObservableObject {
+final class NicknameViewModel: ObservableObject {
     
     static let shared = NicknameViewModel()
     @Published var userNickname: String {

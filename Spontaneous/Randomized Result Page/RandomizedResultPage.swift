@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RandomizedResultPage: UIViewController {
+final class RandomizedResultPage: UIViewController {
     //MARK: - Properties
     var randomizedContent: FilterContent?
     let titleLabel = UILabel()

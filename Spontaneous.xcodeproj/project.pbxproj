@@ -90,6 +90,7 @@
 		3C9A760F2B791D4300A1FC80 /* SwiftUI Components */ = {
 			isa = PBXGroup;
 			children = (
+				3CA2011B2B5F8BDD00823386 /* ApplyStyles.swift */,
 			);
 			path = "SwiftUI Components";
 			sourceTree = "<group>";
@@ -122,15 +123,11 @@
 		3CA200F02B5F73CC00823386 /* Spontaneous */ = {
 			isa = PBXGroup;
 			children = (
-				3CA201432B6BF18800823386 /* Fonts */,
-				3CA201412B6BF17F00823386 /* Jura-VariableFont_wght.ttf */,
+				3CA2010D2B5F7B7600823386 /* App */,
 				3CA201322B69456200823386 /* Model */,
 				3CA2011A2B5F8BD000823386 /* Components */,
 				3CA2010F2B5F7B9F00823386 /* Navigation */,
 				3CA2010E2B5F7B8500823386 /* Scenes */,
-				3C9A76082B77BF1400A1FC80 /* PopupView */,
-				3CA201312B693D8500823386 /* Randomized Result Page */,
-				3CA2010D2B5F7B7600823386 /* App */,
 				3CA200FA2B5F73CE00823386 /* Assets.xcassets */,
 				3CA200FC2B5F73CE00823386 /* LaunchScreen.storyboard */,
 				3CA200FF2B5F73CE00823386 /* Info.plist */,
@@ -152,6 +149,8 @@
 			children = (
 				3CA201102B5F7BB000823386 /* Onboarding */,
 				3CA2011D2B61825700823386 /* Nickname */,
+				3CA201312B693D8500823386 /* Randomized Result Page */,
+				3C9A76082B77BF1400A1FC80 /* PopupView */,
 				3CA201192B5F86DA00823386 /* Main Page */,
 				3CA201282B67A1A200823386 /* Category Details Page */,
 			);
@@ -193,9 +192,9 @@
 		3CA2011A2B5F8BD000823386 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				3CA201432B6BF18800823386 /* Fonts */,
 				3C9A76102B791D5600A1FC80 /* UIKit Components */,
 				3C9A760F2B791D4300A1FC80 /* SwiftUI Components */,
-				3CA2011B2B5F8BDD00823386 /* ApplyStyles.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -224,7 +223,8 @@
 			children = (
 				3CA2012F2B693D8000823386 /* RandomizedResultPage.swift */,
 			);
-			path = "Randomized Result Page";
+			name = "Randomized Result Page";
+			path = "../Randomized Result Page";
 			sourceTree = "<group>";
 		};
 		3CA201322B69456200823386 /* Model */ = {
@@ -238,6 +238,7 @@
 		3CA201432B6BF18800823386 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				3CA201412B6BF17F00823386 /* Jura-VariableFont_wght.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";

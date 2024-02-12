@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainPageViewController: UIViewController {
+final class MainPageViewController: UIViewController {
     // MARK: - Properties
     private var imageLoader: ImageLoader?
     private var searchThrottleTimer: Timer?

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FilterCell: UICollectionViewCell {
+final class FilterCell: UICollectionViewCell {
     var filter: Filter? {
         didSet {
             updateUI()
