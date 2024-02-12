@@ -22,12 +22,12 @@ struct HowItWorksView: ViewControllable {
     private var howItWorksContent: some View {
         ZStack {
             VStack(alignment: .center) {
+                Spacer()
                 titleText
                 descriptionText
-                decisionMakingAnimation
-                Spacer()
+                MainVStack
+                Spacer(minLength: 100)
             }
-            additionalButton
         }
     }
 
@@ -54,9 +54,9 @@ struct HowItWorksView: ViewControllable {
 
 
 
-    private var additionalButton: some View {
-        VStack {
-            Spacer(minLength: 505)
+    private var MainVStack: some View {
+        VStack(spacing: 20) {
+            decisionMakingAnimation
             Button("Got it!") {
                 navigationCoordinator.pushToNicknamePage()
             }
@@ -68,7 +68,6 @@ struct HowItWorksView: ViewControllable {
                 RoundedRectangle(cornerRadius: 20)
                     .stroke(Color.neoTextOpposite, lineWidth: 2)
             )
-            Spacer()
         }
     }
 

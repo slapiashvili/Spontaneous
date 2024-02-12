@@ -24,7 +24,7 @@ struct WhatToExpectView: View {
             descriptionLabel
             whatToExpectImage
             additionalTextLabel
-            Spacer(minLength: 120)
+            Spacer(minLength: 100)
         }
     }
 
@@ -34,13 +34,16 @@ struct WhatToExpectView: View {
             .bold()
             .foregroundColor(.neoPrimaryTitle)
             .multilineTextAlignment(.center)
+            .edgesIgnoringSafeArea(.top) 
     }
 
+
     private var descriptionLabel: some View {
-        Text("We will help you make decisions about  different aspects of your life")
+        Text("We will help you make decisions about different aspects of your life")
             .font(Font.custom("Jura", size: 20, relativeTo: .title3))
             .foregroundColor(.neoTextOpposite)
             .multilineTextAlignment(.center)
+            .fixedSize(horizontal: false, vertical: true)
             .padding(.horizontal, 15)
             .padding()
     }
@@ -57,6 +60,7 @@ struct WhatToExpectView: View {
             .font(Font.custom("Jura", size: 20, relativeTo: .title3))
             .foregroundColor(.neoTextOpposite)
             .multilineTextAlignment(.center)
+            .fixedSize(horizontal: false, vertical: true)
             .padding()
     }
 }

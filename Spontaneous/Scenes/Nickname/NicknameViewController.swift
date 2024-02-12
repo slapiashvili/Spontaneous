@@ -25,6 +25,7 @@ struct NicknameViewController: ViewControllable {
         ZStack {
             Color.neoBackground.edgesIgnoringSafeArea(.all)
             VStack {
+                Spacer()
                 topZStack()
                 Text("or")
                     .font(.custom("Jura", size: 20))
@@ -32,6 +33,7 @@ struct NicknameViewController: ViewControllable {
                     .padding()
                 
                 bottomZStack()
+                Spacer(minLength: 100)
             }
         }
         .alert(isPresented: $showAlert) {
@@ -48,14 +50,14 @@ struct NicknameViewController: ViewControllable {
     private func topZStack() -> some View {
         ZStack {
             RoundedRectangle(cornerRadius: 15)
-                .frame(width: generalWidthIndicator, height: generalHeightIndicator)
+                .frame(width: generalWidthIndicator, height: generalHeightIndicator + 20)
                 .background(Color.neoBackground)
             
             VStack(alignment: .center, spacing: 20) {
                 Text("Please enter a nickname")
                     .applyNeoRegularTextStyle()
                 VStack {
-                    TextField("Start typing", text: $viewModel.userNickname)
+                    TextField("Start typing ...", text: $viewModel.userNickname)
                         .applyNeoTextFieldStyle()
                         .frame(width: generalWidthIndicator - 20)
                     

@@ -5,8 +5,6 @@
 //  Created by Salome Lapiashvili on 30.01.24.
 //
 
-//TODO: fix UI
-
 import UIKit
 
 class RandomizedResultPage: UIViewController {
@@ -84,7 +82,7 @@ class RandomizedResultPage: UIViewController {
     private func setupFullNameLabel() {
         fullNameLabel.text = randomizedContent?.fullName
         fullNameLabel.font = UIFont(name: "Jura", size: 20)
-        fullNameLabel.textColor = .neoAlwaysGreen
+        fullNameLabel.textColor = .neoGreen
         fullNameLabel.numberOfLines = 0
         fullNameLabel.textAlignment = .center
     }
@@ -107,12 +105,20 @@ class RandomizedResultPage: UIViewController {
     private func setupMainMenuButton() {
         mainMenuButton.setTitle("Back to Main Menu", for: .normal)
         mainMenuButton.titleLabel?.font = UIFont(name: "Jura", size: 18)
+        mainMenuButton.backgroundColor = .neoTextOpposite
+        mainMenuButton.setTitleColor(.neoBackground, for: .normal)
+        mainMenuButton.layer.cornerRadius = 15
+        mainMenuButton.clipsToBounds = true
         mainMenuButton.addTarget(self, action: #selector(backToMainMenu), for: .touchUpInside)
     }
 
     private func setupTryAgainButton() {
         tryAgainButton.setTitle("Try Again", for: .normal)
+        tryAgainButton.setTitleColor(.neoBackground, for: .normal)
         tryAgainButton.titleLabel?.font = UIFont(name: "Jura", size: 18)
+        tryAgainButton.backgroundColor = .neoTextOpposite
+        tryAgainButton.layer.cornerRadius = 15
+        tryAgainButton.clipsToBounds = true
         tryAgainButton.addTarget(self, action: #selector(tryAgain), for: .touchUpInside)
     }
 
