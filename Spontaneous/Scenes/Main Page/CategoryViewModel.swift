@@ -278,7 +278,7 @@ struct CategoryViewModel {
             ]),
             
             
-            Filter(filterName: "I don't Care", filterContents: [
+            Filter(filterName: "I dont Care", filterContents: [
             
                     FilterContent(primaryName: "Chronicles of the Unknown", fullName: "Chronicles of the Unknown", afterName: "TV-show", description: "Embark on a mysterious journey with 'Chronicles of the Unknown.' This lesser-known TV-show weaves together elements of suspense, supernatural occurrences, and unexpected twists, keeping viewers on the edge of their seats.", image: UIImage(named: "watch_placeholder") ?? UIImage(named: "placeholder_image")!),
                     
@@ -316,7 +316,7 @@ struct CategoryViewModel {
 
                     FilterContent(primaryName: "Chronicles of Ether", fullName: "Chronicles of Ether", afterName: "manga", description: "Embark on an epic adventure with 'Chronicles of Ether,' a hidden gem among manga series. Unravel the mysteries of a fantastical world where ancient prophecies, magical beings, and a young hero's journey converge in an unforgettable tale.", image: UIImage(named: "manga_placeholder") ?? UIImage(named: "placeholder_image")!),
 ]),
-            Filter(filterName: "articles", filterContents: [
+            Filter(filterName: "scientific articles", filterContents: [
                 
                 FilterContent(primaryName: "Exploring Quantum Entanglement", fullName: "Exploring Quantum Entanglement", afterName: "scientific article", description: "Dive into the fascinating world of quantum physics with this scientific article. 'Exploring Quantum Entanglement' sheds light on the intricate phenomenon of entanglement and its implications for our understanding of the quantum realm.", image: UIImage(named: "article_placeholder") ?? UIImage(named: "placeholder_image")!),
 
@@ -328,7 +328,7 @@ struct CategoryViewModel {
             
             ]),
             
-            Filter(filterName: "I don't Care", filterContents: [
+            Filter(filterName: "idontcare", filterContents: [
                 
                 FilterContent(primaryName: "The Great Gatsby", fullName: "The Great Gatsby", afterName: "book", description: "F. Scott Fitzgerald's classic tale of love, wealth, and the American Dream. 'The Great Gatsby' is a timeless exploration of the Jazz Age.",  image: UIImage(named: "book_placeholder") ?? UIImage(named: "placeholder_image")!),
 
@@ -411,7 +411,7 @@ struct CategoryViewModel {
                 
             ]),
             
-            Filter(filterName: "I don't Care", filterContents: [
+            Filter(filterName: "I dont Care", filterContents: [
             
                 FilterContent(primaryName: "Art and Craft Session", fullName: "Art and Craft Session", afterName: "activity", description: "Unleash your creativity with an art and craft session. Whether it's painting, drawing, or DIY crafts, enjoy a relaxing and fulfilling time expressing yourself through art.", image: UIImage(named: "diy_placeholder") ?? UIImage(named: "placeholder_image")!),
 
@@ -457,7 +457,7 @@ struct CategoryViewModel {
 
             ]),
             
-            Filter(filterName: "I don't Care", filterContents: [
+            Filter(filterName: "Idontcare", filterContents: [
             
                 FilterContent(primaryName: "Mystical Constellation Projector Lamp", fullName: "Mystical Constellation Projector Lamp", afterName: "gift", description: "Transform any room into a mesmerizing night sky with this constellation projector lamp. A unique and enchanting gift for those who appreciate a touch of magic in their living space.", image: UIImage(named: "gift_placeholder") ?? UIImage(named: "placeholder_image")!),
 
@@ -532,7 +532,7 @@ struct CategoryViewModel {
 
             ]),
             
-            Filter(filterName: "I don't Care", filterContents: [
+            Filter(filterName: "I don't care", filterContents: [
                 
                 FilterContent(primaryName: "Bohemian Rhapsody", fullName: "Bohemian Rhapsody", afterName: "song", description: "Queen's 'Bohemian Rhapsody' is a genre-defying masterpiece, blending rock, ballad, and opera elements. Experience the epic journey of this iconic song that continues to captivate audiences worldwide.", image: UIImage(named: "music_placeholder") ?? UIImage(named: "placeholder_image")!),
 
@@ -580,7 +580,7 @@ struct CategoryViewModel {
                 FilterContent(primaryName: "Northern Lights Spectacle", fullName: "Northern Lights Spectacle", afterName: "color palette", description: "Capture the awe-inspiring beauty of the Northern Lights with this mesmerizing color palette. Deep indigo, emerald green, and violet hues dance across the palette, creating a celestial and enchanting feel.", image: placeholderImage),
             ]),
             
-            Filter(filterName: "I don't Care", filterContents: [
+            Filter(filterName: "I don't care", filterContents: [
                 
                 FilterContent(primaryName: "Vibrant Carnival", fullName: "Vibrant Carnival", afterName: "color palette", description: "Infuse your designs with the lively spirit of a carnival. Bold reds, electric blues, and sunny yellows create a vibrant and energetic color palette that's perfect for festive occasions.", image: placeholderImage),
 
