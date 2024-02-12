@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PopupView: UIView {
+final class PopupView: UIView {
     //MARK: - Lifecycle
     
     override init(frame: CGRect) {
