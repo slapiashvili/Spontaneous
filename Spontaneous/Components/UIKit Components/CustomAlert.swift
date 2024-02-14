@@ -63,7 +63,7 @@ final class CustomAlert: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    @objc private func dismissCustomAlert() {
+    @objc func dismissCustomAlert() {
         removeFromSuperview()
     }
 }

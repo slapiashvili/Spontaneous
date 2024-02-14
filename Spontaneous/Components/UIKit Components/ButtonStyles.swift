@@ -13,12 +13,12 @@ final class DoubleBorderButton: UIButton {
 
         let outerBorderPath = UIBezierPath(roundedRect: rect.insetBy(dx: 3, dy: 3), cornerRadius: 15)
         UIColor.neoAlwaysGreen.setStroke()
-        outerBorderPath.lineWidth = 1
+        outerBorderPath.lineWidth = 3
         outerBorderPath.stroke()
 
         let innerBorderPath = UIBezierPath(roundedRect: rect.insetBy(dx: 12, dy: 12), cornerRadius: 10)
         UIColor.neoAlwaysGreen.setStroke()
-        innerBorderPath.lineWidth = 1
+        innerBorderPath.lineWidth = 2
         innerBorderPath.stroke()
     }
 }
