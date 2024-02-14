@@ -199,7 +199,7 @@ extension MainPageViewController: UICollectionViewDataSource {
         case .main:
             return searchTextField.text?.isEmpty == false ? filteredCategories.count : categoryViewModel.categories.count
         case .anotherSection:
-            return 1
+            return searchTextField.text?.isEmpty == false ? 0 : 1
         case .none:
             return 0
         }
@@ -225,8 +225,7 @@ extension MainPageViewController: UICollectionViewDataSource {
             return cell
 
         case .anotherSection:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: anythingCellIdentifier, for: indexPath) as! AnythingCell
-
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: anythingCellIdentifier, for: indexPath) as! AnythingCell
 
             return cell
 
@@ -319,12 +318,16 @@ extension MainPageViewController: UITextFieldDelegate {
             if searchText.isEmpty {
                 self.filteredCategories = self.categoryViewModel.categories
             } else {
-                self.filteredCategories = self.categoryViewModel.categories.filter { category in
-                    let lowercasedSearchText = searchText.lowercased()
-                    let categoryNameContains = category.categoryName.lowercased().contains(lowercasedSearchText)
-                    let categoryBeforeNameContains = category.categoryBeforeName.lowercased().contains(lowercasedSearchText)
+                if searchText.lowercased().contains("anything") {
+                    self.filteredCategories = []
+                } else {
+                    self.filteredCategories = self.categoryViewModel.categories.filter { category in
+                        let lowercasedSearchText = searchText.lowercased()
+                        let categoryNameContains = category.categoryName.lowercased().contains(lowercasedSearchText)
+                        let categoryBeforeNameContains = category.categoryBeforeName.lowercased().contains(lowercasedSearchText)
 
-                    return categoryNameContains || categoryBeforeNameContains
+                        return categoryNameContains || categoryBeforeNameContains
+                    }
                 }
             }
 
@@ -332,5 +335,4 @@ extension MainPageViewController: UITextFieldDelegate {
             self.collectionView.reloadData()
         }
     }
-
 }

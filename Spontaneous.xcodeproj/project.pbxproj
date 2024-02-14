@@ -149,8 +149,6 @@
 				3CA2011A2B5F8BD000823386 /* Components */,
 				3CA2010F2B5F7B9F00823386 /* Navigation */,
 				3CA2010E2B5F7B8500823386 /* Scenes */,
-				3C9A76082B77BF1400A1FC80 /* PopupView */,
-				3CA201312B693D8500823386 /* Randomized Result Page */,
 				3CA200FA2B5F73CE00823386 /* Assets.xcassets */,
 				3CA200FC2B5F73CE00823386 /* LaunchScreen.storyboard */,
 				3CA200FF2B5F73CE00823386 /* Info.plist */,
@@ -175,6 +173,8 @@
 				3CA201192B5F86DA00823386 /* Main Page */,
 				3C9A76232B7BDCE000A1FC80 /* Anything Page */,
 				3CA201282B67A1A200823386 /* Category Details Page */,
+				3C9A76082B77BF1400A1FC80 /* PopupView */,
+				3CA201312B693D8500823386 /* Randomized Result Page */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -204,8 +204,8 @@
 			isa = PBXGroup;
 			children = (
 				3CA201172B5F86A900823386 /* MainPageViewController.swift */,
-				3C9A761B2B7A555100A1FC80 /* AnythingCell.swift */,
 				3C4EEBB92B72A924001A8AF5 /* CustomCell.swift */,
+				3C9A761B2B7A555100A1FC80 /* AnythingCell.swift */,
 				3C4EEBB52B729708001A8AF5 /* MainPageImageLoader.swift */,
 				3CA201242B679E9600823386 /* CategoryViewModel.swift */,
 			);
@@ -246,7 +246,8 @@
 			children = (
 				3CA2012F2B693D8000823386 /* RandomizedResultPage.swift */,
 			);
-			path = "Randomized Result Page";
+			name = "Randomized Result Page";
+			path = "../Randomized Result Page";
 			sourceTree = "<group>";
 		};
 		3CA201322B69456200823386 /* Model */ = {
