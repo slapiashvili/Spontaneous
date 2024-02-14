@@ -15,7 +15,8 @@ extension View {
         self
             .textFieldStyle(PlainTextFieldStyle())
             .padding()
-            .font(.custom("Jura", size: 18))
+            .font(neoDeviceFont())
+            .foregroundColor(.neoAlwaysGreen)
             .bold()
             .frame(width: UIScreen.main.bounds.size.width * 2/3, height: UIScreen.main.bounds.size.height * 1/16 )
             .background(Color.neoTextField)
@@ -35,7 +36,8 @@ extension View {
         self
             .frame(width: UIScreen.main.bounds.size.width * 2/3, height: UIScreen.main.bounds.size.height * 1/16 )
             .buttonStyle(PlainButtonStyle())
-            .font(.custom("Jura", size: 20))
+            .font(neoDeviceFont())
+            .foregroundColor(.neoTextOpposite)
             .bold()
             .background(Color.neoBackground)
             .foregroundColor(Color.neoTextOpposite)
@@ -46,7 +48,8 @@ extension View {
         self
             .frame(width: UIScreen.main.bounds.size.width * 2/3, height: UIScreen.main.bounds.size.height * 1/16 )
             .buttonStyle(PlainButtonStyle())
-            .font(.custom("Jura", size: 20))
+            .font(neoDeviceFont())
+            .foregroundColor(.neoTextOpposite)
             .bold()
             .background(Color.neoBackground)
             .foregroundColor(Color.neoTextOpposite)
@@ -65,7 +68,8 @@ extension View {
            self
             .frame(width: generalWidthIndicator - 40)
             .foregroundColor(.neoBackground)
-            .font(.custom("Jura", size: 20))
+            .font(neoDeviceFont())
+            .foregroundColor(.neoTextOpposite)
             .bold()
             .multilineTextAlignment(.center)
     }

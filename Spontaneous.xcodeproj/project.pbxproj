@@ -18,6 +18,7 @@
 		3C9A76202B7AA56900A1FC80 /* AnythingRandomizedResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9A761F2B7AA56900A1FC80 /* AnythingRandomizedResultViewController.swift */; };
 		3C9A76222B7BDCD100A1FC80 /* AnythingChoiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9A76212B7BDCD100A1FC80 /* AnythingChoiceCell.swift */; };
 		3C9A76252B7BE09900A1FC80 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9A76242B7BE09900A1FC80 /* TextField.swift */; };
+		3C9A76292B7D052B00A1FC80 /* neoFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C9A76282B7D052B00A1FC80 /* neoFont.swift */; };
 		3CA200F22B5F73CC00823386 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA200F12B5F73CC00823386 /* AppDelegate.swift */; };
 		3CA200F42B5F73CC00823386 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CA200F32B5F73CC00823386 /* SceneDelegate.swift */; };
 		3CA200FB2B5F73CE00823386 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3CA200FA2B5F73CE00823386 /* Assets.xcassets */; };
@@ -53,6 +54,7 @@
 		3C9A761F2B7AA56900A1FC80 /* AnythingRandomizedResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnythingRandomizedResultViewController.swift; sourceTree = "<group>"; };
 		3C9A76212B7BDCD100A1FC80 /* AnythingChoiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnythingChoiceCell.swift; sourceTree = "<group>"; };
 		3C9A76242B7BE09900A1FC80 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		3C9A76282B7D052B00A1FC80 /* neoFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = neoFont.swift; sourceTree = "<group>"; };
 		3CA200EE2B5F73CC00823386 /* Spontaneous.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spontaneous.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3CA200F12B5F73CC00823386 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3CA200F32B5F73CC00823386 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				3CA201412B6BF17F00823386 /* Jura-VariableFont_wght.ttf */,
+				3C9A76282B7D052B00A1FC80 /* neoFont.swift */,
 			);
 			name = Fonts;
 			path = ../Fonts;
@@ -347,6 +350,7 @@
 				3CA2012C2B67D67600823386 /* FilterCell.swift in Sources */,
 				3CA201162B5F7EDB00823386 /* DecisionMakingAnimationView.swift in Sources */,
 				3CA201062B5F786100823386 /* OnboardingView.swift in Sources */,
+				3C9A76292B7D052B00A1FC80 /* neoFont.swift in Sources */,
 				3CA201232B67919300823386 /* Model.swift in Sources */,
 				3C9A76122B791D7100A1FC80 /* ButtonStyles.swift in Sources */,
 				3CA201082B5F796300823386 /* viewWrapper.swift in Sources */,

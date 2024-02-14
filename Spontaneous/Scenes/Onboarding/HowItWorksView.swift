@@ -41,7 +41,7 @@ struct HowItWorksView: ViewControllable {
 
     private var descriptionText: some View {
         Text("choose a category, press randomize, get a randomized answer")
-            .font(Font.custom("Jura", size: 20, relativeTo: .title3))
+            .font(neoDeviceFont())
             .foregroundColor(.neoTextOpposite)
             .multilineTextAlignment(.center)
             .padding()

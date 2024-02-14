@@ -30,7 +30,7 @@ final class PopupView: UIView {
         
         let label = UILabel()
         label.text = "Randomizing in Progress ..."
-        label.font = UIFont(name: "Jura", size: 20)
+        label.font = NeoFonts.neoDeviceFont()
         label.textColor = .neoTextOpposite
         addSubview(label)
         

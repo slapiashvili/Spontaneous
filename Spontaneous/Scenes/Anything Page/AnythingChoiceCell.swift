@@ -6,7 +6,7 @@
 //
 import UIKit
 
-class ChoiceTableViewCell: UITableViewCell {
+final class ChoiceTableViewCell: UITableViewCell {
 
     var choicesTextField = NeoTextField()
 

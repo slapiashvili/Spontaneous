@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainPageViewController: UIViewController {
+final class MainPageViewController: UIViewController {
     // MARK: - Properties
     private var imageLoader: ImageLoader?
     private var searchThrottleTimer: Timer?
@@ -137,7 +137,7 @@ class MainPageViewController: UIViewController {
             searchTextField.topAnchor.constraint(equalTo: categoryLabel.bottomAnchor, constant: 10),
             searchTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             searchTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            searchTextField.heightAnchor.constraint(equalToConstant: 30),
+            searchTextField.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1/20),
 
             collectionView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 15),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
@@ -156,7 +156,7 @@ class MainPageViewController: UIViewController {
     private func setupWelcomeLabel() {
         welcomeLabel.textColor = .neoTextOpposite
         welcomeLabel.textAlignment = .center
-        welcomeLabel.font = UIFont(name: "Jura", size: 20)
+        welcomeLabel.font = NeoFonts.neoDeviceFont()
 
         let confirmedNickname = nicknameViewModel.userNickname
         if !confirmedNickname.isEmpty {

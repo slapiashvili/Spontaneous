@@ -50,7 +50,7 @@ final class AnythingViewController: UIViewController {
     private func setupInstructionLabel() {
         instructionLabel.text = "Simply type in different options to choose from and we will help you decide!"
         instructionLabel.textColor = .neoTextOpposite
-        instructionLabel.font = UIFont(name: "Jura", size: 20)
+        instructionLabel.font = NeoFonts.neoDeviceFont()
         instructionLabel.textAlignment = .center
         instructionLabel.numberOfLines = 0
         view.addSubview(instructionLabel)
@@ -79,7 +79,7 @@ final class AnythingViewController: UIViewController {
         randomizeButton.backgroundColor = .neoTextOpposite
         randomizeButton.setTitle("Randomize", for: .normal)
         randomizeButton.setTitleColor(.neoBackground, for: .normal)
-        randomizeButton.titleLabel?.font = UIFont(name: "Jura", size: 20)
+        randomizeButton.titleLabel?.font = NeoFonts.neoDeviceFont()
         randomizeButton.layer.cornerRadius = 15
         randomizeButton.clipsToBounds = true
         view.addSubview(randomizeButton)

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RandomizedResultPage: UIViewController {
+final class RandomizedResultPage: UIViewController {
     //MARK: - Properties
     var randomizedContent: FilterContent?
     let titleLabel = UILabel()
@@ -81,7 +81,7 @@ class RandomizedResultPage: UIViewController {
     
     private func setupFullNameLabel() {
         fullNameLabel.text = randomizedContent?.fullName
-        fullNameLabel.font = UIFont(name: "Jura", size: 20)
+        fullNameLabel.font = NeoFonts.neoDeviceFont()
         fullNameLabel.textColor = .neoGreen
         fullNameLabel.numberOfLines = 0
         fullNameLabel.textAlignment = .center
@@ -104,7 +104,7 @@ class RandomizedResultPage: UIViewController {
     
     private func setupMainMenuButton() {
         mainMenuButton.setTitle("Back to Main Menu", for: .normal)
-        mainMenuButton.titleLabel?.font = UIFont(name: "Jura", size: 18)
+        mainMenuButton.titleLabel?.font = NeoFonts.neoDeviceFont()
         mainMenuButton.backgroundColor = .neoTextOpposite
         mainMenuButton.setTitleColor(.neoBackground, for: .normal)
         mainMenuButton.layer.cornerRadius = 15
@@ -115,7 +115,7 @@ class RandomizedResultPage: UIViewController {
     private func setupTryAgainButton() {
         tryAgainButton.setTitle("Try Again", for: .normal)
         tryAgainButton.setTitleColor(.neoBackground, for: .normal)
-        tryAgainButton.titleLabel?.font = UIFont(name: "Jura", size: 18)
+        tryAgainButton.titleLabel?.font = NeoFonts.neoDeviceFont()
         tryAgainButton.backgroundColor = .neoTextOpposite
         tryAgainButton.layer.cornerRadius = 15
         tryAgainButton.clipsToBounds = true
@@ -124,20 +124,23 @@ class RandomizedResultPage: UIViewController {
 
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 60),
             titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             imageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3),
             imageView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8),
             
             stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            stackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
+            stackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
             stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
+                        
+            mainMenuButton.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 200),
             mainMenuButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1/16),
             mainMenuButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 2/3),
             
+            tryAgainButton.topAnchor.constraint(equalTo: mainMenuButton.bottomAnchor, constant: 15),
             tryAgainButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1/16),
             tryAgainButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 2/3)
         ])

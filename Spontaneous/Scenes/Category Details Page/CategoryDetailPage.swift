@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CategoryDetailViewController: UIViewController {
+final class CategoryDetailViewController: UIViewController {
 
     //MARK: - Properties:
     
@@ -114,7 +114,7 @@ class CategoryDetailViewController: UIViewController {
     private func setupDescriptionLabel() {
         descriptionLabel.textColor = .neoTextOpposite
         descriptionLabel.textAlignment = .center
-        descriptionLabel.font = UIFont(name: "Jura", size: 18)
+        descriptionLabel.font = NeoFonts.neoDeviceFont()
         descriptionLabel.numberOfLines = 0
     }
     
@@ -137,7 +137,7 @@ class CategoryDetailViewController: UIViewController {
         randomizeButton.backgroundColor = .neoTextOpposite
         randomizeButton.setTitle("Randomize", for: .normal)
         randomizeButton.setTitleColor(.neoBackground, for: .normal)
-        randomizeButton.titleLabel?.font = UIFont(name: "Jura", size: 20)
+        randomizeButton.titleLabel?.font = NeoFonts.neoDeviceFont()
         randomizeButton.layer.cornerRadius = 15
         randomizeButton.clipsToBounds = true
         randomizeButton.addTarget(self, action: #selector(randomizeButtonTapped), for: .touchUpInside)
