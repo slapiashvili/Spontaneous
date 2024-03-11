@@ -15,8 +15,11 @@ extension View {
         self
             .textFieldStyle(PlainTextFieldStyle())
             .padding()
+master
             .font(neoDeviceFont())
             .foregroundColor(.neoAlwaysGreen)
+            .font(.custom("Jura", size: 18))
+main
             .bold()
             .frame(width: UIScreen.main.bounds.size.width * 2/3, height: UIScreen.main.bounds.size.height * 1/16 )
             .background(Color.neoTextField)
@@ -35,9 +38,12 @@ extension View {
     func applyNeoRegularButtonStyle() -> some View {
         self
             .frame(width: UIScreen.main.bounds.size.width * 2/3, height: UIScreen.main.bounds.size.height * 1/16 )
-            .buttonStyle(PlainButtonStyle())
+            .buttonStyle(PlainButtonStyle()) 
+      master
             .font(neoDeviceFont())
             .foregroundColor(.neoTextOpposite)
+            .font(.custom("Jura", size: 20))
+ main
             .bold()
             .background(Color.neoBackground)
             .foregroundColor(Color.neoTextOpposite)
@@ -48,8 +54,11 @@ extension View {
         self
             .frame(width: UIScreen.main.bounds.size.width * 2/3, height: UIScreen.main.bounds.size.height * 1/16 )
             .buttonStyle(PlainButtonStyle())
+master
             .font(neoDeviceFont())
             .foregroundColor(.neoTextOpposite)
+            .font(.custom("Jura", size: 20))
+     main
             .bold()
             .background(Color.neoBackground)
             .foregroundColor(Color.neoTextOpposite)
@@ -68,8 +77,11 @@ extension View {
            self
             .frame(width: generalWidthIndicator - 40)
             .foregroundColor(.neoBackground)
+ master
             .font(neoDeviceFont())
             .foregroundColor(.neoTextOpposite)
+            .font(.custom("Jura", size: 20))
+main
             .bold()
             .multilineTextAlignment(.center)
     }

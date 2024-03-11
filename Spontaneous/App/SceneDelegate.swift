@@ -7,7 +7,11 @@
 
 import UIKit
 
+master
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+
+final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+main
 
     var window: UIWindow?
     

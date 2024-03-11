@@ -172,6 +172,8 @@
 			children = (
 				3CA201102B5F7BB000823386 /* Onboarding */,
 				3CA2011D2B61825700823386 /* Nickname */,
+				3CA201312B693D8500823386 /* Randomized Result Page */,
+				3C9A76082B77BF1400A1FC80 /* PopupView */,
 				3CA201192B5F86DA00823386 /* Main Page */,
 				3C9A76232B7BDCE000A1FC80 /* Anything Page */,
 				3CA201282B67A1A200823386 /* Category Details Page */,
@@ -263,8 +265,8 @@
 		3CA201432B6BF18800823386 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				3CA201412B6BF17F00823386 /* Jura-VariableFont_wght.ttf */,
-				3C9A76282B7D052B00A1FC80 /* neoFont.swift */,
+				3CA201412B6BF17F00823386 /* Jura-VariableFont_wght.ttf */, master
+				3C9A76282B7D052B00A1FC80 /* neoFont.swift */,main
 			);
 			name = Fonts;
 			path = ../Fonts;
