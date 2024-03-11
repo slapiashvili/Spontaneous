@@ -40,11 +40,11 @@ struct WhatToExpectView: View {
 
     private var descriptionLabel: some View {
         Text("We will help you make decisions about different aspects of your life")
-            .font(Font.custom("Jura", size: 20, relativeTo: .title3))
+            .font(neoDeviceFont())
             .foregroundColor(.neoTextOpposite)
             .multilineTextAlignment(.center)
             .fixedSize(horizontal: false, vertical: true)
-            .padding(.horizontal, 15)
+            .padding(.horizontal, 40)
             .padding()
     }
 
@@ -57,7 +57,7 @@ struct WhatToExpectView: View {
 
     private var additionalTextLabel: some View {
         Text("so that you have time for more important things")
-            .font(Font.custom("Jura", size: 20, relativeTo: .title3))
+            .font(neoDeviceFont())
             .foregroundColor(.neoTextOpposite)
             .multilineTextAlignment(.center)
             .fixedSize(horizontal: false, vertical: true)

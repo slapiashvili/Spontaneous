@@ -15,6 +15,11 @@ final class MainPageViewController: UIViewController {
     var filteredCategories: [GeneralCategory] = []
     var categoryViewModel = CategoryViewModel()
     var nicknameViewModel = NicknameViewModel.shared
+    
+    enum SectionType: Int {
+        case main = 0
+        case anotherSection
+    }
 
     // MARK: - UI Components
     
@@ -24,7 +29,7 @@ final class MainPageViewController: UIViewController {
 
     private let categoryLabel = UILabel()
 
-    private let searchTextField = UITextField()
+    private let searchTextField = NeoTextField()
 
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -36,8 +41,12 @@ final class MainPageViewController: UIViewController {
     private let nothingImageView = UIImageView()
     
     // MARK: - Constants
-    lazy var cellIdentifier: String = {
+    lazy var mainCellIdentifier: String = {
         return "CustomCell"
+    }()
+    
+    lazy var anythingCellIdentifier: String = {
+        return "anythingCell"
     }()
 
     // MARK: - Lifecycle
@@ -51,7 +60,6 @@ final class MainPageViewController: UIViewController {
         loadImageAfterDelay()
         setupUI()    
         setupNothingImageView()
-
     }
 
     // MARK: - Setup Methods
@@ -72,7 +80,8 @@ final class MainPageViewController: UIViewController {
     }
 
     private func registerCollectionViewCell() {
-        collectionView.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: cellIdentifier)
+        collectionView.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: mainCellIdentifier)
+        collectionView.register(AnythingCell.self, forCellWithReuseIdentifier: anythingCellIdentifier)
     }
 
     private func loadImageAfterDelay() {
@@ -128,7 +137,7 @@ final class MainPageViewController: UIViewController {
             searchTextField.topAnchor.constraint(equalTo: categoryLabel.bottomAnchor, constant: 10),
             searchTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             searchTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            searchTextField.heightAnchor.constraint(equalToConstant: 30),
+            searchTextField.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1/20),
 
             collectionView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 15),
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
@@ -147,7 +156,7 @@ final class MainPageViewController: UIViewController {
     private func setupWelcomeLabel() {
         welcomeLabel.textColor = .neoTextOpposite
         welcomeLabel.textAlignment = .center
-        welcomeLabel.font = UIFont(name: "Jura", size: 20)
+        welcomeLabel.font = NeoFonts.neoDeviceFont()
 
         let confirmedNickname = nicknameViewModel.userNickname
         if !confirmedNickname.isEmpty {
@@ -171,14 +180,6 @@ final class MainPageViewController: UIViewController {
     }
     
     private func setupSearchBar() {
-        searchTextField.borderStyle = .roundedRect
-        searchTextField.backgroundColor = UIColor.neoTextField
-        searchTextField.font = UIFont(name: "Jura", size: 18)
-        searchTextField.textColor = UIColor.neoAlwaysGreen
-        searchTextField.layer.borderWidth = 1
-        searchTextField.layer.borderColor = UIColor.neoTextOpposite.cgColor
-        searchTextField.layer.cornerRadius = 5
-        searchTextField.autocorrectionType = .no
         searchTextField.translatesAutoresizingMaskIntoConstraints = false
         searchTextField.attributedPlaceholder = NSAttributedString(string: "Search...", attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
         view.addSubview(searchTextField)
@@ -188,40 +189,73 @@ final class MainPageViewController: UIViewController {
 // MARK: - UICollectionViewDataSource
 
 extension MainPageViewController: UICollectionViewDataSource {
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return searchTextField.text?.isEmpty == false ? filteredCategories.count : categoryViewModel.categories.count
+        switch SectionType(rawValue: section) {
+        case .main:
+            return searchTextField.text?.isEmpty == false ? filteredCategories.count : categoryViewModel.categories.count
+        case .anotherSection:
+            return searchTextField.text?.isEmpty == false ? 0 : 1
+        case .none:
+            return 0
+        }
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! CustomCollectionViewCell
+        switch SectionType(rawValue: indexPath.section) {
+        case .main:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: mainCellIdentifier, for: indexPath) as! CustomCollectionViewCell
+            let category: GeneralCategory
+            if searchTextField.text?.isEmpty == false {
+                category = filteredCategories[indexPath.item]
+            } else {
+                category = categoryViewModel.categories[indexPath.item]
+            }
 
-        let category: GeneralCategory
-        if searchTextField.text?.isEmpty == false {
-            category = filteredCategories[indexPath.item]
-        } else {
-            category = categoryViewModel.categories[indexPath.item]
+            cell.configureCell(category: category, searchText: searchTextField.text)
+
+            if let symbolName = category.symbolName {
+                let symbolImage = UIImage(named: symbolName)
+                cell.imageView.image = symbolImage
+            }
+            return cell
+
+        case .anotherSection:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: anythingCellIdentifier, for: indexPath) as! AnythingCell
+
+            return cell
+
+        case .none:
+            return UICollectionViewCell()
         }
-
-        cell.configureCell(category: category, searchText: searchTextField.text)
-
-        if let symbolName = category.symbolName {
-            let symbolImage = UIImage(named: symbolName)
-            cell.imageView.image = symbolImage
-        }
-
-        return cell
     }
+
+
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
 extension MainPageViewController: UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let cellWidth = (collectionView.bounds.width - 25) / 2
-        let cellHeight = view.bounds.height / 3
+        switch SectionType(rawValue: indexPath.section) {
+        case .main:
+            let cellWidth = (collectionView.bounds.width - 25) / 2
+            let cellHeight = view.bounds.height / 3
+            return CGSize(width: cellWidth, height: cellHeight)
 
+        case .anotherSection:
+            let cellWidth = (collectionView.bounds.width - 25) / 2
+            let cellHeight = view.bounds.height / 3
+            return CGSize(width: cellWidth, height: cellHeight)
 
-        return CGSize(width: cellWidth, height: cellHeight)
+        case .none:
+            return CGSize.zero
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
@@ -235,17 +269,34 @@ extension MainPageViewController: UICollectionViewDelegateFlowLayout {
 
 // MARK: - UICollectionViewDelegate
 
+// MARK: - UICollectionViewDelegate
+
 extension MainPageViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selectedCategory = categoryViewModel.categories[indexPath.item]
-        navigateToCategoryDetail(category: selectedCategory)
+        switch SectionType(rawValue: indexPath.section) {
+        case .main:
+            let selectedCategory = categoryViewModel.categories[indexPath.item]
+            navigateToCategoryDetail(category: selectedCategory)
+
+        case .anotherSection:
+            navigateToAnythingViewController()
+
+        case .none:
+            break
+        }
     }
 
     private func navigateToCategoryDetail(category: GeneralCategory) {
         let categoryDetailViewController = CategoryDetailViewController(category: category, categoryViewModel: categoryViewModel)
         self.navigationController?.pushViewController(categoryDetailViewController, animated: true)
     }
+
+    private func navigateToAnythingViewController() {
+        let anythingViewController = AnythingViewController() 
+        self.navigationController?.pushViewController(anythingViewController, animated: true)
+    }
 }
+
 
 // MARK: - UITextFieldDelegate
 
@@ -267,12 +318,16 @@ extension MainPageViewController: UITextFieldDelegate {
             if searchText.isEmpty {
                 self.filteredCategories = self.categoryViewModel.categories
             } else {
-                self.filteredCategories = self.categoryViewModel.categories.filter { category in
-                    let lowercasedSearchText = searchText.lowercased()
-                    let categoryNameContains = category.categoryName.lowercased().contains(lowercasedSearchText)
-                    let categoryBeforeNameContains = category.categoryBeforeName.lowercased().contains(lowercasedSearchText)
+                if searchText.lowercased().contains("anything") {
+                    self.filteredCategories = []
+                } else {
+                    self.filteredCategories = self.categoryViewModel.categories.filter { category in
+                        let lowercasedSearchText = searchText.lowercased()
+                        let categoryNameContains = category.categoryName.lowercased().contains(lowercasedSearchText)
+                        let categoryBeforeNameContains = category.categoryBeforeName.lowercased().contains(lowercasedSearchText)
 
-                    return categoryNameContains || categoryBeforeNameContains
+                        return categoryNameContains || categoryBeforeNameContains
+                    }
                 }
             }
 
@@ -280,5 +335,4 @@ extension MainPageViewController: UITextFieldDelegate {
             self.collectionView.reloadData()
         }
     }
-
 }

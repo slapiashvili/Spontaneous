@@ -28,7 +28,8 @@ struct NicknameViewController: ViewControllable {
                 Spacer()
                 topZStack()
                 Text("or")
-                    .font(.custom("Jura", size: 20))
+                    .font(neoDeviceFont())
+                    .foregroundColor(.neoTextOpposite)
                     .bold()
                     .padding()
                 

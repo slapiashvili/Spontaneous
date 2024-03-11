@@ -46,7 +46,7 @@ struct WelcomeView: View {
 
     private var welcomeText: some View {
         Text("We make decision-making easier")
-            .font(Font.custom("Jura", size: 20, relativeTo: .title3))
+            .font(neoDeviceFont())
             .foregroundColor(.neoTextOpposite)
             .multilineTextAlignment(.center)
             .lineLimit(nil)
